@@ -1,0 +1,14 @@
+profile{
+
+    margin-top: pc;
+    width: 300px;
+    height: fit-content;
+    padding: 20px;
+    border-radius: 20px;
+    margin-left: 10pc;
+}
+
+.profile img{
+    width: 200px;
+    margin-top: 10pc;
+}
