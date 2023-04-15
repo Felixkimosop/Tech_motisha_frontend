@@ -1,12 +1,12 @@
 import {Routes, Route} from 'react-router';
 import './App.css';
-import Admin from './Components/Admin';
+import User from './Components/User';
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path = "/admin" element = {<Admin />} />
+        <Route path = "/user" element = {<User />} />
       </Routes>
      
     </div>
