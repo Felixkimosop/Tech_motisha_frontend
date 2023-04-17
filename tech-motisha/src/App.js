@@ -4,6 +4,7 @@ import User from './Components/User';
 import Admin from './Components/Admin';
 import Staff from './Components/Staff';
 import Blogpage from './Components/Blogpage';
+import About from './Pages/About/About';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path = "/admin" element = {<Admin />} />
         <Route path = "/staff" element = {<Staff />} />
         <Route path = "/blog" element = {<Blogpage />} />
+        <Route path = "/about" element = {<About />} />
       </Routes>
      
     </div>
