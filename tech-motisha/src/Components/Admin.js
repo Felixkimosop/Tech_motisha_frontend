@@ -1,7 +1,9 @@
 import React from 'react'
 import "./Admin.css"
+import { useNavigate } from "react-router-dom";
 
 function Admin() {
+    const navigate = useNavigate();
   return (
     <div>
         <div className='admin'>
@@ -12,7 +14,7 @@ function Admin() {
             </div>
             <div className='admin_activity'>
             <h1>Activity</h1>
-            <button>All posts</button>
+            <button onClick={(e)=>navigate("/posts")} value = "posts">All posts</button>
             <br></br>
             <button>All categories</button>
             <br></br>
