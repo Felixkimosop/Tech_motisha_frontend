@@ -1,10 +1,10 @@
 import {Routes, Route} from 'react-router';
 import './App.css';
-import User from './Components/User';
-import Admin from './Components/Admin';
-import Staff from './Components/Staff';
+import User from './Components/User/User';
+import Staff from './Components/Staff/Staff';
 import Blogpage from './Components/Blogpage';
 import About from './Pages/About/About';
+import Admin from './Components/Admin/Admin';
 
 function App() {
   return (
