@@ -13,7 +13,7 @@ body{
     background-color: rgb(207, 202, 202);
     margin-top: 10pc;
     width: 300px;
-    height: 50vh;
+    height: fit-content;
     padding: 20px;
     border-radius: 20px;
     margin-left: 10pc;
@@ -53,3 +53,45 @@ a{
     margin-left: 10pc;
 
 }
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+  }
+  
+  button[type='submit'] {
+    background-color: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;}
+   
+  

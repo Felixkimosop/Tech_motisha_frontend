@@ -7,8 +7,10 @@ import Swal from "sweetalert2";
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
+  
     password: "",
   });
+  
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -23,25 +25,43 @@ function Login() {
     })
       .then((r) => r.json())
       .then((data) => {
-        if (data.jwt) {
-          // save the token to localStorage for future access
-          localStorage.setItem("jwt", data.jwt);
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Welcome Tech Motisha!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          // navigate to the home page
-          navigate("/homeout");
-        } else {
+        console.log(data)
+        if (data.error) {
+
           setError("Wrong names or password");
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Wrong names or password!",
           });
+         
+        } else {
+
+          localStorage.setItem("jwt", data.jwt);
+          if (data.user.role === "admin") {
+            navigate("/admin");
+          } else if (data.user.role === "user"){
+            navigate("/user");
+          }
+          else if(data.user.role === "staff"){
+            navigate("/staff")
+          }
+          else{
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Wrong names or password!",
+            });
+          }
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Welcome Tech Motisha!",
+            showConfirmButton: false,
+            timer: 1500,           
+
+          });
+          
         }
       })
       .catch((error) => {
@@ -87,6 +107,7 @@ function Login() {
             placeholder="Type Here"
           />
         </div>
+        
         <button
           type="submit"
           className="btn btn-outline-dark btn-sm m-4"
