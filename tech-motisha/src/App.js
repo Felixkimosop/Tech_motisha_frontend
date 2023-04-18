@@ -1,21 +1,30 @@
-import logo from './logo.svg';
+import {Routes, Route} from 'react-router';
 import './App.css';
-import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import ContactMe from "./components/ContactMe/ContactMe";
-
+import User from './Components/User/User';
+import Staff from './Components/Staff/Staff';
+import Blogpage from './Components/Blogpage';
+import About from './Pages/About/About';
+import Admin from './Components/Admin/Admin';
 
 
 function App() {
   return (
-    <BrowserRouter>
+    <div>
       <Routes>
+        <Route path = "/user" element = {<User />} />
+        <Route path = "/admin" element = {<Admin />} />
+        <Route path = "/staff" element = {<Staff />} />
+        <Route path = "/blog" element = {<Blogpage />} />
+        <Route path = "/about" element = {<About />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contactme" element={<ContactMe />} />
-        </Routes>
-    </BrowserRouter>
+      </Routes>
+     
+    </div>
   );
 }
 
