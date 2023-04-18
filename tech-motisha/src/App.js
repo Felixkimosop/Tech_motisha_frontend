@@ -11,6 +11,8 @@ import About from "./Pages/About/About";
 import Admin from "./Components/Admin/Admin";
 import ViewUsers from "./Components/Admin/ViewUsers";
 import Catergory from "./Components/Admin/Catergory";
+import UserPosts from "./Components/User/UserPosts";
+import Subscriptions from "./Components/User/Subscriptions";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contactme" element={<ContactMe />} />
+        <Route path="/myposts" element={<UserPosts />} />
+        <Route path="/mysubscriptions" element={<Subscriptions />} />
       </Routes>
     </div>
   );

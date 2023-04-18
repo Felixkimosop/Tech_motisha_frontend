@@ -1,52 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import './User.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import "./User.css";
 
 function User() {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNo, setPhoneNo] = useState('');
-  const [picture, setPicture] = useState('');
+  
+  const [name, setName] = useState();
+  const [age, setAge] = useState();
+  const [email, setEmail] = useState();
+  const [phoneNo, setPhoneNo] = useState();
+  const [picture, setPicture] = useState();
 
   const [isEditing, setIsEditing] = useState(false);
+  const token = localStorage.getItem("jwt");
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch user details from backend
-    fetch('/profile')
-      .then((res) => res.json())
-      .then((data) => {
-        setName(data.name);
-        setAge(data.age);
-        setEmail(data.email);
-        setPhoneNo(data.phoneNo);
-        setPicture(data.profile_picture);
-      });
-  }, []);
-
-  const handleUpdate = () => {
-    // Send updated user details to backend
-    fetch('/users', {
-      method: 'PATCH',
+    fetch("/profile", {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        name,
-        age,
-        email,
-        phoneNo,
-        picture
-      }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('User details updated:', data);
+      
+        setName(data.name);
+        setAge(data.age);
+        setEmail(data.email);
+        setPhoneNo(data.phone_number);
+        setPicture(data.profile_picture);
+      });
+  }, [token]);
+  
+
+  const handleUpdate = (id,e) => {
+    e.preventDefault();
+
+    fetch(`/users/${id}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({name,age,email,phoneNo,picture})
+    })
+      .then((res) => res.json())
+      .then((data) => {
+      
+       setAge(age);
+       setPhoneNo(phoneNo);
+       setEmail(email);
+       setPicture(picture);
+       setName(name);
+
         setIsEditing(false); // Hide the form
       })
       .catch((err) => {
-        console.error('Failed to update user details:', err);
+        console.error("Failed to update user details:", err);
       });
   };
+
+
+ 
 
   return (
     <div>
@@ -66,40 +84,66 @@ function User() {
             <p>{phoneNo}</p>
           </div>
           {!isEditing && (
-            <button onClick={() => setIsEditing(true)}>Update your Profile</button>
+            <button onClick={() => setIsEditing(true)}>
+              Update your Profile
+            </button>
           )}
           {isEditing && (
             <div className="form-card">
-              <form>
+              <form onSubmit={handleUpdate}>
                 <label htmlFor="name">Name:</label>
-                <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
                 <label htmlFor="age">Age:</label>
-                <input type="text" id="age" value={age} onChange={(e) => setAge(e.target.value)} />
+                <input
+                  type="text"
+                  id="age"
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                />
                 <label htmlFor="email">Email:</label>
-                <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input
+                  type="text"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
                 <label htmlFor="phoneNo">Phone No:</label>
-                <input type="text" id="phoneNo" value={phoneNo} onChange={(e) => setPhoneNo(e.target.value)} />
-                <label htmlFor="phoneNo">Phone No:</label>
-                <input type="file" id="picture" value={picture} onChange={(e) => setPicture(e.target.value)} />
+                <input
+                  type="text"
+                  id="phoneNo"
+                  value={phoneNo}
+                  onChange={(e) => setPhoneNo(e.target.value)}
+                />
+                <label htmlFor="picture">Profile Picture:</label>
+                <input
+                  type="file"
+                  id="picture"
+                  accept="image/*"
+                
+                  onChange={(e) => setPicture(e.target.files[0])}
+                />
+                <button >Save Changes</button>
               </form>
-              <div className="form-buttons">
-                <button onClick={handleUpdate}>Save</button>
-                <button onClick={() => setIsEditing(false)}>Cancel</button>
-              </div>
+              
             </div>
           )}
         </div>
         <div className="admin_activity">
           <h1>Activity</h1>
-          <button>My posts</button>
+          <button onClick={(e)=>navigate("/myposts")} >My posts</button>
           <br></br>
-          <button>My subscriptions</button>
+          <button onClick={(e)=>navigate("/mysubscriptions")} >My subscriptions</button>
           <br></br>
           <button>My WishList</button>
         </div>
-        </div>
-        </div>
-  )
+      </div>
+    </div>
+  );
 }
 
 export default User;
