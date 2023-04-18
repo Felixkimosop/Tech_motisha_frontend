@@ -1,0 +1,47 @@
+.navlink{
+    display: flex;
+    flex-direction: row;
+    margin-left: 3pc;
+}
+
+.logoName{
+    display: flex;
+    flex-direction: column;
+}
+
+#tech{
+    color: rgb(248, 248, 255);
+    font-weight: bolder;
+}
+
+#motisha{
+    color: #FA510F;
+    font-weight: bolder;
+}
+
+.navbar-collapse{
+    flex-grow: 0;
+}
+
+.navbar-nav{
+    margin-right: 3pc;
+}
+.nav-link{
+    color: white;
+    margin-left: 1pc;
+    margin-right: 1pc;
+}
+
+.navbar{
+    --bs-navbar-active-color: #ffe6dcc5;
+    --bs-navbar-brand-hover-color: #ffe6dcc5;
+    --bs-navbar-hover-color:  #ffe6dcc5;
+}
+
+.login{
+    border-color: #FA510F;
+}
+.login .nav-link{
+    padding: 0;
+    color: #FA510F;
+}
