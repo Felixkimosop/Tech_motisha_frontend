@@ -2,12 +2,12 @@ import {Routes, Route} from 'react-router';
 import './App.css';
 import User from './Components/User/User';
 import Staff from './Components/Staff/Staff';
-import Posts from './Components/Posts';
+import Posts from './Components/Admin/Posts';
 import Blogpage from './Components/Blogpage';
 import About from './Pages/About/About';
 import Admin from './Components/Admin/Admin';
-import ViewUsers from './Components/ViewUsers';
-import Catergory from './Components/Catergory';
+import ViewUsers from './Components/Admin/ViewUsers';
+import Catergory from './Components/Admin/Catergory';
 
 function App() {
   return (
