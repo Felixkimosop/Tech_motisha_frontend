@@ -1,12 +1,11 @@
 import React from 'react';
-import AudioPlayer from './components/AudioPlayer.jsx';
-import musicData from './assets/music';
-import './components/AudioPlayer.css'
+import AudioPlayer from './Components/Audio/AudioPlayer';
+import './Components/Audio/AudioPlayer.css'
 import { Routes, Route } from "react-router";
 import "./App.css";
-import Login from "./components/Login/Login";
-import SignUp from "./components/SignUp/SignUp";
-import ContactMe from "./components/ContactMe/ContactMe";
+import Login from "./Pages/Login/Login.jsx";
+import SignUp from "./Pages/SignUp/SignUp.jsx";
+import ContactMe from "./Pages/ContactMe/ContactMe.jsx";
 import User from "./Components/User/User";
 import Staff from "./Components/Staff/Staff";
 import Posts from "./Components/Admin/Posts";
@@ -18,24 +17,16 @@ import Catergory from "./Components/Admin/Catergory";
 import UserPosts from "./Components/User/UserPosts";
 import Subscriptions from "./Components/User/Subscriptions";
 import Home from './Pages/Home/Home';
+import musicData from './Components/assets/music';
 
 const App = () => {
-  return (
-    <div>
-      <div className="my-header">
-      <h1>Tech Bootcamp News</h1>
-      {musicData.map(song => (
-        <AudioPlayer key={song.id} song={song} />
-      ))
-}
-</div>
-    
-    <div>
-      
+  return (   
+    <div>      
       <Routes>
         <Route path="/user" element={<User />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/staff" element={<Staff />} />
+        <Route path="/audios" element={<AudioPlayer  song={musicData}/>} />
 
         <Route path="/allusers" element={<ViewUsers />} />
         <Route path="/category" element={<Catergory />} />
@@ -52,7 +43,7 @@ const App = () => {
       </Routes>
       
     </div>
-    </div>
+  
   );
 }
 
