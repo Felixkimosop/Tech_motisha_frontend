@@ -6,7 +6,6 @@ import musicData from '../assets/music';
 
 function AudioPlayer(props) {
 // Define states
-  const [playing, isPlaying] = useState(false);
   const [liked, isLiked] = useState(false);
   const [commenting, isCommenting] = useState(false);
   const [subscribed, isSubscribed] = useState(false);
@@ -18,15 +17,6 @@ function AudioPlayer(props) {
     const audioRef = useRef(null);
   
   // Functions to handle state changes 
-  const togglePlay = () => {
-    if (audioRef.current.paused) {
-      audioRef.current.play();
-      isPlaying(true);
-    } else {
-      audioRef.current.pause();
-      isPlaying(false);
-    }
-  };
   const toggleLikes = () => {
     isLiked(!liked);
   };
