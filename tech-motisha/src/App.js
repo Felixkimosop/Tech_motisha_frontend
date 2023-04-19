@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import AudioPlayer from './components/AudioPlayer.jsx';
+import musicData from './assets/music';
+import './components/AudioPlayer.css'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="my-header">
+      <h1>Tech Bootcamp News</h1>
+      {musicData.map(song => (
+        <AudioPlayer key={song.id} song={song} />
+      ))}
     </div>
   );
-}
+};
 
 export default App;
