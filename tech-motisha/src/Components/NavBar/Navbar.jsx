@@ -11,9 +11,12 @@ function Navbar() {
             className="navlink "
             to="/" exact
            >
-                 <img src={logo} alt="Logo" width="70" className="d-inline-block align-text-top"/>
-                 <div className='logoName'>
-                    <span id='tech'>Tech </span>
+                 <img src={logo} alt="Logo" className="logo"/>
+                 <div className='logoName '>
+                    <span className='inter-bold-white-30px'>
+                        Tech 
+                        <br />
+                    </span>
                     <span id='motisha' >Motisha</span>
                  </div>
             </NavLink>
@@ -22,10 +25,10 @@ function Navbar() {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                    <NavLink className="nav-link active" aria-current="page" to="/blog">Blogs</NavLink>
-                    <NavLink className="nav-link" to="/audios">Audios</NavLink>
-                    <NavLink className="nav-link" to="/videos">Videos</NavLink>
-                    <button  type="button" className='btn login'> <NavLink className="nav-link" to="/login">Login</NavLink></button>
+                    <NavLink className="nav-link active inter-normal-white-30px" aria-current="page" to="/blog">Blogs</NavLink>
+                    <NavLink className="nav-link inter-normal-white-30px" to="/audios">Audios</NavLink>
+                    <NavLink className="nav-link inter-normal-white-30px" to="/videos">Videos</NavLink>
+                    <button  type="button" className='btn login inter-normal-white-30px'> <NavLink className="nav-link" to="/login">Login</NavLink></button>
                    
                 </div>
             </div>
