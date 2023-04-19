@@ -1,0 +1,61 @@
+.navlink{
+    display: flex;
+    flex-direction: row;
+    margin-left: 3pc;
+}
+
+.logo{
+    height: 9.3rem ;
+    left: 0;
+    object-fit: cover;
+    top:0;
+    width:9rem ;
+    padding: 0;
+    margin: 0;
+}
+
+.logoName{
+    display: flex;
+    flex-direction: column;
+    color: transparent;
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-m);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: normal;
+    justify-content: center;
+}
+
+
+
+#motisha{
+    color: var(--international-orange);
+    font-weight: bolder;
+}
+
+.navbar-collapse{
+    flex-grow: 0;
+}
+
+.navbar-nav{
+    margin-right: 10pc;
+}
+.nav-link{
+    color: white;
+    margin-left: 1pc;
+    margin-right: 1pc;
+}
+
+.navbar{
+    --bs-navbar-active-color: #ffe6dcc5;
+    --bs-navbar-brand-hover-color: #ffe6dcc5;
+    --bs-navbar-hover-color:  #ffe6dcc5;
+}
+
+.login{
+    border-color: #FA510F;
+}
+.login .nav-link{
+    padding: 0;
+    color: #FA510F;
+}
