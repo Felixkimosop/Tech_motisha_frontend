@@ -13,6 +13,7 @@ import ViewUsers from "./Components/Admin/ViewUsers";
 import Catergory from "./Components/Admin/Catergory";
 import UserPosts from "./Components/User/UserPosts";
 import Subscriptions from "./Components/User/Subscriptions";
+import Home from './Pages/Home/Home';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/contactme" element={<ContactMe />} />
         <Route path="/myposts" element={<UserPosts />} />
         <Route path="/mysubscriptions" element={<Subscriptions />} />
+        <Route exact path='/' element= {<Home/>} />
       </Routes>
     </div>
   );
