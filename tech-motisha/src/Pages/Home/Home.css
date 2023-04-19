@@ -67,8 +67,7 @@
      position:absolute;
      width: 100%;
      z-index: -1;
-     display: grid;
-     grid-template-columns: 30% 33% 23%;
+     display: flex;
 
 }
 
@@ -85,11 +84,15 @@
 .card2 .card{
    --bs-card-border-color: #0A96C1;
 }
+.card2{
+  margin-left: 10px;
+}
 
 .overlap-group2{
    margin-top: 10em;
    margin-right: 2em;
    width: 37rem;
+   margin-left: 2rem;
 }
 
  

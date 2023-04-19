@@ -40,7 +40,7 @@ form {
     margin: 0 auto;
     margin-left: 20px;
 }
-.navbar {
+/* .navbar {
     position: fixed;
     top: 0;
     right: 0;
@@ -74,5 +74,5 @@ form {
   
   .navbar a:hover {
     color: #007bff;
-  }
+  } */
  
