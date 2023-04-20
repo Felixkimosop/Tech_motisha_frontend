@@ -35,7 +35,7 @@ function Navbar() {
            >
                  <img src={logo} alt="Logo" className="logo"/>
                  <div className='logoName '>
-                    <span className='inter-bold-white-30px'>
+                    <span className=' tech'>
                         Tech 
                         <br />
                     </span>
