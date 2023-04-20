@@ -29,7 +29,7 @@ function Staff() {
         </div>
         
     </div>
-    <a href='/home'>Back Home</a>
+    <a href='/'>Back Home</a>
     </div>
   )
 }

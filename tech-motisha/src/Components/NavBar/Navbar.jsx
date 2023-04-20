@@ -2,8 +2,30 @@ import React from 'react'
 import logo from '../NavBar/logo.png'
 import { NavLink } from "react-router-dom";
 import '../NavBar/Navbar.css'
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+    const name = localStorage.getItem("name");
+    const navigate = useNavigate();
+   
+    const role = localStorage.getItem("role");
+
+    const logout = () =>{
+        sessionStorage.clear();
+        localStorage.clear();
+              navigate("/login")}
+
+              function toNavigate(e){
+                if (role === "admin") {
+                    navigate("/admin");
+                  } else if (role === "user"){
+                    navigate("/user");
+                  }
+                  else{
+                    navigate("/staff")
+                  }
+              }
+ 
   return (
     <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
@@ -28,7 +50,28 @@ function Navbar() {
                     <NavLink className="nav-link active inter-normal-white-30px" aria-current="page" to="/blog">Blogs</NavLink>
                     <NavLink className="nav-link inter-normal-white-30px" to="/audios">Audios</NavLink>
                     <NavLink className="nav-link inter-normal-white-30px" to="/videos">Videos</NavLink>
-                    <button  type="button" className='btn login inter-normal-white-30px'> <NavLink className="nav-link" to="/login">Login</NavLink></button>
+                    {/* <button  type="button" className='btn login inter-normal-white-30px'> <NavLink className="nav-link" to="/login">Login</NavLink></button> */}
+                    {/* {name? (<> <NavLink className="nav-link inter-normal-white-30px" to="/audios">Welcome {name}</NavLink></>) : (<><NavLink className="nav-link inter-normal-white-30px" to="">Hello</NavLink></>) } */}
+
+                    {name? (<>  <button  type="button" onClick={toNavigate} className='btn login inter-normal-white-30px'>Welcome {name}</button></>) : (<> <button  type="button" className='btn login inter-normal-white-30px'>Hello</button></>) }
+
+            {name? (<> 
+              <button  type="button" className='btn login inter-normal-white-30px'>
+              <NavLink  to='/login'onClick ={logout} className="nav-link" aria-expanded="false">
+               Logout
+              </NavLink >
+            </button></>) : (<><button  type="button" className='btn login inter-normal-white-30px'>
+            <NavLink className="nav-link" to="/login">
+               Login
+              </NavLink >
+            </button><button  type="button" className='btn login inter-normal-white-30px'>
+              <NavLink  to="/signup" className="nav-link" aria-expanded="false">
+                Register
+              </NavLink >
+            </button></>) }
+
+
+
                    
                 </div>
             </div>

@@ -36,6 +36,10 @@ function Login() {
           });
          
         } else {
+         
+          localStorage.setItem("role" , data.user.role);
+          localStorage.setItem("id", data.user.id);
+          localStorage.setItem("name", data.user.name);
 
           localStorage.setItem("jwt", data.jwt);
           if (data.user.role === "admin") {

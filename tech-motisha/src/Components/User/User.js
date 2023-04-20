@@ -4,12 +4,18 @@ import { useNavigate } from "react-router-dom";
 import "./User.css";
 
 function User() {
+  const roles = localStorage.getItem("role");
+  const id = localStorage.getItem("id");
+  
   
   const [name, setName] = useState();
   const [age, setAge] = useState();
   const [email, setEmail] = useState();
   const [phoneNo, setPhoneNo] = useState();
   const [picture, setPicture] = useState();
+  const [role, setRole] = useState(roles);
+  const phone_number = phoneNo
+  
 
   const [isEditing, setIsEditing] = useState(false);
   const token = localStorage.getItem("jwt");
@@ -32,29 +38,30 @@ function User() {
         setEmail(data.email);
         setPhoneNo(data.phone_number);
         setPicture(data.profile_picture);
+        
       });
   }, [token]);
-  
+  console.log(role)
 
-  const handleUpdate = (id,e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
 
-    fetch(`/users/${id}`, {
+    fetch(`http://127.0.0.1:3000/users/${id}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({name,age,email,phoneNo,picture})
+      body: JSON.stringify({name,age,email,phone_number,picture,role})
     })
       .then((res) => res.json())
       .then((data) => {
-      
-       setAge(age);
-       setPhoneNo(phoneNo);
-       setEmail(email);
-       setPicture(picture);
-       setName(name);
+      console.log(data)
+       setAge();
+       setPhoneNo();
+       setEmail();
+       setPicture();
+       setName();
 
         setIsEditing(false); // Hide the form
       })
@@ -142,6 +149,7 @@ function User() {
           <button>My WishList</button>
         </div>
       </div>
+      <a href='/'>Back Home</a>
     </div>
   );
 }
