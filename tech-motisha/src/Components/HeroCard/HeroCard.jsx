@@ -11,7 +11,7 @@ function HeroCard() {
         <p className='highlight_content inter-normal-oslo-gray-30px'>
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu massa quis ut eu lorem
         </p>
-        <NavLink className='overlap-group-1 inter-bold-white-30px'>
+        <NavLink className='overlap-group-1 inter-bold-white-30px' to='/about'>
             About <span><i className="angle double right" /></span>
         </NavLink> 
     </div>    

@@ -2,14 +2,15 @@
     display: flex;
     flex-direction: row;
     margin-left: 3pc;
+    font-size: var(--bs-nav-link-font-size);
 }
 
 .logo{
-    height: 9.3rem ;
+    /* height: 9.3rem ; */
     left: 0;
     object-fit: cover;
     top:0;
-    width:9rem ;
+    width:6rem ;
     padding: 0;
     margin: 0;
 }
@@ -19,14 +20,17 @@
     flex-direction: column;
     color: transparent;
     font-family: var(--font-family-inter);
-    font-size: var(--font-size-m);
+    font-size: 20px;
     font-weight: 700;
     letter-spacing: 0;
     line-height: normal;
     justify-content: center;
 }
 
-
+.tech{
+    color: white;
+    font-size: 20px;
+}
 
 #motisha{
     color: var(--international-orange);
