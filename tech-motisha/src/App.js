@@ -14,6 +14,9 @@ import Catergory from "./Components/Admin/Catergory";
 import UserPosts from "./Components/User/UserPosts";
 import Subscriptions from "./Components/User/Subscriptions";
 import Home from './Pages/Home/Home';
+import AllVideosCard from "./Components/Video/AllVideosCard";
+import NewVideo from "./Components/Video/NewVideo";
+import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
 
 function App() {
   return (
@@ -35,6 +38,12 @@ function App() {
         <Route path="/myposts" element={<UserPosts />} />
         <Route path="/mysubscriptions" element={<Subscriptions />} />
         <Route exact path='/' element= {<Home/>} />
+
+
+
+        <Route path="/new-video" element={<NewVideo/>}></Route>
+        <Route path="/videos" element={<AllVideosCard/>}></Route>
+        <Route path="/videos/:id" element={<VideoDescriptionCard/>}></Route>
       </Routes>
     </div>
   );
