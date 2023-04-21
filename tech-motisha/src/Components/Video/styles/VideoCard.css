@@ -1,0 +1,9 @@
+.container{
+    border: 2px solid black;
+    width: 40%;
+    margin: 20px;
+}
+
+.container .image-container img{
+    width: 80%;
+}

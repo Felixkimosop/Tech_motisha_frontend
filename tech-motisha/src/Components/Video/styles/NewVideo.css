@@ -1,0 +1,11 @@
+form label, form input{
+    display: block;
+    margin: 20px;
+    height: 20px;
+    width: 150px;
+    }
+form{
+    margin: auto;
+    background-color: lightblue;
+    width: 50%;
+}
