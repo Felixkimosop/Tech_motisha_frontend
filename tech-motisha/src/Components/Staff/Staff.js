@@ -2,12 +2,13 @@ import React from 'react'
 import "./Staff.css"
 
 function Staff() {
+  const names = localStorage.getItem("name");
   return (
     <div>
           <div className='admin'>
         <div className='admin_profile'>
             <img src='https://bit.ly/3UDx6Xq' alt=''/>
-            <h2>Hi Ken</h2>
+            <h2>Hi {names}</h2>
             <h1>My profile</h1>
             <div>
                 <h4>Name:</h4>

@@ -11,7 +11,7 @@ function Navbar() {
     const role = localStorage.getItem("role");
 
     const logout = () =>{
-        sessionStorage.clear();
+        
         localStorage.clear();
               navigate("/login")}
 
@@ -53,7 +53,7 @@ function Navbar() {
                     {/* <button  type="button" className='btn login inter-normal-white-30px'> <NavLink className="nav-link" to="/login">Login</NavLink></button> */}
                     {/* {name? (<> <NavLink className="nav-link inter-normal-white-30px" to="/audios">Welcome {name}</NavLink></>) : (<><NavLink className="nav-link inter-normal-white-30px" to="">Hello</NavLink></>) } */}
 
-                    {name? (<>  <button  type="button" onClick={toNavigate} className='btn login inter-normal-white-30px'>Welcome {name}</button></>) : (<> <button  type="button" className='btn login inter-normal-white-30px'>Hello</button></>) }
+                   
 
             {name? (<> 
               <button  type="button" className='btn login inter-normal-white-30px'>
@@ -69,6 +69,7 @@ function Navbar() {
                 Register
               </NavLink >
             </button></>) }
+            {name? (<>  <button  type="button" onClick={toNavigate} className='nav-link inter-normal-white-30px '>Welcome {name}</button></>) : (<> </>) }
 
 
 

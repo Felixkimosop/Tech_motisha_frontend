@@ -6,6 +6,7 @@ import "./User.css";
 function User() {
   const roles = localStorage.getItem("role");
   const id = localStorage.getItem("id");
+  const names = localStorage.getItem("name");
   
   
   const [name, setName] = useState();
@@ -46,7 +47,7 @@ function User() {
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    fetch(`http://127.0.0.1:3000/users/${id}`, {
+    fetch(`/users/${id}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -78,7 +79,7 @@ function User() {
       <div className="admin">
         <div className="admin_profile">
           <img src={picture} alt="" />
-          <h2>Hi Ken</h2>
+          <h2>Hi {names}</h2>
           <h1>My profile</h1>
           <div>
             <h4>Name:</h4>
