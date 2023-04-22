@@ -4,20 +4,33 @@ function Category() {
   const [category, setCategory] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [newCategory, setNewCategory] = useState("");
+  const token = localStorage.getItem("jwt");
 
   useEffect(() => {
-    fetch("/categories")
+    fetch("/categories",{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setCategory(data));
-  }, []);
+  }, [token]);
 
-  const categories = category.map((category, index) => (
+  // {Array.isArray(obj)
+  //   ? obj.map(element => {
+  //       return <h2>{element}</h2>;
+  //     })
+  //   : null}
+
+  const categories = Array.isArray(category)?category.map((category, index) => (
     <div key={index}>
       <p>
         <span>Name:</span> {category.name}
       </p>
     </div>
-  ));
+  )):null
 
   const handleFormSubmit = (e) => {
     e.preventDefault();

@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 function Admin() {
     const navigate = useNavigate();
+    const names = localStorage.getItem("name");
+  
   return (
     <div>
         <div className='admin container'>
@@ -11,7 +13,7 @@ function Admin() {
                 <div >
                     <img src='https://bit.ly/3UDx6Xq' alt='' className='img-fluid'/>
                     <div >
-                    <h2>Hi Ken</h2>
+                    <h2>Hi {names}</h2>
                 </div>
                 </div>
                
@@ -28,7 +30,7 @@ function Admin() {
                 </div>
             </div>
         </div>
-        <a href='/home'>Back Home</a>
+        <a href='/'>Back Home</a>
     </div>
   )
 }
