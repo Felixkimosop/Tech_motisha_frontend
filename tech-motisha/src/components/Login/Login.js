@@ -79,22 +79,22 @@ function Login() {
     return (
         <div>
             <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
-                <div className="flex justify-center">
-                    <img 
-                        alt=""
-                        className="h-20 w-15"
-                        src={logo}/>
-                </div>
-                <div>
-                    <a href="/">
-                        <h3 className="mt-6 text-center text-3xl font-extrabold text-bunting">
-                            Login to your account
-                        </h3>
-                    </a>
-                </div>
                 <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
                     <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
                         <form className="content-center" onSubmit={handleSubmit}>
+                            <div>
+                            <div className="flex justify-center">
+                                <img 
+                                    alt=""
+                                    className="h-20 w-15"
+                                    src={logo}/>
+                            </div>
+                                <a href="/">
+                                    <h3 className="text-center text-3xl font-extrabold text-bunting">
+                                        Login to your account
+                                    </h3>
+                                </a>
+                            </div>
                             <div className="mt-6">
                                 <label
                                     htmlFor="email"
