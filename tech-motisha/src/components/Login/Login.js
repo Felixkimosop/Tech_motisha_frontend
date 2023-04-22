@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {NavLink, useNavigate } from "react-router-dom";
 import logo from '../Login/logo.png'
 import Swal from "sweetalert2";
+import '../Login/Login.css'
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -81,7 +82,7 @@ function Login() {
                 <div className="flex justify-center">
                     <img 
                         alt=""
-                        className="h-14 w-15"
+                        className="h-20 w-15"
                         src={logo}/>
                 </div>
                 <div>
@@ -97,7 +98,7 @@ function Login() {
                             <div className="mt-6">
                                 <label
                                     htmlFor="email"
-                                    className="block text-base font-medium text-gray-700 undefined"
+                                    className="block text-lg font-medium text-gray-700 undefined"
                                 >
                                     Email
                                 </label>
@@ -114,7 +115,7 @@ function Login() {
                             <div className="mt-4">
                                 <label
                                     htmlFor="password"
-                                    className="block text-base font-medium text-gray-700 undefined"
+                                    className="block text-lg font-medium text-gray-700 undefined"
                                 >
                                     Password
                                 </label>
@@ -129,15 +130,15 @@ function Login() {
                                 </div>
                             </div>
                             <div className="flex items-center mt-4">
-                                <button type="submit" className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                                <button type="submit" className="text-lg w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
                                     Login
                                 </button>
                             </div>
                         </form>
                         <div className="mt-8 text-center text-grey-700">
-                            Don't have an account?{""}
+                            Don't have an account?  {""} 
                             <span>
-                                <NavLink className="text-purple-600 hover:underline" to="/signUp">
+                                <NavLink className="text-purple-600 hover:underline m-0" to="/signUp">
                                     Sign Up
                                 </NavLink>
                             </span>
@@ -147,13 +148,13 @@ function Login() {
                         <img
                             src="https://images.unsplash.com/photo-1576859958081-27de5c70262a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fG9yYW5nZSUyMGFuZCUyMGJsYWNrfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                             alt="img"
-                            className="w-[400px] h-full hidden rounded-r-2xl md:block object-cover"
+                            className="w-[500px] h-full hidden rounded-r-2xl md:block object-cover"
                         />
                     
                         <div
                             className="absolute hidden bottom-10 right-6 p-6 bg-white bg-opacity-30 backdrop-blur-sm rounded drop-shadow-lg md:block"
                         >
-                            <span class="text-alto text-xl"
+                            <span class="text-alto text-x"
                             >"Welcome to Tech <span className="text-orange">Motisha</span> "<br /> Get inspired by 
                             leading experts in tech  <br />
                             </span>
