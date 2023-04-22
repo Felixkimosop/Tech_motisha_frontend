@@ -1,5 +1,6 @@
+import { logRoles } from '@testing-library/react';
 import React, { useState } from 'react';
-import './ContactMe.css';
+import logo from '../Login/logo.png'
 
 function ContactMe() {
   const [name, setName] = useState('');
@@ -13,11 +14,12 @@ function ContactMe() {
 
   return (
     <div>
-      <img
-        id="icon"
-        src="https://media.istockphoto.com/id/1181069641/vector/initial-letter-tm-logo-line-unique-modern-initial-letter-logo-line-unique-modern.jpg?s=612x612&w=0&k=20&c=fVc1hBctifoXPZwJr-E-8IIZU-pVsL29S5YB2jW956g="
-        alt="gym icon"
-      />
+       <div className="flex justify-center">
+          <img 
+            alt=""
+            className="h-20 w-15"
+            src={logo}/>
+        </div>
       <br></br>
       <h1>Contact Us</h1>
       <p>Fill out the form below to get in touch with us.</p>
