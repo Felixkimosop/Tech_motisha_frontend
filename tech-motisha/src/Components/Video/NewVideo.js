@@ -19,7 +19,7 @@ const NewVideo = () => {
 
 
     function submitDataToApi(data){
-        fetch('http://localhost:3000/videos',{
+        fetch('/contents',{
           method: "POST",
 
           body: data

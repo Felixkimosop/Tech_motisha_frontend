@@ -23,7 +23,7 @@ const firstVideoIndex = lastVideoIndex - videosPerPage
 
     useEffect(() =>{
 
-        fetch('http://localhost:3000/allvideos')
+        fetch('contents')
         .then(res=>res.json())
         .then(data=>{
         setVideos(data);
@@ -31,9 +31,9 @@ const firstVideoIndex = lastVideoIndex - videosPerPage
         })
     },[])
 
-        const filteredSearchVideos = videos.filter(video=>{
+        const filteredSearchVideos = Array.isArray(videos)?videos.filter(video=>{
         return video.title.toLowerCase().includes(search.toLowerCase())
-        })
+        }):null
 
     //console.log(filteredSearchVideos);
 

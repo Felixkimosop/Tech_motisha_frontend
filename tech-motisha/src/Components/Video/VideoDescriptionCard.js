@@ -7,7 +7,7 @@ const VideoDescriptionCard = () => {
   const { id } = useParams()
 
   useEffect(() => {
-    fetch(`http://localhost:3000/allvideos/${id}`)
+    fetch(`content/${id}`)
       .then(res => res.json())
       .then(data => {
         setSingleVideo(data)

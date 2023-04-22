@@ -17,6 +17,7 @@ import Home from './Pages/Home/Home';
 import AllVideosCard from "./Components/Video/AllVideosCard";
 import NewVideo from "./Components/Video/NewVideo";
 import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
+import Wishlist from "./Components/User/Wishlist";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/allusers" element={<ViewUsers />} />
         <Route path="/category" element={<Catergory />} />
         <Route path="/posts" element={<Posts />} />
+        <Route path="/wishlist" element={<Wishlist/>} />
 
         <Route path="/blog" element={<Blogpage />} />
         <Route path="/about" element={<About />} />
