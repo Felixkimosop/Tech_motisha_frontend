@@ -26,7 +26,7 @@ function AudioPlayer(props) {
   };
 
   const subscriptionToggle = () => {
-    isSubscribed(!subscribed);
+     isSubscribed(subscribed);
   };
 
   const handleComment = (e) => {
@@ -117,6 +117,7 @@ const musicList = musicData.map((song) => (
     <form onSubmit={ handleSubscription}>
       <input type="email" placeholder="Enter your email address" value={subscriberEmail} onChange={handleEmailChange} />
           <button type="submit">Subscribe</button>
+          
         </form>
       </div>
   }
