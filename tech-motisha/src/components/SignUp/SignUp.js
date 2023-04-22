@@ -146,7 +146,7 @@ function SignUp() {
                                 </div>
                             </div>
                             <div className="flex items-center mt-4">
-                                <button  type="button"  disabled={!isFormValid} className="text-orange flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-orange hover:text-alto">
+                                <button  type="submit"  disabled={!isFormValid} className="text-orange flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-orange hover:text-alto">
                                     Register
                                 </button>
                             </div>
