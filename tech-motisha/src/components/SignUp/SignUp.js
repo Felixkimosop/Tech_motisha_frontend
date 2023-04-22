@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from '../Login/logo.png'
 
@@ -60,7 +60,7 @@ function SignUp() {
 
   const isFormValid = formData.role && formData.name && formData.email && formData.password && formData.password_confirmation;
   return (
-    <div className="">
+    <div  class="bg-contain  bg-[url('https://images.unsplash.com/photo-1679978880855-fb35585ce343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIwNXxDRHd1d1hKQWJFd3x8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60')]">
         <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
         <div className="flex justify-center">
                     <img 
@@ -70,16 +70,16 @@ function SignUp() {
                 </div>
                 <div>
                     <a href="/">
-                        <h3 className="mt-6 text-center text-4xl font-extrabold text-bunting">
-                            Create new account
+                        <h3 className="mt-6 text-center text-4xl font-extrabold text-orange">
+                            Create your account
                         </h3>
                     </a>
                 </div>
                 <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
-                    <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
+                    <div className="w-full  px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
                         <form onSubmit={handleSubmit}>
-                            <div className="mb-3">
-                                <label className="block text-lg font-medium text-gray-700 undefined">Role</label>
+                            <div className="mb-10">
+                                <label className="block text-lg font-bold text-alto undefined">Role</label>
                                 <select onChange={handleChange} className="text-base" name="role">
                                 <option value="">Select Role</option>
                                     <option value="user">User</option>
@@ -89,7 +89,7 @@ function SignUp() {
                             <div>
                                 <label
                                     htmlFor="name"
-                                    className="block text-m font-medium text-gray-700 undefined"
+                                    className="block text-lg font-bold text-alto undefined"
                                 >
                                     Name
                                 </label>
@@ -105,7 +105,7 @@ function SignUp() {
                             <div className="mt-4">
                                 <label
                                     htmlFor="email"
-                                    className="block text-m font-medium text-gray-700 undefined"
+                                    className="block text-lg font-extrabold text-alto undefined"
                                 >
                                     Email
                                 </label>
@@ -121,7 +121,7 @@ function SignUp() {
                             <div className="mt-4">
                                 <label
                                     htmlFor="password"
-                                    className="block text-m font-medium text-gray-700 undefined"
+                                    className="block text-lg font-bold text-alto undefined"
                                 >
                                     Password
                                 </label>
@@ -137,7 +137,7 @@ function SignUp() {
                             <div className="mt-4">
                                 <label
                                     htmlFor="password_confirmation"
-                                    className="block text-m font-medium text-gray-700 undefined"
+                                    className="block text-lg font-bold text-alto undefined"
                                 >
                                     Confirm Password
                                 </label>
@@ -150,27 +150,21 @@ function SignUp() {
                                     />
                                 </div>
                             </div>
-                            <a
-                                href="#"
-                                className="text-s m-0 text-purple-600 hover:underline"
-                            >
-                                Forget Password?
-                            </a>
                             <div className="flex items-center mt-4">
-                                <button  type="submit"  disabled={!isFormValid} className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                                <button  type="button"  disabled={!isFormValid} className="text-orange flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-orange hover:text-alto">
                                     Register
                                 </button>
                             </div>
                         </form>
-                        <div className="mt-4 text-grey-600 ml-8">
+                        <div className="mt-4 text-alto ml-8">
                             Already have an account?{" "}
                             <span>
-                                <NavLink to="/login" className="text-bunting hover:underline m-0" >
+                                <NavLink to="/login" className="text-alto hover:underline" >
                                     Log in
                                 </NavLink>
                             </span>
                         </div>
-                        <div className="flex items-center w-full my-4">
+                        <div className="flex items-center w-full my-4 text-alto">
                             <hr className="w-full" />
                             <p className="px-3 ">OR</p>
                             <hr className="w-full" />
@@ -179,7 +173,7 @@ function SignUp() {
                             <button
                                 aria-label="Login with Google"
                                 type="button"
-                                className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
+                                className="text-alto flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -193,7 +187,7 @@ function SignUp() {
                             <button
                                 aria-label="Login with GitHub"
                                 role="button"
-                                className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
+                                className="text-alto flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +200,7 @@ function SignUp() {
                             </button>
                         </div>
                     </div>
-                    <div className="relative">
+                    {/* <div className="relative">
                             <img
                                 src="http://images.unsplash.com/photo-1610192627200-a31ddef73277?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bGFwdG9wJTIwb3JhbmdlJTIwYW5kJTIwYmxhY2t8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60"
                                 alt="img"
@@ -221,7 +215,7 @@ function SignUp() {
                                 leading experts in tech  <br />
                                 </span>
                             </div>
-                        </div>
+                        </div> */}
 
                 </div>
             </div>

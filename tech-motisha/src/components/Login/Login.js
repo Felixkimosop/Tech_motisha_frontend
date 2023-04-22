@@ -77,7 +77,7 @@ function Login() {
   }
 
     return (
-        <div>
+        <div class="bg-cover bg-no-repeat bg-[url('https://img.freepik.com/free-vector/gradient-black-backgrounds-with-golden-frames_23-2149154114.jpg?w=826&t=st=1682175479~exp=1682176079~hmac=657ea472d28dde5c78e5a065e8e3710b4dec94b3561a1cdff73da6054e6919dc')]">
             <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
                 <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
                     <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
@@ -90,15 +90,15 @@ function Login() {
                                     src={logo}/>
                             </div>
                                 <a href="/">
-                                    <h3 className="text-center text-3xl font-extrabold text-bunting">
-                                        Login to your account
+                                    <h3 className="text-center text-3xl font-extrabold text-orange">
+                                        Welcome!
                                     </h3>
                                 </a>
                             </div>
                             <div className="mt-6">
                                 <label
                                     htmlFor="email"
-                                    className="block text-lg font-medium text-gray-700 undefined"
+                                    className="block text-lg font-medium text-alto undefined"
                                 >
                                     Email
                                 </label>
@@ -115,7 +115,7 @@ function Login() {
                             <div className="mt-4">
                                 <label
                                     htmlFor="password"
-                                    className="block text-lg font-medium text-gray-700 undefined"
+                                    className="block text-lg font-medium text-alto undefined"
                                 >
                                     Password
                                 </label>
@@ -130,23 +130,23 @@ function Login() {
                                 </div>
                             </div>
                             <div className="flex items-center mt-4">
-                                <button type="submit" className="text-lg w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                                <button type="submit" className="text-lg w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gradient-to-br from-yellow-500 to-orange-500 rounded-md hover:from-yellow-400 hover:to-orange-400 focus:outline-none focus:from-yellow-400 focus:to-orange-400">
                                     Login
                                 </button>
                             </div>
                         </form>
-                        <div className="mt-8 text-center text-grey-700">
+                        <div className="mt-8 text-center text-alto">
                             Don't have an account?  {""} 
                             <span>
-                                <NavLink className="text-purple-600 hover:underline m-0" to="/signUp">
+                                <NavLink className="text-purple-600 hover:underline" to="/signUp">
                                     Sign Up
                                 </NavLink>
                             </span>
                         </div>                    
                     </div>
-                    <div className="relative">
+                    {/* <div className="relative">
                         <img
-                            src="https://images.unsplash.com/photo-1576859958081-27de5c70262a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fG9yYW5nZSUyMGFuZCUyMGJsYWNrfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                            src="https://plus.unsplash.com/premium_photo-1677269465314-d5d2247a0b0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDMwNnxDRHd1d1hKQWJFd3x8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
                             alt="img"
                             className="w-[500px] h-full hidden rounded-r-2xl md:block object-cover"
                         />
@@ -154,12 +154,12 @@ function Login() {
                         <div
                             className="absolute hidden bottom-10 right-6 p-6 bg-white bg-opacity-30 backdrop-blur-sm rounded drop-shadow-lg md:block"
                         >
-                            <span class="text-alto text-x"
+                            <span class="text-bunting text-x"
                             >"Welcome to Tech <span className="text-orange">Motisha</span> "<br /> Get inspired by 
                             leading experts in tech  <br />
                             </span>
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
             </div>
