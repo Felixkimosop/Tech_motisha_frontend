@@ -4,9 +4,16 @@ import './Posts.css';
 function Posts() {
   const [posts, setPosts] = useState([]);
   const [flaggedPosts, setFlaggedPosts] = useState([]);
+  const token = localStorage.getItem("jwt");
 
   useEffect(() => {
-    fetch('/contents')
+    fetch('/contents',{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, []);
@@ -16,6 +23,7 @@ function Posts() {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
@@ -48,13 +56,13 @@ function Posts() {
         <span style={{ color: 'green' }}>✔</span>
       </>
     );
-    const updatedPosts = posts.map((post) =>
+    const updatedPosts = posts?.map((post) =>
       post.id === id ? updatedApprovedPost : post
     );
     setPosts(updatedPosts);
   };
 
-  const content = posts.map((post, index) => {
+  const content = Array.isArray(posts)?posts.map((post, index) => {
     return (
       <div key={index}>
         <img src={post.thumbnail} alt="" />
@@ -72,8 +80,8 @@ function Posts() {
         <button onClick={() => handleApprove(post.id)}>Approve post</button>
         <hr></hr>
       </div>
-    );
-  });
+    )
+  }):null
 
   return (
     <div>
