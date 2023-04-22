@@ -1,12 +1,12 @@
-form {
+/* form {
     display: flex;
     flex-direction: column;
     max-width: 500px;
     margin: 0 auto;
-    margin-left: 20px; /* adjust the value as needed */
-  }
+    margin-left: 20px; /* adjust the value as needed 
+  } */
   
-  label {
+  /* label {
     font-weight: bold;
     margin-top: 1rem;
   }
@@ -39,7 +39,7 @@ form {
     height: 95px;
     margin: 0 auto;
     margin-left: 20px;
-}
+} */
 /* .navbar {
     position: fixed;
     top: 0;
@@ -75,4 +75,4 @@ form {
   .navbar a:hover {
     color: #007bff;
   } */
- 
+  
