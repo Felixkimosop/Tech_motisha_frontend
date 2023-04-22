@@ -60,14 +60,12 @@ function SignUp() {
 
   const isFormValid = formData.role && formData.name && formData.email && formData.password && formData.password_confirmation;
   return (
-    <div  class="bg-contain  bg-[url('https://images.unsplash.com/photo-1679978880855-fb35585ce343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIwNXxDRHd1d1hKQWJFd3x8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60')]">
+    <div  class="bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1521459467264-802e2ef3141f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJhY2tncm91bmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60')]">
         <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
-        <div className="flex justify-center">
-                    <img 
-                        alt=""
-                        className="h-20 w-15"
-                        src={logo}/>
-                </div>
+        
+                <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+                    <div className="w-full  px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg bg-[url('https://images.unsplash.com/photo-1679465771243-0793d5231c8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIyMnxDRHd1d1hKQWJFd3x8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60')]">
+                        <form onSubmit={handleSubmit}>
                 <div>
                     <a href="/">
                         <h3 className="mt-6 text-center text-4xl font-extrabold text-orange">
@@ -75,9 +73,6 @@ function SignUp() {
                         </h3>
                     </a>
                 </div>
-                <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
-                    <div className="w-full  px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
-                        <form onSubmit={handleSubmit}>
                             <div className="mb-10">
                                 <label className="block text-lg font-bold text-alto undefined">Role</label>
                                 <select onChange={handleChange} className="text-base" name="role">

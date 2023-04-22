@@ -77,10 +77,10 @@ function Login() {
   }
 
     return (
-        <div class="bg-cover bg-no-repeat bg-[url('https://img.freepik.com/free-vector/gradient-black-backgrounds-with-golden-frames_23-2149154114.jpg?w=826&t=st=1682175479~exp=1682176079~hmac=657ea472d28dde5c78e5a065e8e3710b4dec94b3561a1cdff73da6054e6919dc')]">
+        <div className="bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1521459467264-802e2ef3141f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJhY2tncm91bmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60')]">
             <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
                 <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
-                    <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
+                    <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg bg-contain bg-[url('https://images.unsplash.com/photo-1679465771243-0793d5231c8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIyMnxDRHd1d1hKQWJFd3x8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60')]">
                         <form className="content-center" onSubmit={handleSubmit}>
                             <div>
                             <div className="flex justify-center">
@@ -90,7 +90,7 @@ function Login() {
                                     src={logo}/>
                             </div>
                                 <a href="/">
-                                    <h3 className="text-center text-3xl font-extrabold text-orange">
+                                    <h3 className="text-center text-5xl font-extrabold text-orange">
                                         Welcome!
                                     </h3>
                                 </a>
