@@ -13,10 +13,14 @@ import ViewUsers from "./Components/Admin/ViewUsers";
 import Catergory from "./Components/Admin/Catergory";
 import UserPosts from "./Components/User/UserPosts";
 import Subscriptions from "./Components/User/Subscriptions";
-import Home from './Pages/Home/Home';
+import Home from './Pages/Home';
 import AllVideosCard from "./Components/Video/AllVideosCard";
 import NewVideo from "./Components/Video/NewVideo";
 import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
+import styles from './Components/commons/style'
+import Navbar from './Components/commons/Navbar'
+
+
 
 function App() {
   return (
