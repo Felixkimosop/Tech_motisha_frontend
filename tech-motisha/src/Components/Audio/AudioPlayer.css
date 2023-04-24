@@ -1,0 +1,19 @@
+/* Style for the audio player container */
+.audio-player-container {
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #101f3c;
+  color:white;
+  font-size: medium;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.audio-player-container > div {
+  border-right: 10px solid #fff;
+  border-bottom: 3px solid #fff;
+}
+.audio-player-container > div:last-child {
+  border-right: none;
+}
