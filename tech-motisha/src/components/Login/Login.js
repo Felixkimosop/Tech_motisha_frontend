@@ -134,7 +134,7 @@ function Login() {
                                 </button>
                             </div>
                         </form>
-                        <div className="mt-8 text-center text-alto">
+                        <div className="m-14 text-center text-alto">
                             Don't have an account?  {""} 
                             <span>
                                 <NavLink className="text-purple-600 hover:underline" to="/signUp">

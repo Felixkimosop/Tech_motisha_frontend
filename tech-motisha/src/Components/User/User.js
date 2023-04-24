@@ -75,7 +75,7 @@ function User() {
  
 
   return (
-    <div>
+    <div className="user_div">
       <div className="admin">
         <div className="admin_profile">
           <img src={picture} alt="" />
