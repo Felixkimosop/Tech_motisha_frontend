@@ -1,90 +1,19 @@
 /* Style for the audio player container */
-  .audio-player-container {
+.audio-player-container {
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   background-color: #101f3c;
-  border: 1px solid #ccc;
-  color: #fa510f;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  max-width: 400px;
-  margin-bottom: 20px;
-  width: 100%;
-  }
- 
-  /* Style for the poster */
-  .poster {
-  width: 100%;
-  height: auto;
-  }
-  
-.buttons-container {
-  display: flex;
-  gap: 1em;
-  margin-top: 1em;
-  }
-
-button {
-  background-color: darkblue;
-  border: #fa510f;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1em;
-  padding: 0.5em 1em;
-  }
-  
-button:hover {
-  background-color: #fa510f;
-  }
-  
-  /* Style for the comment submit button */
-  .comments-container button[type="submit"] {
-  background-color: darkblue;
-  color: #fa510f;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
-  }
-  
-.subscription-container p {
-  font-size: 1em;
-  font-weight: bold;
-  }
-  
-  /* Style for the subscribe input */
-  .subscribe-container input[type="email"] {
-  border: 3px solid #0a0909;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  padding: 10px;
-  width: 100%;
-  font-size: 1em;
-  padding: 0.5em;
-  }
-  
-.comment-container button[type="submit"],
-.subscription-container button[type="submit"] {
-  background-color: darkblue;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 1em;
-  padding: 0.5em 1em;
-  }
-
-.comment-container button[type="submit"]:hover,
-.subscription-container button[type="submit"]:hover {
-  background-color: #fa510f;
+  color:white;
+  font-size: medium;
+  font-family: 'Times New Roman', Times, serif;
 }
 
-.comment-container ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.audio-player-container > div {
+  border-right: 10px solid #fff;
+  border-bottom: 3px solid #fff;
 }
-
-.comment-container li {
-  margin-bottom: 0.5em;
+.audio-player-container > div:last-child {
+  border-right: none;
 }
