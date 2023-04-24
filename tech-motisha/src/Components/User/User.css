@@ -44,7 +44,7 @@
     margin-top: 10px;
     width: 200px;
 }
-a{
+.user_div a{
     text-decoration: none;
     margin-left: 10pc;
 
@@ -69,15 +69,15 @@ a{
     margin-bottom: 1rem;
   }
   
-  label {
+  /* label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
-  }
+  } */
   
   input {
-    padding: 0.5rem;
-    font-size: 1rem;
+    padding: 0.3rem;
+    /* font-size: 1rem; */
     border-radius: 5px;
     border: 1px solid #ccc;
     width: 100%;
@@ -86,7 +86,7 @@ a{
   }
   
   button[type='submit'] {
-    background-color: #007bff;
+    background-color: orangered;
     color: white;
     padding: 0.5rem 1rem;}
    
