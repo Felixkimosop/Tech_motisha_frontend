@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./Staff.css"
+import StaffBar from './StaffBar';
 
 function Staff() {
   const [isEditing, setIsEditing] = useState(false);
@@ -62,12 +63,12 @@ function Staff() {
   };
 
   return (
-    <div>
+    <div className="grid grid-cols-1 md:grid-cols-2 h-screen">
       <div className='admin'>
         <div className='admin_profile'>
           <img src='https://bit.ly/3UDx6Xq' alt=''/>
           <h2>Hi {names}</h2>
-          <h1>My profile</h1>
+          <h1 className="text-3xl font-bold mb-4">My profile</h1>
           {isEditing ? (
             <div>
              <form onSubmit={handleSaveClick}>
@@ -123,15 +124,9 @@ function Staff() {
             </div>
           )}
         </div>
-        <div className='admin_activity'>
-          <h1>Activity</h1>
-          <button>My posts</button>
-          <br
-></br>
-          <button>My categories</button>
-        </div>
+      
       </div>
-      <a href='/'>Back Home</a>
+      < StaffBar />
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Sidebar from "../Sidebar";
 import "./Subscriptions.css";
+import UserBar from "./UserBar";
 
 function Subscriptions() {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -27,6 +29,7 @@ function Subscriptions() {
   }, [token]);
 
   return (
+    <>
     <div>
       <h2>My Subscriptions</h2>
       <ul>
@@ -35,6 +38,8 @@ function Subscriptions() {
         ))}
       </ul>
     </div>
+    < UserBar />
+    </>
   );
 }
 

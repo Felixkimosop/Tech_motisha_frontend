@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import UserBar from './UserBar';
+
 function Wishlist() {
   const [wishlists, setWishlists] = useState([]);
   const token = localStorage.getItem("jwt");
@@ -18,6 +20,7 @@ function Wishlist() {
   }, [token]);
 
   return (
+    <>
     <div>
       <h1>Wishlist</h1>
       <ul>
@@ -26,6 +29,8 @@ function Wishlist() {
         ))}
       </ul>
     </div>
+    <UserBar />
+    </>
   );
 }
 

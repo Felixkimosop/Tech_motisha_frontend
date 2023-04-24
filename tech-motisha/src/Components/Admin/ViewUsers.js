@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Sidebar from "../Sidebar";
 import "./ViewUsers.css";
 
 function ViewUsers() {
@@ -11,12 +12,11 @@ function ViewUsers() {
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
- 
 
   const handleDeactivate = (id, isActive) => {
     // Only allow deactivation if user is not an admin
     const user = users.find((user) => user.id === id);
-    console.log(user)
+    console.log(user);
     if (user.role !== "admin") {
       // Update user's status in the database
       const newStatus = isActive === undefined ? false : !isActive;
@@ -33,19 +33,21 @@ function ViewUsers() {
           console.log(data);
           // Update state to reflect updated user
           setUsers((prevUsers) =>
-            prevUsers.map((u) => (u.id === id ? { ...u, isactive: newStatus } : u))
+            prevUsers.map((u) =>
+              u.id === id ? { ...u, isactive: newStatus } : u
+            )
           );
         })
         .catch((error) => console.log(error));
     }
   };
-  
+
   const allUsers = users?.map((user, index) => {
     return (
       <tbody key={index}>
         <tr>
-          <th scope="row">{user.id}</th>
-          <td>{user.name}</td>
+          <th style={{marginLeft:"200px"}}scope="row">{user.id}</th>
+          <td style={{marginLeft:"200px"}}>{user.name}</td>
           <td>{user.email}</td>
           <td>{user.role}</td>
           <td>
@@ -64,22 +66,25 @@ function ViewUsers() {
       </tbody>
     );
   });
-  
+
   return (
-    <div className="users">
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Full Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">User type</th>
-            <th scope="col">Deactivate/Activate user</th>
-          </tr>
-        </thead>
-        {allUsers}
-      </table>
-    </div>
+    <>
+      <div className="users">
+        <table className="table table-striped w-full lg:w-3/4 mx-auto" style={{ marginLeft: "350px" }}>
+          <thead >
+            <tr>
+              <th  scope="col">#</th>
+              <th style={{paddingRight:"200px"}}scope="col">Full Name</th>
+              <th style={{paddingRight:"200px"}} scope="col">Email</th>
+              <th style={{paddingRight:"200px"}} scope="col">User type</th>
+              <th style={{paddingRight:"500px"}} scope="col">Deactivate/Activate user</th>
+            </tr>
+          </thead>
+          {allUsers}
+        </table>
+      </div>
+      <Sidebar />
+    </>
   );
 }
 

@@ -1,5 +1,6 @@
 import "./UserPosts.css";
 import React, { useState, useEffect } from "react";
+import UserBar from "./UserBar";
 
 function UserPosts() {
   const [posts, setPosts] = useState([]);
@@ -21,9 +22,30 @@ function UserPosts() {
     })
       .then((res) => res.json())
       .then((response) => {
+       
         setPosts(response.contents);
       });
   }, [token]);
+  console.log(posts)
+
+ const mypost =  Array.isArray(posts) ? (
+    posts.map((post, index) => (
+      
+      <div key={index} style={{marginLeft:"350px"}}>
+      {  console.log(post.title)}
+        <h2>{post.title}</h2>
+        <p>{post.content_type}</p>
+        <img src={post.thumbnail} alt="" />
+
+        <video src={post.url} controls></video>
+        <p>{post.description}</p>
+        <p>
+          <span>Created on</span> {post.created_at}
+        </p>
+      </div>
+    ))
+  ) : null
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -63,6 +85,7 @@ function UserPosts() {
   };
 
   return (
+    <>
     <div>
       <h2>My Posts</h2>
       <button onClick={toggleForm}>Add Content</button>
@@ -105,22 +128,10 @@ function UserPosts() {
           <button type="submit">Add Post</button>
         </form>
       )}
-      {Array.isArray(posts) ? (
-        posts.map((post, index) => (
-          <div key={index}>
-            <h2>{post.title}</h2>
-            <p>{post.content_type}</p>
-            <img src={post.thumbnail} alt="" />
-
-            <video src={post.url} controls></video>
-            <p>{post.description}</p>
-            <p>
-              <span>Created on</span> {post.created_at}
-            </p>
-          </div>
-        ))
-      ) : null}
+     {mypost}
     </div>
+    < UserBar />
+    </>
   );
 }
 

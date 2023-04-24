@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Sidebar from "../Sidebar";
 
 function Category() {
   const [category, setCategory] = useState([]);
@@ -24,13 +25,14 @@ function Category() {
   //     })
   //   : null}
 
-  const categories = Array.isArray(category)?category.map((category, index) => (
-    <div key={index}>
-      <p>
-        <span>Name:</span> {category.name}
-      </p>
-    </div>
-  )):null
+  const categories = Array.isArray(category)
+  ? category.map((category, index) => (
+      <div key={index} className="border border-gray-300 rounded-lg p-4 mb-4">
+        <h2 className="text-lg font-bold mb-2">{category.name}</h2>
+        <p className="text-gray-600">Description: {category.description}</p>
+      </div>
+    ))
+  : null
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -40,7 +42,8 @@ function Category() {
   };
 
   return (
-    <div className="container d-flex justify-content-center">
+    <>
+    <div className=" d-flex justify-content-center" style ={{marginLeft:"350px"}}>
       <div className="card">
         <div className="card-header">
           <h2 className="card-title">All available Categories</h2>
@@ -74,6 +77,8 @@ function Category() {
         </div>
       </div>
     </div>
+    < Sidebar />
+    </>
   );
 }
 
