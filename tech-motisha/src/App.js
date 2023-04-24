@@ -16,16 +16,26 @@ import ViewUsers from "./Components/Admin/ViewUsers";
 import Catergory from "./Components/Admin/Catergory";
 import UserPosts from "./Components/User/UserPosts";
 import Subscriptions from "./Components/User/Subscriptions";
-import Home from './Pages/Home/Home';
+import Home from './Pages/Home';
 import musicData from './Components/assets/music';
 import AllVideosCard from "./Components/Video/AllVideosCard";
 import NewVideo from "./Components/Video/NewVideo";
 import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
+import styles from './Components/commons/style'
+import Navbar from './Components/commons/Navbar'
 
 
-const App = () => {
-  return (   
-    <div>      
+
+function App() {
+  return (
+    <div className={`bg-bunting w-full overflow-hidden`}>
+      <div className={`${styles.paddingX} ${styles.flexCenter} m-0`}>
+        <div className={`${styles.boxWidth}`}>
+          <Navbar/>
+        </div>
+      </div>
+      <div className={`bg-bunting ${styles.paddingX} ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
       <Routes>
         <Route path="/user" element={<User />} />
         <Route path="/admin" element={<Admin />} />
@@ -51,9 +61,9 @@ const App = () => {
         <Route path="/videos" element={<AllVideosCard/>}></Route>
         <Route path="/videos/:id" element={<VideoDescriptionCard/>}></Route>
       </Routes>
-      
+        </div>
+      </div>
     </div>
-  
   );
 }
 
