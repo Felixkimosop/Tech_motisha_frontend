@@ -151,7 +151,7 @@ function SignUp() {
                                 </button>
                             </div>
                         </form>
-                        <div className="mt-4 text-alto ml-8">
+                        <div className="mt-4 mr-14 ml-14 text-alto">
                             Already have an account?{" "}
                             <span>
                                 <NavLink to="/login" className="text-alto hover:underline" >
@@ -168,7 +168,7 @@ function SignUp() {
                             <button
                                 aria-label="Login with Google"
                                 type="button"
-                                className="text-alto flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
+                                className="text-alto font-bold bg-bunting-2 flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +182,7 @@ function SignUp() {
                             <button
                                 aria-label="Login with GitHub"
                                 role="button"
-                                className="text-alto flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
+                                className="text-alto font-bold bg-bunting-2 flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
