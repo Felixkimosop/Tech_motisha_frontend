@@ -38,13 +38,12 @@ function Login() {
         } else {
 
           localStorage.setItem("jwt", data.jwt);
-          if (data.user.role === "admin") {
-            navigate("/admin");
-          } else if (data.user.role === "user"){
-            navigate("/user");
-          }
-          else if(data.user.role === "staff"){
-            navigate("/staff")
+          localStorage.setItem("role", data.user.role);
+          localStorage.setItem("id", data.user.id);
+          localStorage.setItem("name", data.user.name);
+          if (data) {
+            navigate("/");
+          
           }
           else{
             Swal.fire({
