@@ -10,7 +10,7 @@ const VideoPagination = ({totalVideos ,currentPage,setCurrentPage, videosPerPage
   return (
     <div>
         {pages.map((page,index)=>{
-            return <button onClick={()=>setCurrentPage(page)} key={index}>{page}</button>
+            return <button onClick={()=>setCurrentPage(page)} className={currentPage===page? 'active':''} key={index}>{page}</button>
         })}
     </div>
   )

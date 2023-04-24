@@ -23,7 +23,7 @@ const firstVideoIndex = lastVideoIndex - videosPerPage
 
     useEffect(() =>{
 
-        fetch('http://localhost:3000/allvideos')
+        fetch('http://localhost:3000/videos')
         .then(res=>res.json())
         .then(data=>{
         setVideos(data);

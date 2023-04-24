@@ -1,44 +1,62 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
+import BlogCard from './Blogpage/BlogCard';
 
 
 function Blogpage() {
-  
-  const [posts, setPosts] = useState([
-    { id: 1, title: 'Introduction to React', category: 'React', content: '...' },
-    { id: 2, title: 'CSS Tricks', category: 'CSS', content: '...' },
-    { id: 3, title: 'JavaScript Best Practices', category: 'JavaScript', content: '...' },
-    
-  ]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
 
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  const [blogs, setBlogs] = useState([])
 
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-  };
+     useEffect(() =>{
 
-  const handleLike = (postId) => {
-    
-  };
+          fetch('http://localhost:3000/pdfs')
+          .then(res=>res.json())
+          .then(data=>{
+          setBlogs(data);
+          console.log(data);
+          })
+      },[])
 
-  const filteredPosts = posts.filter((post) => {
-    if (selectedCategory && post.category !== selectedCategory) {
-      return false;
-    }
-    if (searchTerm && !post.title.toLowerCase().includes(searchTerm.toLowerCase())) {
-      return false;
-    }
-    return true;
-  });
+
+      const singleBlog = blogs.map((blog, index)=>{
+        return <BlogCard key = {index} blog={blog}/>
+      })
+
+  // const [posts, setPosts] = useState([
+  //   { id: 1, title: 'Introduction to React', category: 'React', content: 'react test...' },
+  //   { id: 2, title: 'CSS Tricks', category: 'CSS', content: 'CSS test...' },
+  //   { id: 3, title: 'JavaScript Best Practices', category: 'JavaScript', content: 'Javascript test...' },
+
+  // ]);
+  // const [searchTerm, setSearchTerm] = useState('');
+  // const [selectedCategory, setSelectedCategory] = useState('');
+
+  // const handleSearch = (event) => {
+  //   setSearchTerm(event.target.value);
+  // };
+
+  // const handleCategoryChange = (event) => {
+  //   setSelectedCategory(event.target.value);
+  // };
+
+  // const handleLike = (postId) => {
+
+  // };
+
+  // const filteredPosts = posts.filter((post) => {
+  //   if (selectedCategory && post.category !== selectedCategory) {
+  //     return false;
+  //   }
+  //   if (searchTerm && !post.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+  //     return false;
+  //   }
+  //   return true;
+  // });
 
   return (
     <div>
       <h1>Tech School Blog</h1>
 
-      <div>
+      {/* <div>
         <label htmlFor="search">Search:</label>
         <input type="text" id="search" value={searchTerm} onChange={handleSearch} />
 
@@ -57,8 +75,12 @@ function Blogpage() {
           <button onClick={() => handleLike(post.id)}>Like</button>
           <span>{post.likes} likes</span>
           <button>Read more</button>
+
         </div>
-      ))}
+      ))} */}
+        <div className='blogss'>
+            {singleBlog}
+          </div>
     </div>
   )
   }

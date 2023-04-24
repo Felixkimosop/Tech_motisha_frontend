@@ -17,6 +17,8 @@ import Home from './Pages/Home/Home';
 import AllVideosCard from "./Components/Video/AllVideosCard";
 import NewVideo from "./Components/Video/NewVideo";
 import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
+import BlogCard from "./Components/Blogpage/BlogCard";
+import BlogDescription from "./Components/Blogpage/BlogDescription";
 
 function App() {
   return (
@@ -40,7 +42,8 @@ function App() {
         <Route exact path='/' element= {<Home/>} />
 
 
-
+        <Route path="/blogss" element={<Blogpage/>}></Route>
+        <Route path="/blogss/:id" element={<BlogDescription/>}></Route>
         <Route path="/new-video" element={<NewVideo/>}></Route>
         <Route path="/videos" element={<AllVideosCard/>}></Route>
         <Route path="/videos/:id" element={<VideoDescriptionCard/>}></Route>
