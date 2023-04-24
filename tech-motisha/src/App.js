@@ -20,7 +20,14 @@ import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
 
 function App() {
   return (
-    <div>
+    <div className={`bg-bunting w-full overflow-hidden`}>
+      <div className={`${styles.paddingX} ${styles.flexCenter} m-0`}>
+        <div className={`${styles.boxWidth}`}>
+          <Navbar/>
+        </div>
+      </div>
+      <div className={`bg-bunting ${styles.paddingX} ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
       <Routes>
         <Route path="/user" element={<User />} />
         <Route path="/admin" element={<Admin />} />
@@ -45,6 +52,8 @@ function App() {
         <Route path="/videos" element={<AllVideosCard/>}></Route>
         <Route path="/videos/:id" element={<VideoDescriptionCard/>}></Route>
       </Routes>
+        </div>
+      </div>
     </div>
   );
 }
