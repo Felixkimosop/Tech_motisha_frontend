@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Staff.css"
 
 function Staff() {
@@ -13,6 +13,21 @@ function Staff() {
   const names = localStorage.getItem("name");
   const token = localStorage.getItem("jwt");
   const phone_number = phoneNo;
+  const [data, setData] = useState("")
+
+
+  useEffect(() => {
+    fetch ("/contents",{
+      method: "GET",
+      headers:{
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+
+    })
+    .then(res => res.json())
+    .then(data => setData(data))
+  },[])
 
   const handleUpdateClick = () => {
     setIsEditing(true);

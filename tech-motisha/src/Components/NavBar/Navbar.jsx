@@ -27,10 +27,10 @@ function Navbar() {
 
 
    const links =[
-     {name: "Home", link:"/"},
-     {name: "Blogs", link:"/blog"},
-     {name: "Videos", link:"/video"},
-     {name: "Audios", link:"/audio"}
+     {name: "home", link:"/"},
+     {name: "blogs", link:"/blog"},
+     {name: "videos", link:"/video"},
+     {name: "audios", link:"/audio"}
    ]
 
 
