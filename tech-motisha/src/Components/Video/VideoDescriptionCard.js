@@ -1,73 +1,123 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
 
-const VideoDescriptionCard = () => {
-  const [singleVideo, setSingleVideo] = useState({})
-  const [comment, setComment] = useState("")
-  const { id } = useParams()
+
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import Comments from "../commons/Comments";
+
+
+const VideoDescriptionCard = ({token, comment, users,setComment}) => {
+  const [singleVideo, setSingleVideo] = useState({});
+
+  const [liked, setLiked] = useState(false); // added state for "liked" status
+  const { id } = useParams();
+  const userId = localStorage.getItem("userId");
+
+
+
+
 
   useEffect(() => {
-    fetch(`http://localhost:3000/allvideos/${id}`)
-      .then(res => res.json())
-      .then(data => {
-        setSingleVideo(data)
-      })
-  }, [])
+    fetch(`http://localhost:3000/uploads/${id}`,token)
+      .then((res) => res.json())
+      .then((data) => {
+        setSingleVideo(data);
+      });
+  }, []);
 
-  const { title, description, thumbnail_url, upload_url } = singleVideo
+  const { title, description, image_url, upload_url } = singleVideo;
+
+  function handleComment(e){
+    e.preventDefault();
+    const newComment = {
+      user_id : userId,
+      content_id : id,
+      body: e.target.body.value
+    }
+
+    //  console.log(newComment);
+    fetch('http://localhost:3000/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`
+      },
+      body: JSON.stringify(newComment)
+    })
+      .then(response => response.json())
+      .then(data => {
+        setComment((previousComment)=> [data,...previousComment])
+      })
+  }
+
+
+
+
+  function handleLike() {
+    // Toggle the "liked" state when the like button is clicked
+    setLiked(!liked);
+
+    // Send a POST request to the API to create or destroy the "like" association
+    fetch(`http://localhost:3000/api/videos/${id}/likes`, {
+      method: liked ? 'DELETE' : 'POST',
+      headers: {
+
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ like: !liked }) // pass an empty object in the request body
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+  }
+
+
+
+  const filteredComments = comment.filter((comment) => {
+    return comment.content_id === parseInt(id)
+  });
+
+
+   // console.log(filteredComments);
+
+
+  const allComments =  filteredComments.map((comm, index)=>{
+      return <Comments users={users} key={index} comment = {comm} />
+    })
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-8">
-          <div className="card mb-3">
-            <video
-              src={upload_url}
-              type="video/mp4"
-              controls
-              className="card-img-top"
-              style={{ height: "70vh", objectFit: "cover", width: "100%" }}
-            >
-              <img src={thumbnail_url} alt={title} style={{ height: "70vh", objectFit: "cover", width: "100%" }} />
-            </video>
-            <div className="card-body">
-              <h2 className="card-title">{title}</h2>
-              <p className="card-text">{description}</p>
-              <hr />
-              <div className="d-flex justify-content-between align-items-center">
-                <button className="btn btn-primary"><i className="far fa-thumbs-up"></i> Like</button>
-                <div className="text-muted">
-                  <i className="far fa-clock"></i> Uploaded 2 days ago
-                </div>
-              </div>
-              <hr />
-              <h4>Comments</h4>
-              <div className="row">
-                <div className="col-md-6">
-                  <textarea
-                    placeholder="Add a comment..."
-                    className="form-control"
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                  ></textarea>
-                  <br />
-                  <button className="btn btn-primary">Post Comment</button>
-                </div>
-                <div className="col-md-6">
-                  <div className="card">
-                    <div className="card-body">
-                      <p>Sample comment here</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button className="btn btn-link"><Link to={'/videos'}>Back</Link></button>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div className="video-description">
+      <button className="btn btn-link">
+        <Link to={"/videos"}>Back</Link>
+      </button>
+      <video
+        src={upload_url}
+        type="video/mp4"
+        controls
+        className="videoplayer"
+        poster={image_url}
+      ></video>
 
-export default VideoDescriptionCard
+      <h2>{title}</h2>
+      <p>{description}</p>
+
+      <button onClick={handleLike}>
+        {liked ? 'Unlike' : 'Like'} {/* Toggle the text of the button based on the "liked" state */}
+      </button>
+
+      <form onSubmit={handleComment}>
+        <label>Add comment</label>
+        <input type='text' name='body' placeholder="comment"/>
+
+        <button type='submit'>comment</button>
+      </form>
+
+<div>
+{allComments}
+</div>
+    </div>
+  );
+};
+
+export default VideoDescriptionCard;
+

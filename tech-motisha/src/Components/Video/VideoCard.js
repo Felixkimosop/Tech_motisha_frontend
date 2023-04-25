@@ -4,13 +4,13 @@ import '../Video/styles/VideoCard.css'
 
 const VideoCard = ({video}) => {
 
-    const {id,title,decription,thumbnail_url} = video
+    const {id,title,decription,image_url} = video
 
   return (
 
     <div className='container'>
         <div className="image-container">
-            <img src={thumbnail_url} alt={title}/>
+            <img src={image_url} alt={title}/>
         </div>
             <div>
                 <h2>{title}</h2>
