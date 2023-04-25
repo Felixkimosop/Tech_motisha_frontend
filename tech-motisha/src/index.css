@@ -1,3 +1,175 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+root {
+    --black-gradient: linear-gradient(
+      144.39deg,
+      #ffffff -278.56%,
+      #6d6d6d -78.47%,
+      #11101d 91.61%
+    );
+    --card-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
+  
+    --black: rgba(0,0,0,1);
+     --bunting: #031027;
+     --bunting-2:#101f3c;
+     --alto: #d9d9d9;
+     --oslo-gray: rgba(136,137,149,1);
+     --international-orange: #fa510f;
+     --white: rgb(99, 89, 89);
+  
+     --font-size-s: 1.25rem; /*20px*/
+     --font-size-m1: 1.5rem; /*24px*/   
+     --font-size-m: 1.875rem; /*30px*/
+     --font-size-m2: 2rem;/*32px*/   
+     --font-size-1: 2.25rem; /*36px*/
+     --font-size-x1: 4rem;/*64px*/
+     --font-size-x1: 4.25rem;/*68px*/
+  
+     --font-family-inter: "Inter";
+     --font-family-inter-bold: "Inter-Bold";
+     --font-family-inter-regular: "Inter-Regular";
+     --font-family-montserrat: "Montserrat";  
+  }
+  
+  * {
+    scroll-behavior: smooth;
+  }
+  
+  .text-gradient {
+    background: radial-gradient(
+      64.18% 64.18% at 71.16% 35.69%,
+      #faf0de 0.89%,
+      #f5cebe 17.23%,
+      #f0bb9d 42.04%,
+      #eb977d 55.12%,
+      #e6885c 71.54%,
+      #fa510f 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  
+  .filter-orange{
+    filter: invert(39%) sepia(32%) saturate(6301%) hue-rotate(356deg) brightness(100%) contrast(96%);
+  }
+  
+  .bg-bunting{
+    background-color: var(--bunting);
+  }
+  
+  .rectangle{
+    background-color: var(--international-orange);
+    height: 82px;
+    width: 214px;
+  }
+  
+  .rectangle-4{
+    background-color: var(--bunting-2);
+    left: 0;
+    width: 100%;
+    display: flex;
+  }
+  
+  .title{
+    letter-spacing: 0;
+    line-height: normal;
+    min-height: 82px;
+    transform: rotate(10deg); 
+  }
+  
+  .bg-blue-gradient {
+    background: linear-gradient(
+      157.81deg,
+      #faf0de 0.89%,
+      #f5cebe 17.23%,
+      #f0bb9d 42.04%,
+      #eb977d 55.12%,
+      #e6885c 71.54%,
+      #fa510f 100%
+    );
+  }
+  
+  .bg-black-gradient {
+    background: linear-gradient(
+      144.39deg,
+      #ffffff -278.56%,
+      #6d6d6d -78.47%,
+      #11101d 91.61%
+    );
+  }
+
+  .bg-gray-gradient {
+    background: linear-gradient(
+      153.47deg,
+      rgba(255, 255, 255, 0) -341.94%,
+      #14101d 95.11%
+    );
+  }
+
+  .box-shadow {
+    box-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
+  }
+
+  .sidebar {
+    -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  
+  @-webkit-keyframes slide-top {
+    0% {
+      -webkit-transform: translateY(100px);
+      transform: translateY(100px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slide-top {
+    0% {
+      -webkit-transform: translateY(100px);
+      transform: translateY(100px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  
+  .feature-card:hover {
+    background: var(--black-gradient);
+    box-shadow: var(--card-shadow);
+  }
+  
+  .feedback-container .feedback-card:last-child {
+    margin-right: 0px;
+  }
+  
+  .feedback-card {
+    background: transparent;
+  }
+  
+  .feedback-card:hover {
+    background: var(--black-gradient);
+  }
+  
+  .blue__gradient {
+    background: linear-gradient(180deg, #bca5ff00 0%, #214d76 100%);
+    filter: blur(123px);
+  }
+  
+  .pink__gradient {
+    background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
+    filter: blur(900px);
+  }
+  
+  .white__gradient {
+    background: rgba(255, 255, 255, 0.6);
+    filter: blur(750px);
+  }
+  

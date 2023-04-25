@@ -7,10 +7,10 @@ import '../Login/Login.css'
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
-  
+
     password: "",
   });
-  
+
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -34,10 +34,17 @@ function Login() {
             title: "Oops...",
             text: "Wrong names or password!",
           });
-         
+
         } else {
 
           localStorage.setItem("jwt", data.jwt);
+          localStorage.setItem("name", data.user.name)
+          localStorage.setItem("role", data.user.role)
+          localStorage.setItem("userId", data.user.id);
+
+
+          //console.log(data.user)
+
           if (data.user.role === "admin") {
             navigate("/admin");
           } else if (data.user.role === "user"){
@@ -58,10 +65,10 @@ function Login() {
             icon: "success",
             title: "Welcome Tech Motisha!",
             showConfirmButton: false,
-            timer: 1500,           
+            timer: 1500,
 
           });
-          
+
         }
       })
       .catch((error) => {
@@ -84,7 +91,7 @@ function Login() {
                         <form className="content-center" onSubmit={handleSubmit}>
                             <div>
                             <div className="flex justify-center">
-                                <img 
+                                <img
                                     alt=""
                                     className="h-20 w-15"
                                     src={logo}/>
@@ -135,14 +142,14 @@ function Login() {
                                 </button>
                             </div>
                         </form>
-                        <div className="mt-8 text-center text-alto">
-                            Don't have an account?  {""} 
+                        <div className="m-14 text-center text-alto">
+                            Don't have an account?  {""}
                             <span>
                                 <NavLink className="text-purple-600 hover:underline" to="/signUp">
                                     Sign Up
                                 </NavLink>
                             </span>
-                        </div>                    
+                        </div>
                     </div>
                     {/* <div className="relative">
                         <img
@@ -150,12 +157,12 @@ function Login() {
                             alt="img"
                             className="w-[500px] h-full hidden rounded-r-2xl md:block object-cover"
                         />
-                    
+
                         <div
                             className="absolute hidden bottom-10 right-6 p-6 bg-white bg-opacity-30 backdrop-blur-sm rounded drop-shadow-lg md:block"
                         >
                             <span class="text-bunting text-x"
-                            >"Welcome to Tech <span className="text-orange">Motisha</span> "<br /> Get inspired by 
+                            >"Welcome to Tech <span className="text-orange">Motisha</span> "<br /> Get inspired by
                             leading experts in tech  <br />
                             </span>
                         </div>
@@ -167,4 +174,4 @@ function Login() {
     );
 }
 
-export default Login
+export default Login;

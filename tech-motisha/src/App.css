@@ -70,26 +70,13 @@
   font-style: normal;
 }
 
+
 .blogss{
     display: flex;
     flex-wrap: wrap;
-}
-.blogcard{
-
-    width: 30%;
-    margin: 10px;
-    height: 30vh;
+    justify-content: center;
 }
 
-.blogcard img{
-    height: 100px;
-}
-
-.videoplayer {
-    width: 100%;
-    height: auto;
-    max-width: 800px;
-  }
-body{
-    background-color: lightgreen;
+.blog-page{
+    min-height: 100vh;
 }

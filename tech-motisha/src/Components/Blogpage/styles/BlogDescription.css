@@ -1,0 +1,12 @@
+.blog-description{
+    min-height: 100vh;
+   
+}
+
+.blog-desc{
+    width: 30%;
+    border: 2px solid white;
+    float:right;
+    margin-right: 5%;
+    min-height: 30vh;
+}
