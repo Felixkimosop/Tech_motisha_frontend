@@ -16,7 +16,9 @@ function Category() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setCategory(data));
+      .then((data) => {
+        console.log(data);
+        setCategory(data)});
   }, [token]);
 
   // {Array.isArray(obj)

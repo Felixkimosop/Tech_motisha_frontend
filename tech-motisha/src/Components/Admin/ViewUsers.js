@@ -46,7 +46,7 @@ function ViewUsers() {
     return (
       <tbody key={index}>
         <tr>
-          <th style={{marginLeft:"200px"}}scope="row">{user.id}</th>
+          <th style={{marginLeft:"200px", padding:"10px"}}scope="row">{user.id}</th>
           <td style={{marginLeft:"200px"}}>{user.name}</td>
           <td>{user.email}</td>
           <td>{user.role}</td>
@@ -69,7 +69,7 @@ function ViewUsers() {
 
   return (
     <>
-      <div className="users">
+      <div className="users text-dimWhite">
         <table className="table table-striped w-full lg:w-3/4 mx-auto" style={{ marginLeft: "350px" }}>
           <thead >
             <tr>
@@ -77,7 +77,7 @@ function ViewUsers() {
               <th style={{paddingRight:"200px"}}scope="col">Full Name</th>
               <th style={{paddingRight:"200px"}} scope="col">Email</th>
               <th style={{paddingRight:"200px"}} scope="col">User type</th>
-              <th style={{paddingRight:"500px"}} scope="col">Deactivate/Activate user</th>
+              <th className="text-white" style={{paddingRight:"500px"}} scope="col">Deactivate/Activate user</th>
             </tr>
           </thead>
           {allUsers}

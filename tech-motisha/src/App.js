@@ -1,10 +1,10 @@
-import React from 'react';
-import AudioPlayer from './Components/Audio/AudioPlayer';
-import './Components/Audio/AudioPlayer.css'
+import React from "react";
+import AudioPlayer from "./Components/Audio/AudioPlayer";
+import "./Components/Audio/AudioPlayer.css";
 import { Routes, Route } from "react-router";
 import "./App.css";
 import Login from "./Pages/Login/Login.js";
-import SignUp from "./Pages/SignUp/SignUp.jsx";
+import SignUp from "./Pages/SignUp/SignUp.js";
 import ContactMe from "./Pages/ContactMe/ContactMe.jsx";
 import User from "./Components/User/User";
 import Staff from "./Components/Staff/Staff";
@@ -16,31 +16,41 @@ import ViewUsers from "./Components/Admin/ViewUsers";
 import Catergory from "./Components/Admin/Catergory";
 import UserPosts from "./Components/User/UserPosts";
 import Subscriptions from "./Components/User/Subscriptions";
-import Home from './Pages/Home/Home';
-import musicData from './Components/assets/music';
+import Home from "./Pages/Home";
+import musicData from "./Components/assets/music";
 import AllVideosCard from "./Components/Video/AllVideosCard";
 import NewVideo from "./Components/Video/NewVideo";
 import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
+// import StaffPost from './Components/Staff/StaffPost';
+
 import Wishlist from "./Components/User/Wishlist";
 import StaffPost from "./Components/Staff/StaffPost";
-import StaffBar from './Components/Staff/StaffBar';
+import StaffBar from "./Components/Staff/StaffBar";
 
+import styles from "./Components/commons/style";
+import Navbar from "./Components/commons/Navbar";
 
-const App = () => {
-  return (   
-    <div>      
+function App() {
+  return (
+    <div className={` w-full overflow-hidden`}>
+      <div className={`${styles.paddingX} ${styles.flexCenter} m-0 bg-bunting`}>
+        <div className={`${styles.boxWidth}`}>
+          <Navbar />
+        </div>
+      </div>
+
       <Routes>
         <Route path="/user" element={<User />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/staff" element={<Staff />} />
-        <Route path="/audios" element={<AudioPlayer  song={musicData}/>} />
+        <Route path="/audios" element={<AudioPlayer song={musicData} />} />
         <Route path="/bar" element={<StaffBar />} />
 
         <Route path="/allusers" element={<ViewUsers />} />
         <Route path="/category" element={<Catergory />} />
         <Route path="/posts" element={<Posts />} />
-        <Route path="/wishlist" element={<Wishlist/>} />
-        <Route path="/allposts" element={<StaffPost/>} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/allposts" element={<StaffPost />} />
 
         <Route path="/blog" element={<Blogpage />} />
         <Route path="/about" element={<About />} />
@@ -49,17 +59,13 @@ const App = () => {
         <Route path="/contactme" element={<ContactMe />} />
         <Route path="/myposts" element={<UserPosts />} />
         <Route path="/mysubscriptions" element={<Subscriptions />} />
-        <Route exact path='/' element= {<Home/>} />
+        <Route exact path="/" element={<Home />} />
 
-
-
-        <Route path="/new-video" element={<NewVideo/>}></Route>
-        <Route path="/videos" element={<AllVideosCard/>}></Route>
-        <Route path="/videos/:id" element={<VideoDescriptionCard/>}></Route>
+        <Route path="/new-video" element={<NewVideo />}></Route>
+        <Route path="/videos" element={<AllVideosCard />}></Route>
+        <Route path="/videos/:id" element={<VideoDescriptionCard />}></Route>
       </Routes>
-      
     </div>
-  
   );
 }
 
