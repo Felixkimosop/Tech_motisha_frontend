@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef,createRef} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComment, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import './AudioPlayer.css';
@@ -18,15 +18,28 @@ function useComments() {
 // SongComments component using the custom hook
 function SongComments({ id }) {
   const [comments, handleCommentSubmit] = useComments();
+  const [showAllComments, setShowAllComments] = useState(false);
+
+  // Only show the first three comments by default
+  const displayedComments = showAllComments ? comments : comments.slice(0, 3);
+
+  const handleShowMoreClick = () => {
+    setShowAllComments(true);
+  };
 
   return (
     <div className="comment-container w-full">
       <h4 className="text-lg font-medium mb-2">Comments:</h4>
-      {comments.map((comment, index) => (
+      {displayedComments.map((comment, index) => (
         <p key={index} className="text-sm mb-1">
           {comment}
         </p>
       ))}
+      {!showAllComments && comments.length > 3 && (
+        <button onClick={handleShowMoreClick} className="text-sm text-white-600 hover:text orange-800">
+          Show more
+        </button>
+      )}
       <CommentForm onCommentSubmit={handleCommentSubmit} />
     </div>
   );
@@ -54,9 +67,7 @@ function CommentForm({ onCommentSubmit }) {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
-        <button type="submit" className="bg-indigo-800 text-white py-2 px-4 rounded">
-          Submit
-        </button>
+        <button type="submit" className="bg-indigo-800 text-white py-2 px-4 rounded hover:bg-indigo-700">Submit  </button>
       </form>
     </div>
   );
@@ -72,7 +83,7 @@ function SubscriptionForm({ onSubscribe }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email.trim() && isValidEmail) {
-      onSubscribe(email);
+      onSubscribe(email); 
       setSubscribed(true);
     } else {
       setShowEmailError(true);
@@ -97,13 +108,13 @@ function SubscriptionForm({ onSubscribe }) {
         <input
           type="email"
           value={email}
-          className="border-2 border-black-800 rounded-md mb-2 p-2 w-full text-base"
+          className="border-2 border-gray-800 rounded-md mb-2 p-2 w-full text-base text-gray-800"
           onChange={handleEmailChange}
           placeholder="Enter your email address"
           style={{ borderColor: isValidEmail || !showEmailError ? 'initial' : 'red' }}
         />
         {showEmailError && <p>Please enter a valid email address.</p>}
-        <button type="submit" className="bg-indigo-800 text-white py-2 px-4 rounded" disabled={subscribed}>
+        <button type="submit" className="bg-indigo-800 text-white py-2 px-4 rounded hover:bg-indigo-700" disabled={subscribed}>
           {subscribed ? 'Subscribed' : 'Subscribe'}
         </button>
       </form>
@@ -111,48 +122,54 @@ function SubscriptionForm({ onSubscribe }) {
   );
 }
 
-function AudioPlayer({ id }) {
-  const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+function AudioPlayer({id}) {
+  const audioRef = useRef(musicData.map(() => createRef()));
+  const [isPlayingList, setIsPlayingList] = useState(musicData.map(() => false));
 
-  const togglePlayPause = () => {
-    const audio = audioRef.current;
+  const togglePlayPause = (index) => {
+    const audio = audioRef.current[index].current;
+    const isPlaying = isPlayingList[index];
     if (isPlaying) {
       audio.pause();
     } else {
       audio.play();
     }
-    setIsPlaying(!isPlaying);
+    const newList = [...isPlayingList];
+    newList[index] = !isPlaying;
+    setIsPlayingList(newList);
   };
 
   const handleSubscribe = (email) => {
     alert(`Subscribed with email: ${email}`);
   };
 
-  const musicList = musicData.map((song) => {
+  const musicList = musicData.map((song, index) => {
     return (
-      <div className="audio-player" key={song.id}>     
-        <div className="audio-controls">
+      <div className="audio-card rounded-lg overflow-hidden shadow-lg" key={song.id}>
+        <img src={song.poster} alt={song.title} className="w-full h-auto object-cover" />
+        <div className="p-4">
           <h3 className="text-lg font-bold mb-2">{song.title}</h3>
-          <img src={song.poster} alt={song.title} className="w-full h-auto mb-4 rounded-lg" />
           <p className="text-gray-700">{song.artist}</p>
-          <audio ref={audioRef} className="w-full mb-4">
+          <audio ref={audioRef.current[index]} className="w-full my-4">
             <source src={song.source} type={song.type} />
-          </audio> 
-          <button className="play-pause bg-indigo-800 text-white py-2 px-4 rounded-lg" onClick={togglePlayPause}>
-            {isPlaying ? 'Pause' : 'Play'}
-          </button>
-          <div className="audio-icons flex justify-center items-center gap-4 mt-4">
-            <FontAwesomeIcon icon={faHeart} className="icon" />
-            <FontAwesomeIcon icon={faComment} className="icon" />
-            <FontAwesomeIcon icon={faEnvelope} className="icon" />
+          </audio>
+          <div className="audio-controls flex items-center justify-between">
+            <button className="play-pause bg-indigo-800 text-white py-2 px-4 rounded-lg" onClick={() => togglePlayPause(index)}>
+              {isPlayingList[index] ? 'Pause' : 'Play'}
+            </button>
+            <div className="audio-icons flex justify-center items-center gap-4">
+              <FontAwesomeIcon icon={faHeart} className="icon" />
+              <FontAwesomeIcon icon={faComment} className="icon" />
+              <FontAwesomeIcon icon={faEnvelope} className="icon" />
+            </div>
           </div>
+          <SongComments id={song.id} />
+          <SubscriptionForm onSubscribe={handleSubscribe} />
         </div>
-        <SongComments id={id} />
-        <SubscriptionForm onSubscribe={handleSubscribe} />
       </div>
     );
   });
+  
 
   return (
     <div className="audio-player-container justify-between flex flex-wrap items-center bg- text-white text-md font-serif">
@@ -160,5 +177,6 @@ function AudioPlayer({ id }) {
     </div>
   );
 }
+
 
 export default AudioPlayer;
