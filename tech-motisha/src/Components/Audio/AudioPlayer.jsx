@@ -2,6 +2,8 @@ import React, { useState, useRef,createRef} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComment, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import './AudioPlayer.css';
+import AddSongForm from './SongForm';
+import SubscriptionForm from './SubscriptionForm';
 import musicData from '../assets/music';
 
 // Custom hook for managing comments
@@ -19,12 +21,17 @@ function useComments() {
 function SongComments({ id }) {
   const [comments, handleCommentSubmit] = useComments();
   const [showAllComments, setShowAllComments] = useState(false);
+  const [showCommentInput, setShowCommentInput] = useState(false); // add state variable for comment input
 
   // Only show the first three comments by default
   const displayedComments = showAllComments ? comments : comments.slice(0, 3);
 
   const handleShowMoreClick = () => {
     setShowAllComments(true);
+  };
+
+  const handleEnvelopeClick = () => { // function to show comment input
+    setShowCommentInput(true);
   };
 
   return (
@@ -40,10 +47,13 @@ function SongComments({ id }) {
           Show more
         </button>
       )}
-      <CommentForm onCommentSubmit={handleCommentSubmit} />
+  {/* render comment input section conditionally */}
+        {showCommentInput && <CommentForm onCommentSubmit={handleCommentSubmit} />}
+        {!showCommentInput && <FontAwesomeIcon icon={faComment} className="icon" onClick={handleEnvelopeClick} />} 
     </div>
   );
 }
+
 
 // CommentForm component using the custom hook
 function CommentForm({ onCommentSubmit }) {
@@ -73,57 +83,11 @@ function CommentForm({ onCommentSubmit }) {
   );
 }
 
-// SubscriptionForm component
-function SubscriptionForm({ onSubscribe }) {
-  const [subscribed, setSubscribed] = useState(false);
-  const [email, setEmail] = useState('');
-  const [isValidEmail, setIsValidEmail] = useState(true);
-  const [showEmailError, setShowEmailError] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email.trim() && isValidEmail) {
-      onSubscribe(email); 
-      setSubscribed(true);
-    } else {
-      setShowEmailError(true);
-    }
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    setIsValidEmail(validateEmail(e.target.value));
-    setShowEmailError(false);
-  };
-
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  return (
-    <div className="subscribe-container w-full">
-      <p className="font-medium mb-2">Subscribe to our newsletter</p>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          value={email}
-          className="border-2 border-gray-800 rounded-md mb-2 p-2 w-full text-base text-gray-800"
-          onChange={handleEmailChange}
-          placeholder="Enter your email address"
-          style={{ borderColor: isValidEmail || !showEmailError ? 'initial' : 'red' }}
-        />
-        {showEmailError && <p>Please enter a valid email address.</p>}
-        <button type="submit" className="bg-indigo-800 text-white py-2 px-4 rounded hover:bg-indigo-700" disabled={subscribed}>
-          {subscribed ? 'Subscribed' : 'Subscribe'}
-        </button>
-      </form>
-    </div>
-  );
-}
-
 function AudioPlayer({id}) {
   const audioRef = useRef(musicData.map(() => createRef()));
+  const [songs, setSongs] = useState(musicData);
+  const [showForm, setShowForm] = useState(false);
+  
   const [isPlayingList, setIsPlayingList] = useState(musicData.map(() => false));
 
   const togglePlayPause = (index) => {
@@ -138,6 +102,11 @@ function AudioPlayer({id}) {
     newList[index] = !isPlaying;
     setIsPlayingList(newList);
   };
+  
+  const handleAddSong = (newSong) => {
+    setSongs([...songs, newSong]);
+    setShowForm(false);
+  };
 
   const handleSubscribe = (email) => {
     alert(`Subscribed with email: ${email}`);
@@ -145,7 +114,7 @@ function AudioPlayer({id}) {
 
   const musicList = musicData.map((song, index) => {
     return (
-      <div className="audio-card rounded-lg overflow-hidden shadow-lg" key={song.id}>
+      <div className="audio-card rounded-lg overflow-hidden shadow-lg text-white" key={song.id}>
         <img src={song.poster} alt={song.title} className="w-full h-auto object-cover" />
         <div className="p-4">
           <h3 className="text-lg font-bold mb-2">{song.title}</h3>
@@ -169,14 +138,18 @@ function AudioPlayer({id}) {
       </div>
     );
   });
-  
+
+  const handleNewSongClick = () => {
+    setShowForm(true);
+  };
 
   return (
-    <div className="audio-player-container justify-between flex flex-wrap items-center bg- text-white text-md font-serif">
+    <div className="audio-player-container justify-between flex flex-wrap items-center bg- text-green-600 text-md font-serif">
+      {showForm && <AddSongForm onAddSong={handleAddSong} />}
+      <button className="add-song-button" onClick={handleNewSongClick}>Add New Song</button>
       {musicList}
     </div>
   );
 }
-
 
 export default AudioPlayer;
