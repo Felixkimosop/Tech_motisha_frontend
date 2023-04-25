@@ -16,9 +16,10 @@ const Comments = ({comment,users}) => {
 
   return (
     <div>
-      <p>@:  {singleUser.name}</p>
-      <br></br>
-      <p>{body}</p>
+      <p className='username'>@:~  {singleUser.name}</p>
+
+      <p className='comment'>{body}</p>
+      <hr/>
 
     </div>
   )

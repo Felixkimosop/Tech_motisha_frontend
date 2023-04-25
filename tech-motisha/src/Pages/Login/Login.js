@@ -46,12 +46,12 @@ function Login() {
           //console.log(data.user)
 
           if (data.user.role === "admin") {
-            navigate("/admin");
+            navigate("/");
           } else if (data.user.role === "user"){
-            navigate("/user");
+            navigate("/");
           }
           else if(data.user.role === "staff"){
-            navigate("/staff")
+            navigate("/")
           }
           else{
             Swal.fire({

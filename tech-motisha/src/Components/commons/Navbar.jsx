@@ -84,7 +84,7 @@ const Navbar = () => {
                Register
              </NavLink >
            </button></>) }
-           {name? (<>  <button  type="button" onClick={toNavigate} className='text-alto text-3xl'>Welcome {name}</button></>) : (<> </>) }
+           {name? (<>  <button  type="button" onClick={toNavigate} className='text-alto text-3xl' style={{color:'white'}}>{name}</button></>) : (<> </>) }
 
     </div>
 

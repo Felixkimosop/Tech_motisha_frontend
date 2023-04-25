@@ -47,6 +47,7 @@ const VideoDescriptionCard = ({token, comment, users,setComment}) => {
       .then(data => {
         setComment((previousComment)=> [data,...previousComment])
       })
+      e.target.reset()
   }
 
 
@@ -98,21 +99,21 @@ const VideoDescriptionCard = ({token, comment, users,setComment}) => {
         poster={image_url}
       ></video>
 
-      <h2>{title}</h2>
-      <p>{description}</p>
+    <div className="likes">
 
       <button onClick={handleLike}>
         {liked ? 'Unlike' : 'Like'} {/* Toggle the text of the button based on the "liked" state */}
       </button>
+      </div>
 
       <form onSubmit={handleComment}>
-        <label>Add comment</label>
+
         <input type='text' name='body' placeholder="comment"/>
 
         <button type='submit'>comment</button>
       </form>
 
-<div>
+<div className='video-comments'>
 {allComments}
 </div>
     </div>

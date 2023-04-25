@@ -55,6 +55,7 @@ const BlogDescription = ({token, comment, users, setComment}) => {
           .then(data => {
             setComment((previousComment)=> [data,...previousComment])
           })
+          e.target.reset()
       }
 
       const filteredComments = comment.filter((comment) => {
@@ -73,13 +74,16 @@ const BlogDescription = ({token, comment, users, setComment}) => {
      <Link to={`/blogs`}>BACK</Link>
         <h2>{title}</h2>
 
+        <p>Date</p>
+        <p>category</p>
+
 
 
         <p>{description}</p>
         </div>
 
         <div className='blog-document'>
-      <Document file={upload_url} onLoadSuccess={onDocumentSuccess}>
+      <Document file={upload_url} onLoadSuccess={onDocumentSuccess}className='testtt'>
 
       <Page pageNumber={pageNumber} />
 
@@ -87,16 +91,16 @@ const BlogDescription = ({token, comment, users, setComment}) => {
       <p>Page {pageNumber} of {numPages}</p>
     </div>
 
+        <div className='blog-form'>
+        <form onSubmit={handleComment}>
+            <label>Comment</label>
+            <input type='text' name='body' placeholder="comment"/>
 
-    <div>
-    <form onSubmit={handleComment}>
-        <label>Add comment</label>
-        <input type='text' name='body' placeholder="comment"/>
+            <button type='submit'>comment</button>
+          </form>
+          <div className='blog-comments'>{allComments}</div>
+          </div>
 
-        <button type='submit'>comment</button>
-      </form>
-      </div>
-      <div>{allComments}</div>
     </div>
   )
 }

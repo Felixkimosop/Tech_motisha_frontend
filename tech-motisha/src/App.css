@@ -80,3 +80,24 @@
 .blog-page{
     min-height: 100vh;
 }
+
+
+.username{
+    color :#fa510f
+}
+
+.comment{
+    color: white;
+}
+
+
+.video-comments{
+    overflow: scroll;
+    height: 30vh;
+}
+.likes button{
+    color: black;
+    border: 2px solid;
+    width: 20%;
+    background-color: white;
+}
