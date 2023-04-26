@@ -23,6 +23,8 @@ import NewVideo from "./Components/Video/NewVideo";
 import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
 import styles from './Components/commons/style'
 import Navbar from './Components/commons/Navbar'
+import BlogCard from './Components/BlogCard';
+import BlogDescription from './Components/BlogDescription';
 
 
 
@@ -47,6 +49,8 @@ function App() {
         <Route path="/posts" element={<Posts />} />
 
         <Route path="/blog" element={<Blogpage />} />
+        <Route path="/card" element={<BlogCard />} />
+        <Route path="/description" element={<BlogDescription />} />
         <Route path="/about" element={<About />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
