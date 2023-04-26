@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import Comments from '../commons/Comments';
+import './styles/BlogDescription.css'
 
 const BlogDescription = ({token, comment, users, setComment}) => {
     const [singleBlog, setSingleBlog] = useState({})
@@ -66,18 +67,18 @@ const BlogDescription = ({token, comment, users, setComment}) => {
 
 
   return (
-    <div>
-            <Link to={`/blogs`}>back</Link>
+    <div className='blog-description'>
 
+     <div className='blog-desc'>
+     <Link to={`/blogs`}>BACK</Link>
         <h2>{title}</h2>
 
 
-        <p>category</p>
-        <p>date</p>
+
         <p>{description}</p>
+        </div>
 
-
-        <div>
+        <div className='blog-document'>
       <Document file={upload_url} onLoadSuccess={onDocumentSuccess}>
 
       <Page pageNumber={pageNumber} />
@@ -85,7 +86,9 @@ const BlogDescription = ({token, comment, users, setComment}) => {
       </Document>
       <p>Page {pageNumber} of {numPages}</p>
     </div>
-<div>
+
+
+    <div>
     <form onSubmit={handleComment}>
         <label>Add comment</label>
         <input type='text' name='body' placeholder="comment"/>

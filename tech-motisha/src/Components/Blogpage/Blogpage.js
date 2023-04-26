@@ -26,5 +26,4 @@ function Blogpage({ token }) {
   );
 }
 
-
 export default Blogpage;
