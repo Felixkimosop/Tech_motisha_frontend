@@ -21,9 +21,11 @@ import musicData from "./Components/assets/music";
 import AllVideosCard from "./Components/Video/AllVideosCard";
 import NewVideo from "./Components/Video/NewVideo";
 import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
-import styles from "./Components/commons/style";
-import Navbar from "./Components/commons/Navbar";
-import BlogDescription from "./Components/Blogpage/BlogDescription";
+import styles from './Components/commons/style'
+import Navbar from './Components/commons/Navbar'
+import BlogCard from './Components/Blogpage/BlogCard';
+import BlogDescription from './Components/Blogpage/BlogDescription';
+import Footer from './Components/Footer';
 
 function App() {
   const token = {
@@ -70,6 +72,15 @@ function App() {
             <Route path="/category" element={<Catergory />} />
             <Route path="/posts" element={<Posts />} />
 
+        {/* <Route path="/blog" element={<Blogpage />} /> */}
+       <Route path="/foot" element={<Footer/>} />
+         <Route path="/about" element={<About />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contactme" element={<ContactMe />} />
+        <Route path="/myposts" element={<UserPosts />} />
+        <Route path="/mysubscriptions" element={<Subscriptions />} />
+        <Route exact path='/' element= {<Home/>} />
             <Route path="/blogs" element={<Blogpage token={token} />} />
             <Route
               path="/blogs/:id"
@@ -82,13 +93,13 @@ function App() {
                 />
               }
             ></Route>
-            <Route path="/about" element={<About />} />
+            {/* <Route path="/about" element={<About />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/contactme" element={<ContactMe />} />
             <Route path="/myposts" element={<UserPosts />} />
             <Route path="/mysubscriptions" element={<Subscriptions />} />
-            <Route exact path="/" element={<Home />} />
+            <Route exact path="/" element={<Home />} /> */}
 
             <Route path="/new-video" element={<NewVideo />}></Route>
             <Route
