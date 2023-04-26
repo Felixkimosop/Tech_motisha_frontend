@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Staff.css";
 import StaffBar from "./StaffBar";
 import { useNavigate } from "react-router-dom";
+import styles from '../commons/style'
 
 function Staff() {
   const [isEditing, setIsEditing] = useState(false);
@@ -116,11 +117,11 @@ function Staff() {
             style={{ marginLeft: "1400px" }}
           />
       <div className="flex gap-9 " style={{ marginLeft: "500px" }}>
-      <div class="px-4 py-4 bg-blue-950 mt-10 rounded-lg cursor-pointer w-19 " onClick={()=>{navigate("/category")}}>
+      <div class="px-4 py-4 bg-blue-950 mt-10 rounded-lg cursor-pointer w-19 " onClick={()=>{navigate("/staffcategory")}}>
             <div class="font-bold text-xl mb-2 text-center text-orange-700">{totalCategories}</div>
             <p class="text-orange-700 text-base">Total Categories</p>
           </div>
-          <div class="px-4 py-4 bg-blue-950 mt-10 rounded-lg cursor-pointer " onClick={()=>{navigate("/category")}}>
+          <div class="px-4 py-4 bg-blue-950 mt-10 rounded-lg cursor-pointer " onClick={()=>{navigate("/allposts")}}>
             <div class="font-bold text-xl mb-2 text-center text-orange-700">{totalPosts}</div>
             <p class="text-orange-700 text-base">Total Posts</p>
           </div>
@@ -181,13 +182,13 @@ function Staff() {
           ) : (
             <div>
               <div  style={{ marginLeft: "500px" }}>
-                <h2 className="mb-3 text-lg">Hi {names}</h2>
-                <h1 className="text-3xl font-bold mb-4">My profile</h1>
-                <h4 className="mb-3">Name:  </h4>
-                <h4><span className="text-base">{name}</span></h4>
-                <h4 className="mb-3">Age: {age}</h4>
-                <h4 className="mb-3">Email: {email}</h4>
-                <h4 className="mb-3">Phone No: {phoneNo}</h4>
+                {/* <h2 className="mb-3 text-lg">Hi {names}</h2> */}
+                <h1 className="text-orange-700 font-semibold px-4 mb-4 mt-4 ss:text-[22px] text-[12px] font-poppins">My profile</h1>
+                {/* <h4 className="mb-3">Name:  </h4> */}
+                <h4 className="text-lg">Name: <span className="text-base">{name}</span></h4>
+                <h4 className="mb-3 text-lg">Age: {age}</h4>
+                <h4 className="mb-3 text-lg">Email: {email}</h4>
+                <h4 className="mb-3 text-lg">Phone No: {phoneNo}</h4>
                 <button className="rbg-transparent hover:bg-blue-950 text-blue-950 font-semibold hover:text-orange-700 py-2 px-4 border border-orange-700 hover:border-transparent rounded " onClick={handleUpdateClick}>Update your Profile</button>
               </div>
               

@@ -125,19 +125,19 @@ function User() {
                 className="w-16 h-16 rounded-full mr-4"
               />
               <div>
-                <h2 className="text-xl font-bold">Hi {names}</h2>
-                <h1 className="text-3xl font-bold">My profile</h1>
+                <h2 className="text-xl font-bold text-orange-700">Hi {names}</h2>
+                <h1 className="text-3xl font-bold text-orange-700">My profile</h1>
               </div>
             </div>
             {!isEditing && (
               <div className="mb-6">
-                <h4 className="font-bold mt-2">Name:</h4>
+                <h4 className="font-bold mt-2 text-xl">Name:</h4>
                 <p>{name}</p>
-                <h4 className="font-bold mt-2">Age:</h4>
+                <h4 className="font-bold mt-2 text-xl">Age:</h4>
                 <p>{age}</p>
-                <h4 className="font-bold mt-2">Email:</h4>
+                <h4 className="font-bold mt-2 text-xl">Email:</h4>
                 <p>{email}</p>
-                <h4 className="font-bold mt-2" >Phone No:</h4>
+                <h4 className="font-bold mt-2 text-xl" >Phone No:</h4>
                 <p>{phoneNo}</p>
               </div>
             )}

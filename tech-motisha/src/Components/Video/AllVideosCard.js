@@ -11,25 +11,31 @@ const [videos, setVideos] = useState([])
 const [search, setSearch] = useState('')
 const [currentPage, setCurrentPage] = useState(1)
 const videosPerPage = 3
+const token = localStorage.getItem("jwt");
+
 
 //used to slice the array
 const lastVideoIndex = currentPage * videosPerPage
 const firstVideoIndex = lastVideoIndex - videosPerPage
 
 
-
-
-
-
     useEffect(() =>{
 
-        fetch('contents')
+
+        fetch('/videos',{
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+        })
         .then(res=>res.json())
         .then(data=>{
         setVideos(data);
         console.log(data);
         })
     },[])
+    console.log(videos)
 
         const filteredSearchVideos = Array.isArray(videos)?videos.filter(video=>{
         return video.title.toLowerCase().includes(search.toLowerCase())

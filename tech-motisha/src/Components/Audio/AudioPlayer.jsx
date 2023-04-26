@@ -1,7 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef,createRef} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComment, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import './AudioPlayer.css'
+import './AudioPlayer.css';
+import AddSongForm from './SongForm';
+import SubscriptionForm from './SubscriptionForm';
 import musicData from '../assets/music';
 
 // Custom hook for managing comments
@@ -18,17 +20,40 @@ function useComments() {
 // SongComments component using the custom hook
 function SongComments({ id }) {
   const [comments, handleCommentSubmit] = useComments();
+  const [showAllComments, setShowAllComments] = useState(false);
+  const [showCommentInput, setShowCommentInput] = useState(false); // add state variable for comment input
+
+  // Only show the first three comments by default
+  const displayedComments = showAllComments ? comments : comments.slice(0, 3);
+
+  const handleShowMoreClick = () => {
+    setShowAllComments(true);
+  };
+
+  const handleEnvelopeClick = () => { // function to show comment input
+    setShowCommentInput(true);
+  };
 
   return (
     <div className="comment-container w-full">
       <h4 className="text-lg font-medium mb-2">Comments:</h4>
-      {comments.map((comment, index) => (
-        <p key={index} className="text-sm mb-1">{comment}</p>
+      {displayedComments.map((comment, index) => (
+        <p key={index} className="text-sm mb-1">
+          {comment}
+        </p>
       ))}
-      <CommentForm onCommentSubmit={handleCommentSubmit} />
+      {!showAllComments && comments.length > 3 && (
+        <button onClick={handleShowMoreClick} className="text-sm text-white-600 hover:text orange-800">
+          Show more
+        </button>
+      )}
+  {/* render comment input section conditionally */}
+        {showCommentInput && <CommentForm onCommentSubmit={handleCommentSubmit} />}
+        {!showCommentInput && <FontAwesomeIcon icon={faComment} className="icon" onClick={handleEnvelopeClick} />} 
     </div>
   );
 }
+
 
 // CommentForm component using the custom hook
 function CommentForm({ onCommentSubmit }) {
@@ -45,108 +70,86 @@ function CommentForm({ onCommentSubmit }) {
   return (
     <div className="comment-form-container w-full">
       <form onSubmit={handleSubmit} className="flex">
-        <input type="text" placeholder="Add your comment" class="border-2 border-gray-800 rounded-md mb-2 p-2 w-full text-base" value={comment} onChange={(e) => setComment(e.target.value)} />
-        <button type="submit" class="bg-indigo-800 text-white py-2 px-4 rounded">Submit</button>
-    </form>
+        <input
+          type="text"
+          placeholder="Add your comment"
+          className="border-2 border-gray-800 rounded-md mb-2 p-2 w-full text-base text-gray-800"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        />
+        <button type="submit" className="bg-indigo-800 text-white py-2 px-4 rounded hover:bg-indigo-700">Submit  </button>
+      </form>
     </div>
   );
 }
 
-// SubscriptionForm component
-function SubscriptionForm({ onSubscribe }) {
-  const [subscribed, setSubscribed] = useState(false);
-  const [email, setEmail] = useState('');
-  const [isValidEmail, setIsValidEmail] = useState(true);
-  const [showEmailError, setShowEmailError] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email.trim()&& isValidEmail) {
-      onSubscribe(email);
-      setSubscribed(true);
-    }
-    else {
-      setShowEmailError(true);
-    }
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    setIsValidEmail(validateEmail(e.target.value));
-    setShowEmailError(false);
-  };
-
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  return (
-    <div class="subscribe-container w-full">
-      <p class="font-medium mb-2">Subscribe to our newsletter</p>
-    <form onSubmit={handleSubmit}>
-      <input type="email" value={email} class="border-2 border-gray-800 rounded-md mb-2 p-2 w-full text-base"
-       onChange={handleEmailChange} placeholder="Enter your email address"
-        style={{ borderColor: isValidEmail || !showEmailError ? 'initial' : 'red' }}
-        />
-      {showEmailError && <p>Please enter a valid email address.</p>}
-      <button type="submit"  class="bg-indigo-800 text-white py-2 px-4 rounded" disabled={subscribed}>
-        {subscribed ? 'Subscribed' : 'Subscribe'}
-      </button>
-    </form>
-  </div>
-    );
-}
-
-// AudioPlayer component
-function AudioPlayer(props) {
-  // Define references
-  const audioRef = useRef(null);
+function AudioPlayer({id}) {
+  const audioRef = useRef(musicData.map(() => createRef()));
+  const [songs, setSongs] = useState(musicData);
+  const [showForm, setShowForm] = useState(false);
   
-  const [liked, setLiked] = useState(false);
+  const [isPlayingList, setIsPlayingList] = useState(musicData.map(() => false));
 
-  const musicList = musicData.map((song) => {
+  const togglePlayPause = (index) => {
+    const audio = audioRef.current[index].current;
+    const isPlaying = isPlayingList[index];
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    const newList = [...isPlayingList];
+    newList[index] = !isPlaying;
+    setIsPlayingList(newList);
+  };
+  
+  const handleAddSong = (newSong) => {
+    setSongs([...songs, newSong]);
+    setShowForm(false);
+  };
 
-    // Functions to handle state changes
-    const toggleLikes = () => {
-      setLiked(!liked);
-    };
+  const handleSubscribe = (email) => {
+    alert(`Subscribed with email: ${email}`);
+  };
 
+  const musicList = musicData.map((song, index) => {
     return (
-      <div key={song.id} className="bg-white shadow-md rounded-md mb-4 p-4">
-        <h3 className="text-lg font-bold mb-2">{song.title}</h3>
-        <img src={song.poster} alt={song.title} className="w-full h-auto mb-4" />
-        <p className="text-gray-700">{song.artist}</p>
-        <audio ref={audioRef}  className="w-full mb-4">
-           {/* controls onError={() => alert('Failed to load audio file.') */}
-          <source src={song.source} type={song.type} />
-        </audio> 
-       
-        <div className='flex justify-between items-center'>
-          <button onClick={toggleLikes} className="bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-full p-2 mr-2">
-            <FontAwesomeIcon icon={faHeart} title='Like' className={`text-red-500 ${liked ? 'fill-current' : 'fill-none'}`} />
-          </button>
-          <button className="bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-full p-2 mr-2">
-            <FontAwesomeIcon icon={faComment} title='Comment' className="text-orange-500" />
-          </button>
-          <button  className="bg-white hover:bg-gray-100 focus:bg-gray-100 rounded-full p-2">
-            <FontAwesomeIcon icon={faEnvelope} title='Send' className="text-orange-500" />
-          </button>
+      <div className="audio-card rounded-lg overflow-hidden shadow-lg text-white" key={song.id}>
+        <img src={song.poster} alt={song.title} className="w-full h-auto object-cover" />
+        <div className="p-4">
+          <h3 className="text-lg font-bold mb-2">{song.title}</h3>
+          <p className="text-gray-700">{song.artist}</p>
+          <audio ref={audioRef.current[index]} className="w-full my-4">
+            <source src={song.source} type={song.type} />
+          </audio>
+          <div className="audio-controls flex items-center justify-between">
+            <button className="play-pause bg-indigo-800 text-white py-2 px-4 rounded-lg" onClick={() => togglePlayPause(index)}>
+              {isPlayingList[index] ? 'Pause' : 'Play'}
+            </button>
+            <div className="audio-icons flex justify-center items-center gap-4">
+              <FontAwesomeIcon icon={faHeart} className="icon" />
+              <FontAwesomeIcon icon={faComment} className="icon" />
+              <FontAwesomeIcon icon={faEnvelope} className="icon" />
+            </div>
           </div>
-          <SubscriptionForm onSubscribe={() => console.log(`Subscribed to ${song.title}`)} />
-        
-        <SongComments id={song.id} />
+          <SongComments id={song.id} />
+          <SubscriptionForm onSubscribe={handleSubscribe} />
+        </div>
       </div>
     );
   });
 
+  const handleNewSongClick = () => {
+    setShowForm(true);
+  };
+
   return (
-   <div class="audio-player-container justify-around flex flex-wrap items-center bg-blue-900 text-white text-md font-serif">
-     {musicList}
+    <div className="audio-player-container justify-between flex flex-wrap items-center bg- text-green-600 text-md font-serif">
+      {showForm && <AddSongForm onAddSong={handleAddSong} />}
+      <button className="add-song-button" onClick={handleNewSongClick}>Add New Song</button>
+      {musicList}
     </div>
-    
   );
 }
-
 
 export default AudioPlayer;

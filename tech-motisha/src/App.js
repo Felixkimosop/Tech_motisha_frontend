@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import AudioPlayer from "./Components/Audio/AudioPlayer";
 import "./Components/Audio/AudioPlayer.css";
 import { Routes, Route } from "react-router";
@@ -9,7 +9,7 @@ import ContactMe from "./Pages/ContactMe/ContactMe.jsx";
 import User from "./Components/User/User";
 import Staff from "./Components/Staff/Staff";
 import Posts from "./Components/Admin/Posts";
-import Blogpage from "./Components/Blogpage";
+import Blogpage from "./Components/Blogpage/Blogpage";
 import About from "./Pages/About/About";
 import Admin from "./Components/Admin/Admin";
 import ViewUsers from "./Components/Admin/ViewUsers";
@@ -32,6 +32,31 @@ import Navbar from "./Components/commons/Navbar";
 import StaffCategory from "./Components/Staff/StaffCategory";
 
 function App() {
+  const token = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  };
+
+  const [comment, setComment] = useState([]);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/comments", token)
+      .then((res) => res.json())
+      .then((data) => {
+        setComment(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/users", token)
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data);
+      });
+  }, []);
+
   return (
     <div className={` w-full overflow-hidden`}>
       <div className={`${styles.paddingX} ${styles.flexCenter} m-0 bg-bunting`}>
@@ -63,9 +88,9 @@ function App() {
         <Route path="/mysubscriptions" element={<Subscriptions />} />
         <Route exact path="/" element={<Home />} />
 
-        <Route path="/new-video" element={<NewVideo />}></Route>
-        <Route path="/videos" element={<AllVideosCard />}></Route>
-        <Route path="/videos/:id" element={<VideoDescriptionCard />}></Route>
+        <Route path="/new-video" element={<NewVideo token ={token} comment ={comment} user={users} />}></Route>
+        <Route path="/videos" element={<AllVideosCard token ={token} comment ={comment} user={users} />}></Route>
+        <Route path="/videos/:id" element={<VideoDescriptionCard token ={token} comment ={comment} user={users} />}></Route>
       </Routes>
     </div>
   );

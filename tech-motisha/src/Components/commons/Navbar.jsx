@@ -7,10 +7,13 @@ import styles from './style';
 
 
 const Navbar = () => {
+
   const name = localStorage.getItem("name");
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
   const role = localStorage.getItem("role");
-  const logout = () =>{       
+
+
+  const logout = () =>{
     localStorage.clear();
     navigate("/login")}
 
@@ -31,18 +34,23 @@ const Navbar = () => {
     const links =[
         {name: "Home", link:"/"},
         {name: "About", link:"/about"},
-        {name: "Blogs", link:"/blog"},
+        {name: "Blogs", link:"/blogs"},
         {name: "Videos", link:"/videos"},
         {name: "Audios", link:"/audios"}
       ]
-      
+
+
+      console.log(name);
+      console.log(role);
+
+
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      
+
       {/* DESKTOP NAVBAR */}
       <div className='flex'>
         <img src={logo} alt="Tech Motisha Logo" className="w-[54px] h-[54px]" />
-        <h1 className='font-bold text-center text-white text-xl'>                 
+        <h1 className='font-bold text-center text-white text-xl'>
           Tech <span className={`block text-orange-600 text-xl`}>Motisha</span>
         </h1>
 
@@ -78,8 +86,10 @@ const Navbar = () => {
            </button></>) }
            {name? (<>  <button  type="button" onClick={toNavigate} className='font-poppins self-center font-normal cursor-pointer text-[16px] text-white ml-3'>Welcome {name}</button></>) : (<> </>) }
      
+           {name? (<>  <button  type="button" onClick={toNavigate} className='text-alto text-3xl'>Welcome {name}</button></>) : (<> </>) }
+
     </div>
-      
+
       {/* MOBILE NAVBAR - on small devices it's hidden*/}
       <div className="sm:hidden flex flex-1 justify-end items-center">
         {/* hamburger */}
