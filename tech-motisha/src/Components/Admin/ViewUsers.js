@@ -63,13 +63,14 @@ function ViewUsers() {
             )}
           </td>
         </tr>
+        <hr></hr>
       </tbody>
     );
   });
 
   return (
     <>
-      <div className="users text-dimWhite">
+      <div className="users text-black">
         <table className="table table-striped w-full lg:w-3/4 mx-auto" style={{ marginLeft: "350px" }}>
           <thead >
             <tr>
@@ -77,9 +78,11 @@ function ViewUsers() {
               <th style={{paddingRight:"200px"}}scope="col">Full Name</th>
               <th style={{paddingRight:"200px"}} scope="col">Email</th>
               <th style={{paddingRight:"200px"}} scope="col">User type</th>
-              <th className="text-white" style={{paddingRight:"500px"}} scope="col">Deactivate/Activate user</th>
+              <th className="text-black" style={{paddingRight:"500px"}} scope="col">Deactivate/Activate user</th>
             </tr>
+            <hr></hr>
           </thead>
+          
           {allUsers}
         </table>
       </div>

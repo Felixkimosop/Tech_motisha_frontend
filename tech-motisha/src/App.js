@@ -29,6 +29,7 @@ import StaffBar from "./Components/Staff/StaffBar";
 
 import styles from "./Components/commons/style";
 import Navbar from "./Components/commons/Navbar";
+import StaffCategory from "./Components/Staff/StaffCategory";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="/staff" element={<Staff />} />
         <Route path="/audios" element={<AudioPlayer song={musicData} />} />
         <Route path="/bar" element={<StaffBar />} />
+        <Route path="/staffcategory" element={<StaffCategory />} />
 
         <Route path="/allusers" element={<ViewUsers />} />
         <Route path="/category" element={<Catergory />} />

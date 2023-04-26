@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import styles from '../commons/style'
 import UserBar from './UserBar';
 
 function Wishlist() {
@@ -55,14 +55,14 @@ function Wishlist() {
     <>
       <div style={{marginLeft:"350px"}}>
         <h1>Wishlist</h1>
-        <ul>
+       
           {myWish.map((content, index) => (
-            <li key={index}>
-              <h3>{content.title}</h3>
-              <p>{content.description}</p>
-            </li>
+            <div key={index}>
+              <h3 className='text-orange-700 font-semibold px-4 mb-4 mt-4 ss:text-[22px] text-[12px] font-poppins'>{content.title}</h3>
+              <p className={`${styles.paragraph} px-4 mb-2 text-primary`}>{content.description}</p>
+            </div>
           ))}
-        </ul>
+
       </div>
       <UserBar />
     </>
