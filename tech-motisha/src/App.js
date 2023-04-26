@@ -25,6 +25,7 @@ import styles from './Components/commons/style'
 import Navbar from './Components/commons/Navbar'
 import BlogCard from './Components/BlogCard';
 import BlogDescription from './Components/BlogDescription';
+import Footer from './Components/Footer';
 
 
 
@@ -50,6 +51,7 @@ function App() {
 
         <Route path="/blog" element={<Blogpage />} />
         <Route path="/card" element={<BlogCard />} />
+        <Route path="/foot" element={<Footer/>} />
         <Route path="/description" element={<BlogDescription />} />
         <Route path="/about" element={<About />} />
         <Route path="/signup" element={<SignUp />} />
