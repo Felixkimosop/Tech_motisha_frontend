@@ -8,8 +8,9 @@ function AddSongForm({ onAddSong }) {
   const [duration, setDuration] = useState(0);
   const [source, setSource] = useState('');
   const [type, setType] = useState('');
+  const [isSongAdded, setIsSongAdded] = useState(false);
 
-  const handleAddSong = (e) => {
+  const handleAddSong = async (e) => {
     e.preventDefault();
     const newSong = {
       id: musicData.length + 1,
@@ -20,13 +21,32 @@ function AddSongForm({ onAddSong }) {
       source,
       type
     };
+    try {
+      const response = await fetch('http://localhost:3000/contents', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newSong)
+      });
+      if (response.ok) {
     onAddSong(newSong);
     setTitle('');
     setArtist('');
     setPoster('');
     setDuration('');
     setSource('');
-  };
+    setIsSongAdded(true);
+    setTimeout(() => setIsSongAdded(false), 3000);
+    setType('');
+  } else {
+    console.log('Failed to add song');
+  }
+} catch (error) {
+  console.error('Error:', error);
+}
+
+};
 
   return (
     <form className="bg rounded-lg px-4 py-2 text-white " onSubmit={handleAddSong}>
@@ -55,6 +75,7 @@ function AddSongForm({ onAddSong }) {
         <input className="bg text-black w-half focus:outline-none focus:ring-2 focus:ring-blue-600" type="text" value={type} onChange={(e) => setType(e.target.value)} />
       </label>
       <button type="submit">Add Song</button>
+      {isSongAdded && <p>Song added successfully! </p>}
     </form>
   );
 }

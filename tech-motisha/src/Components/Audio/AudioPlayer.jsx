@@ -81,7 +81,8 @@ function CommentForm({ onCommentSubmit }) {
       </form>
     </div>
   );
-}
+};
+
 
 function AudioPlayer({id}) {
   const audioRef = useRef(musicData.map(() => createRef()));
@@ -111,32 +112,33 @@ function AudioPlayer({id}) {
   const handleSubscribe = (email) => {
     alert(`Subscribed with email: ${email}`);
   };
-
   const musicList = musicData.map((song, index) => {
+
     return (
-      <div className="audio-card rounded-lg overflow-hidden shadow-lg text-white" key={song.id}>
+    <div className="audio-card rounded-lg overflow-hidden shadow-lg text-white" key={song.id}>
+      <div className="relative">
         <img src={song.poster} alt={song.title} className="w-full h-auto object-cover" />
-        <div className="p-4">
-          <h3 className="text-lg font-bold mb-2">{song.title}</h3>
-          <p className="text-gray-700">{song.artist}</p>
-          <audio ref={audioRef.current[index]} className="w-full my-4">
-            <source src={song.source} type={song.type} />
-          </audio>
-          <div className="audio-controls flex items-center justify-between">
-            <button className="play-pause bg-indigo-800 text-white py-2 px-4 rounded-lg" onClick={() => togglePlayPause(index)}>
-              {isPlayingList[index] ? 'Pause' : 'Play'}
-            </button>
-            <div className="audio-icons flex justify-center items-center gap-4">
-              <FontAwesomeIcon icon={faHeart} className="icon" />
-              <FontAwesomeIcon icon={faComment} className="icon" />
-              <FontAwesomeIcon icon={faEnvelope} className="icon" />
-            </div>
-          </div>
-          <SongComments id={song.id} />
-          <SubscriptionForm onSubscribe={handleSubscribe} />
+        <button className="play-pause absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-800 text-white py-2 px-4 rounded-lg" onClick={() => togglePlayPause(index)}>
+          {isPlayingList[index] ? 'Pause' : 'Play'}
+        </button>
+      </div>
+
+      <h3 className="text-lg font-bold mb-2">{song.title}</h3>
+      <p className="text-gray-700">{song.artist}</p>
+      <audio ref={audioRef.current[index]} className="w-full my-4">
+        <source src={song.source} type={song.type} />
+      </audio>
+      <div className="audio-controls flex items-center justify-between">
+        <div className="audio-icons flex justify-center items-center gap-4">
+          <FontAwesomeIcon icon={faHeart} />
+
+          <FontAwesomeIcon icon={faEnvelope} className="icon" />
         </div>
       </div>
-    );
+      <SongComments id={song.id} />
+      <SubscriptionForm onSubscribe={handleSubscribe} />
+    </div>
+  );
   });
 
   const handleNewSongClick = () => {
@@ -145,9 +147,10 @@ function AudioPlayer({id}) {
 
   return (
     <div className="audio-player-container justify-between flex flex-wrap items-center bg- text-green-600 text-md font-serif">
-      {showForm && <AddSongForm onAddSong={handleAddSong} />}
-      <button className="add-song-button" onClick={handleNewSongClick}>Add New Song</button>
       {musicList}
+      {showForm && <AddSongForm onAddSong={handleAddSong} className="z-50" />}
+      <button className="fixed top-20 left-20 z-50 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-full" onClick={handleNewSongClick}>Add New Song</button>
+
     </div>
   );
 }
