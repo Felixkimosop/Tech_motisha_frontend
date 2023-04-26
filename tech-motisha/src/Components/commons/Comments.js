@@ -16,7 +16,7 @@ const Comments = ({comment,users}) => {
 
   return (
     <div>
-      <p className='username'>@:~  {singleUser.name}</p>
+      <p className='username'>@:~  {singleUser['name']}</p>
 
       <p className='comment'>{body}</p>
       <hr/>
