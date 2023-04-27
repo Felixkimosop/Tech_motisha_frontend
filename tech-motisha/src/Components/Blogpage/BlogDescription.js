@@ -25,7 +25,7 @@ const BlogDescription = ({token, comment, users, setComment}) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3000/uploads/${id}`,token)
+        fetch(`/uploads/${id}`,token)
           .then(res => res.json())
           .then(data => {
             setSingleBlog(data)
@@ -43,7 +43,7 @@ const BlogDescription = ({token, comment, users, setComment}) => {
         }
 
         //  console.log(newComment);
-        fetch('http://localhost:3000/comments', {
+        fetch('/comments', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

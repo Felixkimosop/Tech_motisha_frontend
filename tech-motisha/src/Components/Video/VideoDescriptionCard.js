@@ -5,24 +5,33 @@ import { Link, useParams } from "react-router-dom";
 import Comments from "../commons/Comments";
 
 
-const VideoDescriptionCard = ({token, comment, users,setComment}) => {
+const VideoDescriptionCard = ({ comment, users,setComment}) => {
   const [singleVideo, setSingleVideo] = useState({});
 
   const [liked, setLiked] = useState(false); // added state for "liked" status
   const { id } = useParams();
   const userId = localStorage.getItem("userId");
+  const token = localStorage.getItem("jwt");
 
 
 
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/uploads/${id}`,token)
+    fetch(`/uploads/${id}`,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
+       
         setSingleVideo(data);
       });
   }, []);
+  console.log(singleVideo);
 
   const { title, description, image_url, upload_url } = singleVideo;
 
@@ -35,7 +44,7 @@ const VideoDescriptionCard = ({token, comment, users,setComment}) => {
     }
 
     //  console.log(newComment);
-    fetch('http://localhost:3000/comments', {
+    fetch('/comments', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -48,7 +57,7 @@ const VideoDescriptionCard = ({token, comment, users,setComment}) => {
         setComment((previousComment)=> [data,...previousComment])
       })
   }
-
+console.log(comment)
 
 
 
@@ -57,7 +66,7 @@ const VideoDescriptionCard = ({token, comment, users,setComment}) => {
     setLiked(!liked);
 
     // Send a POST request to the API to create or destroy the "like" association
-    fetch(`http://localhost:3000/api/videos/${id}/likes`, {
+    fetch(`/api/videos/${id}/likes`, {
       method: liked ? 'DELETE' : 'POST',
       headers: {
 

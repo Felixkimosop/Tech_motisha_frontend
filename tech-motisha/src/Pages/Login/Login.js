@@ -38,20 +38,14 @@ function Login() {
         } else {
 
           localStorage.setItem("jwt", data.jwt);
-          localStorage.setItem("name", data.user.name)
-          localStorage.setItem("role", data.user.role)
-          localStorage.setItem("userId", data.user.id);
+          localStorage.setItem("role", data.user.role);
+          localStorage.setItem("id", data.user.id);
+          localStorage.setItem("name", data.user.name);
+          localStorage.setItem("image", data.user.profile_picture);
 
-
-          //console.log(data.user)
-
-          if (data.user.role === "admin") {
-            navigate("/admin");
-          } else if (data.user.role === "user"){
-            navigate("/user");
-          }
-          else if(data.user.role === "staff"){
-            navigate("/staff")
+          if (data) {
+            navigate("/");
+          
           }
           else{
             Swal.fire({

@@ -1,27 +1,44 @@
-import React, {useState, useEffect} from 'react'
-import "./Subscriptions.css"
+import React, { useState, useEffect } from 'react';
+import styles from '../commons/style'
+import UserBar from './UserBar';
 
 function Subscriptions() {
-    const [subs, setSubs] = useState()
-    const token = localStorage.getItem("jwt");
+  const [wishlists, setWishlists] = useState([]);
+  const token = localStorage.getItem("jwt");
+  const [myWish, setMyWish] = useState([]);
 
-    useEffect(()=>{
-        fetch('/profile',{
-            method: "GET",
-            headers:{
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            }
-        })
-        .then(res => res.json())
-        .then(response =>{setSubs(response)})
+  useEffect(() => {
+    fetch('/subs', {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then(response => response.json())
+    .then(data => {
+     setMyWish(data.subscriptions)
+    });
+  }, [token]);
 
-    },[token])
-    console.log(subs)
+  console.log(myWish)
 
   return (
-    <div>Subscriptions</div>
-  )
+    <>
+      <div style={{marginLeft:"350px"}}>
+        <h1>My Subscriptions</h1>
+       
+          {Array.isArray(myWish)?myWish.map((content, index) => (
+            <div key={index}>
+              <h3 onClick={(e)=>console.log(e.target.value)} className='text-orange-700 font-semibold px-4 mb-4 mt-4 ss:text-[22px] text-[12px] font-poppins'>{content.category_name}</h3>
+              {/* <p className={`${styles.paragraph} px-4 mb-2 text-primary`}>{content.description}</p> */}
+            </div>
+          )):null}
+
+      </div>
+      <UserBar />
+    </>
+  );
 }
 
-export default Subscriptions
+export default Subscriptions;
