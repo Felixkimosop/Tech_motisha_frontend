@@ -49,10 +49,10 @@ const firstVideoIndex = lastVideoIndex - videosPerPage
   return (
 <div className='all-videos'>
      <h1>All Videos</h1>
-            <Link to={'/new-video'}>New Post</Link>
+
 
                     <div className="searchbar">
-                        <label className="form-label">Search Videos:</label>
+                    
                         <input className="form-control"
                         value={search} onChange={(e)=>setSearch(e.target.value)}
                         type="text" placeholder="Search by Title" />

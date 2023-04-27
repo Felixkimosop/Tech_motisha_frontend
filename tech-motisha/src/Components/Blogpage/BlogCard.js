@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './styles/BlogCard.css'
+// import { faHeart, faComment, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const BlogCard = ({blog}) => {
@@ -18,6 +20,12 @@ const BlogCard = ({blog}) => {
               <p>{description}</p>
 
            <Link className="read-more" to={`/blogs/${id}`}>READ MORE</Link>
+           {/* <FontAwesomeIcon icon={faComment} title='Comment' className="text-orange-500" />
+
+           <FontAwesomeIcon icon={faHeart} title='Like' className={`text-red-500 `} /> */}
+{/*
+           after the like functionality
+           <FontAwesomeIcon icon={faHeart} title='Like' className={`text-red-500 ${liked ? 'fill-current' : 'fill-none'}`} /> */}
         </div>
     </div>
   )
