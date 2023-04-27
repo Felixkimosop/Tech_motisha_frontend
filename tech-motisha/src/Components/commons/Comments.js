@@ -4,7 +4,7 @@ const Comments = ({comment,users}) => {
 
   const {user_id, content_id, body} = comment
 
- const singleUser = users.find((user)=>{
+ const singleUser = users?.find((user)=>{
   return user.id === user_id
  })
 
@@ -16,10 +16,9 @@ const Comments = ({comment,users}) => {
 
   return (
     <div>
-      <p className='username'>@:~  {singleUser['name']}</p>
-
-      <p className='comment'>{body}</p>
-      <hr/>
+      <p>@:  {singleUser?.name}</p>
+      <br></br>
+      <p>{body}</p>
 
     </div>
   )

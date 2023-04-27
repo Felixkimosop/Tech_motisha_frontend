@@ -72,7 +72,7 @@ const Navbar = () => {
       </ul>
       {name? (<>
              <button  type="button" className='btn text-white text-3xl'>
-             <NavLink  to='/login'onClick ={logout} className="font-poppins font-normal cursor-pointer text-[16px]" aria-expanded="false">
+             <NavLink  to='/login'onClick ={logout} className="font-poppins self-centre font-normal cursor-pointer text-[16px]" aria-expanded="false">
               Logout
              </NavLink >
            </button></>) : (<><button  type="button" className={`py-2 px-4 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none ${styles}`}>
@@ -85,6 +85,9 @@ const Navbar = () => {
              </NavLink >
            </button></>) }
            {name? (<>  <button  type="button" onClick={toNavigate} className='text-alto text-3xl' style={{color:'white'}}>{name}</button></>) : (<> </>) }
+           {name? (<>  <button  type="button" onClick={toNavigate} className='font-poppins self-center font-normal cursor-pointer text-[16px] text-white ml-3'>Welcome {name}</button></>) : (<> </>) }
+
+           {/* {name? (<>  <button  type="button" onClick={toNavigate} className='text-alto text-3xl'>Welcome {name}</button></>) : (<> </>) } */}
 
     </div>
 

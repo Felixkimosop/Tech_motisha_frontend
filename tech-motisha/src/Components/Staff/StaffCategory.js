@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "../Sidebar";
+import StaffBar from "./StaffBar";
 
-function Category() {
+function StaffCategory() {
   const [category, setCategory] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [newCategory, setNewCategory] = useState("");
@@ -79,9 +79,9 @@ function Category() {
         </div>
       </div>
     </div>
-    < Sidebar />
+< StaffBar />
     </>
   );
 }
 
-export default Category;
+export default StaffCategory;

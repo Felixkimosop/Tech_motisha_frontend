@@ -61,6 +61,10 @@ function ContactMe() {
             <a href="#">Contact</a>
           </li>
         </ul>
+        <div>
+      <h1>Contact Us</h1>
+      <p>Fill out the form below to get in touch with us.</p>
+      </div>
       </div>
     </div>
   );
