@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import AudioPlayer from "./Components/Audio/AudioPlayer";
 import "./Components/Audio/AudioPlayer.css";
 import { Routes, Route } from "react-router";
@@ -30,6 +30,7 @@ import StaffBar from "./Components/Staff/StaffBar";
 import styles from "./Components/commons/style";
 import Navbar from "./Components/commons/Navbar";
 import StaffCategory from "./Components/Staff/StaffCategory";
+import BlogDescription from "./Components/Blogpage/BlogDescription";
 
 function App() {
   const token = {
@@ -79,7 +80,16 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/allposts" element={<StaffPost />} />
 
-        <Route path="/blog" element={<Blogpage />} />
+        <Route
+          path="/blogs"
+          element={<Blogpage token={token} comment={comment} user={users} />}
+        />
+        <Route
+          path="/blogs/:id"
+          element={
+            <BlogDescription token={token} comment={comment} user={users} />
+          }
+        />
         <Route path="/about" element={<About />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
@@ -88,9 +98,26 @@ function App() {
         <Route path="/mysubscriptions" element={<Subscriptions />} />
         <Route exact path="/" element={<Home />} />
 
-        <Route path="/new-video" element={<NewVideo token ={token} comment ={comment} user={users} />}></Route>
-        <Route path="/videos" element={<AllVideosCard token ={token} comment ={comment} user={users} />}></Route>
-        <Route path="/videos/:id" element={<VideoDescriptionCard token ={token} comment ={comment} user={users} />}></Route>
+        <Route
+          path="/new-video"
+          element={<NewVideo token={token} comment={comment} user={users} />}
+        ></Route>
+        <Route
+          path="/videos"
+          element={
+            <AllVideosCard token={token} comment={comment} user={users} />
+          }
+        ></Route>
+        <Route
+          path="/videos/:id"
+          element={
+            <VideoDescriptionCard
+              token={token}
+              comment={comment}
+              user={users}
+            />
+          }
+        ></Route>
       </Routes>
     </div>
   );

@@ -86,7 +86,7 @@ const Navbar = () => {
            </button></>) }
            {name? (<>  <button  type="button" onClick={toNavigate} className='font-poppins self-center font-normal cursor-pointer text-[16px] text-white ml-3'>Welcome {name}</button></>) : (<> </>) }
      
-           {name? (<>  <button  type="button" onClick={toNavigate} className='text-alto text-3xl'>Welcome {name}</button></>) : (<> </>) }
+           {/* {name? (<>  <button  type="button" onClick={toNavigate} className='text-alto text-3xl'>Welcome {name}</button></>) : (<> </>) } */}
 
     </div>
 

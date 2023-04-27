@@ -18,7 +18,7 @@ function Wishlist() {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      setWishlists(data.wishlists);
+      setWishlists(data);
     });
   }, [token]);
 

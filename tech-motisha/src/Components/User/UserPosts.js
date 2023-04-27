@@ -22,7 +22,7 @@ function UserPosts() {
     })
       .then((res) => res.json())
       .then((response) => {
-       
+       console.log(response.contents)
         setPosts(response.contents);
       });
   }, [token]);
