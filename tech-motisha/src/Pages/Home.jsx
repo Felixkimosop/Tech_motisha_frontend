@@ -8,7 +8,8 @@ import Testimonials from '../Components/commons/Testimonials'
 const Home = () => {
   return (
      // On Medium devices:
-     <div>
+     <div className={`bg-bunting ${styles.paddingX} ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
 
         <section id='home' className={`flex md:flex-row flex-col ${styles.paddingY}`}>
         <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
@@ -39,10 +40,9 @@ const Home = () => {
       </section>
       <Stats/>
       <Feature className='px-0'/>
-      <Testimonials/>
-       
+      <Testimonials/>     
         
-      
+      </div>
      </div>
   )
 }

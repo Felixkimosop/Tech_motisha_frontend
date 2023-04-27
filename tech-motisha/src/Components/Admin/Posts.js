@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Sidebar from '../Sidebar';
 import './Posts.css';
+
+
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -84,10 +87,15 @@ function Posts() {
   }):null
 
   return (
-    <div>
+    <>
+    <div style={{marginLeft:"450px"}}>
       <h1> All Posts </h1>
       {content}
+      </div>
+      <div>
+      < Sidebar />
     </div>
+    </>
   );
 }
 

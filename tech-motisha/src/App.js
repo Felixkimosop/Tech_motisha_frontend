@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AudioPlayer from "./Components/Audio/AudioPlayer";
 import "./Components/Audio/AudioPlayer.css";
 import { Routes, Route } from "react-router";
@@ -21,8 +21,15 @@ import musicData from "./Components/assets/music";
 import AllVideosCard from "./Components/Video/AllVideosCard";
 import NewVideo from "./Components/Video/NewVideo";
 import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
+// import StaffPost from './Components/Staff/StaffPost';
+
+import Wishlist from "./Components/User/Wishlist";
+import StaffPost from "./Components/Staff/StaffPost";
+import StaffBar from "./Components/Staff/StaffBar";
+
 import styles from "./Components/commons/style";
 import Navbar from "./Components/commons/Navbar";
+import StaffCategory from "./Components/Staff/StaffCategory";
 import BlogDescription from "./Components/Blogpage/BlogDescription";
 
 function App() {
@@ -52,63 +59,66 @@ function App() {
   }, []);
 
   return (
-    <div className={`bg-bunting w-full overflow-hidden`}>
-      <div className={`${styles.paddingX} ${styles.flexCenter} m-0`}>
+    <div className={` w-full overflow-hidden`}>
+      <div className={`${styles.paddingX} ${styles.flexCenter} m-0 bg-bunting`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
         </div>
       </div>
-      <div className={`bg-bunting ${styles.paddingX} ${styles.flexStart}`}>
-        <div className={`${styles.boxWidth}`}>
-          <Routes>
-            <Route path="/user" element={<User />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/staff" element={<Staff />} />
-            <Route path="/audios" element={<AudioPlayer song={musicData} />} />
 
-            <Route path="/allusers" element={<ViewUsers />} />
-            <Route path="/category" element={<Catergory />} />
-            <Route path="/posts" element={<Posts />} />
+      <Routes>
+        <Route path="/user" element={<User />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/staff" element={<Staff />} />
+        <Route path="/audios" element={<AudioPlayer song={musicData} />} />
+        <Route path="/bar" element={<StaffBar />} />
+        <Route path="/staffcategory" element={<StaffCategory />} />
 
-            <Route path="/blogs" element={<Blogpage token={token} />} />
-            <Route
-              path="/blogs/:id"
-              element={
-                <BlogDescription
-                  users={users}
-                  setComment={setComment}
-                  comment={comment}
-                  token={token}
-                />
-              }
-            ></Route>
-            <Route path="/about" element={<About />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/contactme" element={<ContactMe />} />
-            <Route path="/myposts" element={<UserPosts />} />
-            <Route path="/mysubscriptions" element={<Subscriptions />} />
-            <Route exact path="/" element={<Home />} />
+        <Route path="/allusers" element={<ViewUsers />} />
+        <Route path="/category" element={<Catergory />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/allposts" element={<StaffPost />} />
 
-            <Route path="/new-video" element={<NewVideo />}></Route>
-            <Route
-              path="/videos"
-              element={<AllVideosCard token={token} />}
-            ></Route>
-            <Route
-              path="/videos/:id"
-              element={
-                <VideoDescriptionCard
-                  users={users}
-                  comment={comment}
-                  setComment={setComment}
-                  token={token}
-                />
-              }
-            ></Route>
-          </Routes>
-        </div>
-      </div>
+        <Route
+          path="/blogs"
+          element={<Blogpage token={token} comment={comment} user={users} />}
+        />
+        <Route
+          path="/blogs/:id"
+          element={
+            <BlogDescription token={token} comment={comment} user={users} />
+          }
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contactme" element={<ContactMe />} />
+        <Route path="/myposts" element={<UserPosts />} />
+        <Route path="/mysubscriptions" element={<Subscriptions />} />
+        <Route exact path="/" element={<Home />} />
+
+        <Route
+          path="/new-video"
+          element={<NewVideo token={token} comment={comment} user={users} />}
+        ></Route>
+        <Route
+          path="/videos"
+          element={
+            <AllVideosCard token={token} comment={comment} user={users} />
+          }
+        ></Route>
+        <Route
+          path="/videos/:id"
+          element={
+            <VideoDescriptionCard
+              token={token}
+              comment={comment}
+              user={users}
+            />
+          }
+        ></Route>
+      </Routes>
     </div>
   );
 }
