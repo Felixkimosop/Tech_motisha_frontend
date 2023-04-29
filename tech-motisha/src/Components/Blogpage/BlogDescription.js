@@ -53,6 +53,7 @@ const BlogDescription = ({token, comment, users, setComment}) => {
         })
           .then(response => response.json())
           .then(data => {
+            //console.log(data);
             setComment((previousComment)=> [data,...previousComment])
           })
           e.target.reset()

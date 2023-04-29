@@ -58,6 +58,8 @@ function App() {
       });
   }, []);
 
+  console.log(users);
+
   return (
     <div className={` w-full overflow-hidden`}>
       <div className={`${styles.paddingX} ${styles.flexCenter} m-0 bg-bunting`}>
@@ -87,7 +89,7 @@ function App() {
         <Route
           path="/blogs/:id"
           element={
-            <BlogDescription token={token} comment={comment} user={users} />
+            <BlogDescription token={token} setComment={setComment} comment={comment} users={users} />
           }
         />
         <Route path="/about" element={<About />} />
@@ -105,7 +107,7 @@ function App() {
         <Route
           path="/videos"
           element={
-            <AllVideosCard token={token} comment={comment} user={users} />
+            <AllVideosCard comment={comment} user={users} />
           }
         ></Route>
         <Route
@@ -114,7 +116,8 @@ function App() {
             <VideoDescriptionCard
               token={token}
               comment={comment}
-              user={users}
+              users={users}
+              setComment={setComment}
             />
           }
         ></Route>
