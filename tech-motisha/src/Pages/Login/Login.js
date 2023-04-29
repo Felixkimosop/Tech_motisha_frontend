@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {NavLink, useNavigate } from "react-router-dom";
 import logo from '../Login/logo.png'
 import Swal from "sweetalert2";
-import '../Login/Login.css'
 
 function Login() {
   const [formData, setFormData] = useState({
