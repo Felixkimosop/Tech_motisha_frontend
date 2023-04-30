@@ -145,10 +145,14 @@ function AudioPlayer({id}) {
   };
 
   return (
-    <div className="audio-player-container justify-between flex flex-wrap items-center bg- text-green-600 text-md font-serif">
+    <div className="audio-player-container flex flex-col mt-32 items-center text-green-600 text-md font-poppins">
       {showForm && <AddSongForm onAddSong={handleAddSong} />}
-      <button className="add-song-button" onClick={handleNewSongClick}>Add New Song</button>
-      {musicList}
+      <div>
+        <button className="add-song-button" onClick={handleNewSongClick}>Add New Song</button>
+      </div>
+      <div className='flex justify-between flex-wrap'>
+        {musicList}
+      </div>
     </div>
   );
 }

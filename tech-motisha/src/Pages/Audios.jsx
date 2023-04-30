@@ -22,7 +22,7 @@ const Audios = () => {
               {/* text */}
             <div className={` flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
               <div className={`lg:pt-0 lg:pb-0 lg:w-auto z-10 flex flex-row justify-between items-center w-full`}>
-                  <h1 className='lg:flex-1 lg:mt-[220px] bg-white-transparent lg:p-4 p-1 font-poppins mt-16 font-semibold ss:text-[82px] text-[32px] text-white ss:leading-[`100px] leading-[75px] lg:tracking-wider'>
+                  <h1 className='lg:flex-1 lg:mt-[220px] bg-white-transparent lg:p-4 p-1 font-poppins mt-18 font-semibold ss:text-[72px] text-[32px] text-white ss:leading-[`100px] leading-[75px] lg:tracking-wider'>
                   PODCASTS & <br/>{" "}
                     AUDIOS
                   </h1>
@@ -30,15 +30,18 @@ const Audios = () => {
             </div>
             <div className='flex justify-end max-h-96 lg:max-h-max'>
                 <div className='relative flex flex-1 lg:-right-28 mt-10 lg:-mt-20  lg:absolute lg:h-[500px]  lg:-z-10'>
-                  <img className='lg:-rotate-45 w-[100%] h-[130%] object-contain' src={hero_audio} alt='Camera'/>
-                  <div className='absolute z-[0] top[0] w-[85%] h-[85%] pink__gradient'/>
-                  <div className='absolute z-[0] top[0] w-[65%] h-[85%] pink__gradient'/>
+                  <img className='lg:-rotate-[25deg] w-[100%] h-[130%] object-contain' src={hero_audio} alt='Camera'/>
+                  <div className='lg:-rotate-[deg] absolute z-[0] lg:top-[523px] lg:-right-[px] w-[80%] h-[80%]  billboard__fadeBottom'/>
+                  {/* <div className='absolute z-[0] top[0] w-[65%] h-[85%] pink__gradient'/> */}
                   <div className='absolute z-[1] bottom-40 w-[80%] h-[80%] white__gradient rounded-full'/>
                   <div className='absolute z-[0] right-20 bottom-20 w-[50%] h-[50%] blue__gradient rounded-full'/>
                 </div>
             </div>      
           </div>
         </div>
+        <div className=' absolute z-[-1] lg:top-[470px] lg:-left-[0px] w-[50%] h-[80%]  billboard__fadeBottom'/>
+        <div className=' absolute z-[-1] lg:top-[470px] lg:-left-[0px] h-[80%]  billboard__fadeBottom'/>
+        <div className='absolute z-[-1] lg:top-[470px] lg:-left-[500px] h-[80%]  billboard__fadeBottom'/>
     </section>
     <AudioPlayer/>
       </div>
