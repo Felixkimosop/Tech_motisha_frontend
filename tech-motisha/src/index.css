@@ -154,12 +154,12 @@
     background-color: transparent;
     background-image: linear-gradient(
         to bottom,
-        hsla(0,0%,8%,0) 0,
-        hsla(0,0%,8%,.15) 15%,
-        hsla(0,0%,8%,.35) 29%,
-        hsla(0,0%,8%,.58) 44%,
-        hsl(0, 0%, 8%) 68%,
-        #141414 100%
+        rgba(251, 252, 255, 0.15) 0,
+        rgba(251, 253, 255, 0.25) 15%,
+        rgba(251, 253, 255, 0.38) 29%,
+        rgba(251, 253, 255, 0.58) 48%,
+        rgba(251, 253, 255, 0.8) 68%,
+        rgba(251, 253, 255) 100%
         );
     background-position: 0 top;
     background-repeat: repeat-x;

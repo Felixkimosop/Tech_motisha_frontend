@@ -1,6 +1,6 @@
 import React, { useState, useRef,createRef} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faComment, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faComment, faEnvelope, faPlayCircle, faPauseCircle } from '@fortawesome/free-solid-svg-icons';
 import './AudioPlayer.css';
 import AddSongForm from './SongForm';
 import SubscriptionForm from './SubscriptionForm';
@@ -86,8 +86,8 @@ function CommentForm({ onCommentSubmit }) {
 
 function AudioPlayer({id}) {
   const audioRef = useRef(musicData.map(() => createRef()));
-  const [songs, setSongs] = useState(musicData);
-  const [showForm, setShowForm] = useState(false);
+  // const [songs, setSongs] = useState(musicData);
+  // const [showForm, setShowForm] = useState(false);
   
   const [isPlayingList, setIsPlayingList] = useState(musicData.map(() => false));
 
@@ -104,10 +104,10 @@ function AudioPlayer({id}) {
     setIsPlayingList(newList);
   };
   
-  const handleAddSong = (newSong) => {
-    setSongs([...songs, newSong]);
-    setShowForm(false);
-  };
+  // const handleAddSong = (newSong) => {
+  //   setSongs([...songs, newSong]);
+  //   setShowForm(false);
+  // };
 
   const handleSubscribe = (email) => {
     alert(`Subscribed with email: ${email}`);
@@ -115,41 +115,39 @@ function AudioPlayer({id}) {
 
   const musicList = musicData.map((song, index) => {
     return (
-      <div className="audio-card rounded-lg overflow-hidden shadow-lg text-white" key={song.id}>
-        <img src={song.poster} alt={song.title} className="w-full h-auto object-cover" />
+      <div className="bg-[#bbc0cc] audio-card rounded-lg overflow-hidden shadow-lg text-white" key={song.id}>
+        <div className='relative flex items-center justify-center'>
+          <img src={song.poster} alt={song.title} className="w-full h-auto object-cover" />
+          <button className="absolute text-3xl play-pause rounded-full filter-orange text-white py-2 px-4 " onClick={() => togglePlayPause(index)}>
+              {isPlayingList[index] ? <FontAwesomeIcon icon={faPauseCircle}/> : <FontAwesomeIcon icon={faPlayCircle}/>}
+          </button>
+        </div>
         <div className="p-4">
-          <h3 className="text-lg font-bold mb-2">{song.title}</h3>
-          <p className="text-gray-700">{song.artist}</p>
+          <h3 className="font-poppins font-semibold xs:text-[40px] text-[30px] xs:leading-[53px] leading[43px] text-[#031027]">{song.title}</h3>
+          <p className="text-primary">{song.artist}</p>
           <audio ref={audioRef.current[index]} className="w-full my-4">
             <source src={song.source} type={song.type} />
           </audio>
           <div className="audio-controls flex items-center justify-between">
-            <button className="play-pause bg-indigo-800 text-white py-2 px-4 rounded-lg" onClick={() => togglePlayPause(index)}>
-              {isPlayingList[index] ? 'Pause' : 'Play'}
-            </button>
             <div className="audio-icons flex justify-center items-center gap-4">
-              <FontAwesomeIcon icon={faHeart} className="icon" />
-              <FontAwesomeIcon icon={faComment} className="icon" />
-              <FontAwesomeIcon icon={faEnvelope} className="icon" />
+              <FontAwesomeIcon icon={faHeart} className="icon filter-orange" />
+              <FontAwesomeIcon icon={faComment} className="icon filter-orange" />
+              <FontAwesomeIcon icon={faEnvelope} className="icon filter-orange" />
             </div>
           </div>
-          <SongComments id={song.id} />
-          <SubscriptionForm onSubscribe={handleSubscribe} />
+          {/* <SongComments id={song.id} /> */}
+          {/* <SubscriptionForm onSubscribe={handleSubscribe} /> */}
         </div>
       </div>
     );
   });
 
-  const handleNewSongClick = () => {
-    setShowForm(true);
-  };
+  // const handleNewSongClick = () => {
+  //   setShowForm(true);
+  // };
 
   return (
     <div className="audio-player-container flex flex-col mt-32 items-center text-green-600 text-md font-poppins">
-      {showForm && <AddSongForm onAddSong={handleAddSong} />}
-      <div>
-        <button className="add-song-button" onClick={handleNewSongClick}>Add New Song</button>
-      </div>
       <div className='flex justify-between flex-wrap'>
         {musicList}
       </div>
