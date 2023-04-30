@@ -31,6 +31,7 @@ import styles from "./Components/commons/style";
 import Navbar from "./Components/commons/Navbar";
 import StaffCategory from "./Components/Staff/StaffCategory";
 import BlogDescription from "./Components/Blogpage/BlogDescription";
+import SubscriptionDetails from "./Components/User/SubscriptionDetails";
 
 function App() {
   const token = {
@@ -96,6 +97,8 @@ function App() {
         <Route path="/contactme" element={<ContactMe />} />
         <Route path="/myposts" element={<UserPosts />} />
         <Route path="/mysubscriptions" element={<Subscriptions />} />
+        <Route path="/mysubscriptions/:id" element={<SubscriptionDetails />} />
+
         <Route exact path="/" element={<Home />} />
 
         <Route
