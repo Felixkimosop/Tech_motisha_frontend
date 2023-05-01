@@ -16,7 +16,6 @@ import Catergory from "./Components/Admin/Catergory";
 import UserPosts from "./Components/User/UserPosts";
 import Subscriptions from "./Components/User/Subscriptions";
 import Home from "./Pages/Home";
-import musicData from "./Components/assets/music";
 import AllVideosCard from "./Components/Video/AllVideosCard";
 import NewVideo from "./Components/Video/NewVideo";
 import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
@@ -31,6 +30,7 @@ import Navbar from "./Components/commons/Navbar";
 import StaffCategory from "./Components/Staff/StaffCategory";
 import BlogDescription from "./Components/Blogpage/BlogDescription";
 import Videos from "./Pages/Videos";
+import Audios from "./Pages/Audios";
 
 function App() {
   const token = {
@@ -66,7 +66,7 @@ function App() {
         <Route path="/user" element={<User />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/staff" element={<Staff />} />
-        <Route path="/audios" element={<AudioPlayer song={musicData} />} />
+        <Route path="/audios" element={<Audios/>} />
         <Route path="/bar" element={<StaffBar />} />
         <Route path="/staffcategory" element={<StaffCategory />} />
 
