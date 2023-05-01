@@ -9,7 +9,7 @@ import User from "./Components/User/User";
 import Staff from "./Components/Staff/Staff";
 import Posts from "./Components/Admin/Posts";
 import Blogpage from "./Components/Blogpage/Blogpage";
-import About from "./Pages/About/About";
+import About from "./Pages/About";
 import Admin from "./Components/Admin/Admin";
 import ViewUsers from "./Components/Admin/ViewUsers";
 import Catergory from "./Components/Admin/Catergory";

@@ -36,7 +36,7 @@ const Contact = () => {
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     placeholder='Your name'
-                                    className='outline-none border-b border-b-primary h-[60px] bg-transparent font-secondary w-full pl-3 placeholder: text-[#757879]'/>
+                                    className='border-b outline-none border-b-primary h-[60px] bg-transparent font-secondary w-full pl-3 placeholder: text-[#757879]'/>
                                     <input
                                     type="email" 
                                     id="email"
