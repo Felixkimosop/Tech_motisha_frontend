@@ -63,18 +63,18 @@ function SignUp() {
     <div  class="bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1521459467264-802e2ef3141f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJhY2tncm91bmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60')]">
         <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
         
-                <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
-                    <div className="w-full  px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg bg-[url('https://images.unsplash.com/photo-1679465771243-0793d5231c8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIyMnxDRHd1d1hKQWJFd3x8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60')]">
+                <div className="relative flex flex-col m-6 space-y-8 bg-black shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+                    <div className="w-full  px-6 py-4 mt-6 overflow-hidden  shadow-md sm:max-w-lg sm:rounded-lg bg-[url('https://images.unsplash.com/photo-1679465771243-0793d5231c8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIyMnxDRHd1d1hKQWJFd3x8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60')]">
                         <form onSubmit={handleSubmit}>
                 <div>
                     <a href="/">
-                        <h3 className="mt-6 text-center text-4xl font-extrabold text-orange">
+                        <h3 className="mt-6 text-center text-4xl font-extrabold text-gradient">
                             Create your account
                         </h3>
                     </a>
                 </div>
                             <div className="mb-10">
-                                <label className="block text-lg font-bold text-alto undefined">Role</label>
+                                <label className="block text-lg font-bold text-white undefined">Role</label>
                                 <select onChange={handleChange} className="text-base" name="role">
                                 <option value="">Select Role</option>
                                     <option value="user">User</option>
@@ -84,7 +84,7 @@ function SignUp() {
                             <div>
                                 <label
                                     htmlFor="name"
-                                    className="block text-lg font-bold text-alto undefined"
+                                    className="block text-lg font-bold text-white undefined"
                                 >
                                     Name
                                 </label>
@@ -100,7 +100,7 @@ function SignUp() {
                             <div className="mt-4">
                                 <label
                                     htmlFor="email"
-                                    className="block text-lg font-extrabold text-alto undefined"
+                                    className="block text-lg font-extrabold text-white undefined"
                                 >
                                     Email
                                 </label>
@@ -116,7 +116,7 @@ function SignUp() {
                             <div className="mt-4">
                                 <label
                                     htmlFor="password"
-                                    className="block text-lg font-bold text-alto undefined"
+                                    className="block text-lg font-bold text-white undefined"
                                 >
                                     Password
                                 </label>
@@ -132,7 +132,7 @@ function SignUp() {
                             <div className="mt-4">
                                 <label
                                     htmlFor="password_confirmation"
-                                    className="block text-lg font-bold text-alto undefined"
+                                    className="block text-lg font-bold text-white undefined"
                                 >
                                     Confirm Password
                                 </label>
@@ -151,15 +151,15 @@ function SignUp() {
                                 </button>
                             </div>
                         </form>
-                        <div className="mt-4 mr-14 ml-14 text-alto">
+                        <div className="mt-4 mr-14 ml-14 text-white">
                             Already have an account?{" "}
                             <span>
-                                <NavLink to="/login" className="text-alto hover:underline" >
+                                <NavLink to="/login" className="text-white hover:underline" >
                                     Log in
                                 </NavLink>
                             </span>
                         </div>
-                        <div className="flex items-center w-full my-4 text-alto">
+                        <div className="flex items-center w-full my-4 text-white">
                             <hr className="w-full" />
                             <p className="px-3 ">OR</p>
                             <hr className="w-full" />
@@ -168,7 +168,7 @@ function SignUp() {
                             <button
                                 aria-label="Login with Google"
                                 type="button"
-                                className="text-alto font-bold bg-bunting-2 flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
+                                className="text-white font-bold bg-bunting-2 flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +182,7 @@ function SignUp() {
                             <button
                                 aria-label="Login with GitHub"
                                 role="button"
-                                className="text-alto font-bold bg-bunting-2 flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
+                                className="text-white font-bold bg-bunting-2 flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +195,7 @@ function SignUp() {
                             </button>
                         </div>
                     </div>
-                    {/* <div className="relative">
+                    <div className="relative">
                             <img
                                 src="http://images.unsplash.com/photo-1610192627200-a31ddef73277?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bGFwdG9wJTIwb3JhbmdlJTIwYW5kJTIwYmxhY2t8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60"
                                 alt="img"
@@ -205,12 +205,12 @@ function SignUp() {
                             <div
                                 className="absolute hidden bottom-10 right-6 p-6 bg-white bg-opacity-30 backdrop-blur-sm rounded drop-shadow-lg md:block"
                             >
-                                <span class="text-alto text-xl"
+                                <span class="text-white text-xl"
                                 >"Welcome to Tech <span className="text-orange font-semibold">Motisha</span> "<br /> Get inspired by 
                                 leading experts in tech  <br />
                                 </span>
                             </div>
-                        </div> */}
+                        </div>
 
                 </div>
             </div>

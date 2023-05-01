@@ -68,7 +68,7 @@ const Navbar = () => {
           ))}
         </ul>
         {name? (<>
-             <button  type="button" className='btn text-white text-3xl'>
+             <button  type="button" className='py-2 px-4 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none ${styles}'>
              <NavLink  to='/login'onClick ={logout} className="font-poppins self-centre font-normal cursor-pointer text-[16px]" aria-expanded="false">
               Logout
              </NavLink >
