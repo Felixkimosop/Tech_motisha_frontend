@@ -78,7 +78,7 @@ function Login() {
 
     return (
         <div className=''>
-            <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-slate-950">
+            <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-cover bg-no-repeat bg-[url('https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29kaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60')]">
                 <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
                     <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg bg-contain ">
                         <form className="flex flex-col gap-y-4 mt-10" onSubmit={handleSubmit}>
