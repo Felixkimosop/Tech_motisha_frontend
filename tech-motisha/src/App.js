@@ -28,9 +28,14 @@ import StaffBar from "./Components/Staff/StaffBar";
 import styles from "./Components/commons/style";
 import Navbar from "./Components/commons/Navbar";
 import StaffCategory from "./Components/Staff/StaffCategory";
+import StaffCategoryDetails from "./Components/Staff/StaffCategoryDetails";
 import BlogDescription from "./Components/Blogpage/BlogDescription";
+
+import SubscriptionDetails from "./Components/User/SubscriptionDetails";
+
 import Videos from "./Pages/Videos";
 import Audios from "./Pages/Audios";
+
 
 function App() {
   const token = {
@@ -67,6 +72,8 @@ function App() {
         <Route path="/audios" element={<Audios/>} />
         <Route path="/bar" element={<StaffBar />} />
         <Route path="/staffcategory" element={<StaffCategory />} />
+        <Route path="/staffcategory/:id" element={<StaffCategoryDetails />} />
+
 
         <Route path="/allusers" element={<ViewUsers />} />
         <Route path="/category" element={<Catergory />} />
@@ -90,6 +97,8 @@ function App() {
         <Route path="/contactme" element={<Contactme />} />
         <Route path="/myposts" element={<UserPosts />} />
         <Route path="/mysubscriptions" element={<Subscriptions />} />
+        <Route path="/mysubscriptions/:id" element={<SubscriptionDetails />} />
+
         <Route exact path="/" element={<Home />} />
 
         <Route
