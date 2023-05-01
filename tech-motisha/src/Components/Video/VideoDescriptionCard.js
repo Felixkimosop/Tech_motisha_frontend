@@ -1,15 +1,12 @@
 
 
-
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Comments from "../commons/Comments";
 
-
 const VideoDescriptionCard = ({ comment, users, setComment }) => {
   const [singleVideo, setSingleVideo] = useState({});
-  const [liked, setLiked] = useState(false);
-  const [likesCount, setLikesCount] = useState(0); // added state for likes count
+  const [likesCount, setLikesCount] = useState(0);
   const { id } = useParams();
   const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("jwt");
@@ -25,7 +22,8 @@ const VideoDescriptionCard = ({ comment, users, setComment }) => {
       .then((res) => res.json())
       .then((data) => {
         setSingleVideo(data);
-        setLikesCount(data.likes_count); // set the initial likes count
+        setLikesCount(data.likes_count);
+
       });
   }, []);
 
@@ -49,28 +47,35 @@ const VideoDescriptionCard = ({ comment, users, setComment }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+
+        console.log(userId);
         setComment((previousComment) => [data, ...previousComment]);
       });
     e.target.reset();
   }
 
   function handleLike() {
-    setLiked(!liked);
-  fetch(`/api/videos/${id}/likes`, {
-    method: liked ? "DELETE" : "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-    },
-    body: JSON.stringify({ like: { user_id: userId, content_id: id } }), // send only the user_id and content_id
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      setLikesCount(data.likes_count); // update the likes count after the like has been created or destroyed
-    });
+    const body = {
+      user_id: userId,
+      content_id: id
+    };
+
+    fetch(`/api/videos/${id}/likes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+      body: JSON.stringify(body),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+       // setLikesCount(data.likes_count);
+      });
   }
+
+
 
   const filteredComments = comment.filter((comment) => {
     return comment.content_id === parseInt(id);
@@ -94,7 +99,7 @@ const VideoDescriptionCard = ({ comment, users, setComment }) => {
       ></video>
       <div className="likes">
         <button onClick={handleLike}>
-          {liked ? "Unlike" : "Like"}
+          Like
         </button>
         <p>{likesCount} likes</p>
       </div>
@@ -108,3 +113,6 @@ const VideoDescriptionCard = ({ comment, users, setComment }) => {
 };
 
 export default VideoDescriptionCard;
+
+
+

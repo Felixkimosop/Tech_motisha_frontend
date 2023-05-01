@@ -31,6 +31,7 @@ import StaffCategory from "./Components/Staff/StaffCategory";
 import BlogDescription from "./Components/Blogpage/BlogDescription";
 import Videos from "./Pages/Videos";
 import Audios from "./Pages/Audios";
+import AllAudios from "./Components/AudioPage/AllAudios";
 
 function App() {
   const token = {
@@ -41,6 +42,19 @@ function App() {
 
   const [comment, setComment] = useState([]);
   const [users, setUsers] = useState([]);
+  const [category, setCategory] = useState([]);
+
+
+
+  useEffect(()=>{
+    fetch('/categories',token)
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+      setCategory(data)
+    })
+  },[])
+
 
   useEffect(() => {
     fetch("http://localhost:3000/comments", token)
@@ -58,7 +72,7 @@ function App() {
       });
   }, []);
 
-  console.log(users);
+  //console.log(users);
 
   return (
     <div className={` w-full overflow-hidden`}>
@@ -93,15 +107,16 @@ function App() {
         <Route path="/myposts" element={<UserPosts />} />
         <Route path="/mysubscriptions" element={<Subscriptions />} />
         <Route exact path="/" element={<Home />} />
+        <Route path="/test" element={<AllAudios token={token} />} />
 
         <Route
           path="/new-video"
-          element={<NewVideo token={token} comment={comment} user={users} />}
+          element={<NewVideo category={category} user={users} />}
         ></Route>
         <Route
           path="/videos"
           element={
-            <Videos/>
+            <Videos comments={comment}/>
           }
         ></Route>
         <Route

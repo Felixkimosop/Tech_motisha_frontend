@@ -5,7 +5,7 @@ import VideoPagination from './VideoPagination'
 import '../Video/styles/Allvideos.css'
 import {Link} from 'react-router-dom'
 
-const AllVideosCard = () => {
+const AllVideosCard = ({comments}) => {
 //set all videos
 const [videos, setVideos] = useState([])
 const [search, setSearch] = useState('')
@@ -49,7 +49,7 @@ const firstVideoIndex = lastVideoIndex - videosPerPage
 
         //mapping the sliced videos in videocard
     const allVideos = videosDisplayedPerPage.map((video,index)=>{
-        return <VideoCard key={index} video={video}/>
+        return <VideoCard comments={comments} key={index} video={video}/>
     })
 
 
@@ -61,7 +61,7 @@ const firstVideoIndex = lastVideoIndex - videosPerPage
 
 
                     <div className="searchbar">
-                    
+
                         <input className="form-control"
                         value={search} onChange={(e)=>setSearch(e.target.value)}
                         type="text" placeholder="Search by Title" />

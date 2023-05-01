@@ -9,6 +9,7 @@ const BlogDescription = ({token, comment, users, setComment}) => {
     const [singleBlog, setSingleBlog] = useState({})
     const { id } = useParams()
     const userId = localStorage.getItem("userId");
+    const [likesCount, setLikesCount] = useState(0);
 
 
     const [numPages, setNumPages] = useState(null);
@@ -68,6 +69,26 @@ const BlogDescription = ({token, comment, users, setComment}) => {
       })
 
 
+      function handleLike() {
+        const body = {
+          user_id: userId,
+          content_id: id
+        };
+
+        fetch(`/api/videos/${id}/likes`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+          body: JSON.stringify(body),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+           // setLikesCount(data.likes_count);
+          });
+      }
 
 
   return (
@@ -93,6 +114,11 @@ const BlogDescription = ({token, comment, users, setComment}) => {
       </Document>
       <p>Page {pageNumber} of {numPages}</p>
     </div>
+
+    <button onClick={handleLike}>
+          Like
+        </button>
+        <p>{likesCount} likes</p>
 
         <div className='blog-form'>
         <form onSubmit={handleComment}>

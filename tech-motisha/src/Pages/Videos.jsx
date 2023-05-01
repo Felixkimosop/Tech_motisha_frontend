@@ -4,7 +4,7 @@ import styles from '../Components/commons/style'
 import AllVideosCard from '../Components/Video/AllVideosCard'
 
 
-const Videos = () => {
+const Videos = ({comments}) => {
   return (
     <>
     <div className={`${styles.paddingX} ${styles.flexCenter} m-0`}>
@@ -13,7 +13,7 @@ const Videos = () => {
         </div>
     </div>
     <div className={`${styles.paddingX} ${styles.flexStart}`}>
-      <div className={`${styles.boxWidth}`}>    
+      <div className={`${styles.boxWidth}`}>
         <section className='section'>
           <div className='mx-auto h-full relative'>
             {/* text & image wrapper */}
@@ -27,7 +27,7 @@ const Videos = () => {
                       </div>
                       <p className={`subheading text-primary relative inline ${styles.paragraph} max-w-[470px] mt-5`}>
                         "Discover expert insights, industry trends, and inspiring stories in the tech space through our engaging video content."
-                      </p> 
+                      </p>
                       <div className='mt-10 bg-blue-gradient px-10 py-3'>
                         Explore
                       </div>
@@ -44,7 +44,7 @@ const Videos = () => {
             {/* <div className='horizontal'/> */}
               </div>
             </div>
-            <AllVideosCard/>
+            <AllVideosCard comments={comments}/>
         </section>
       </div>
     </div>

@@ -10,7 +10,7 @@ function Posts() {
   const token = localStorage.getItem("jwt");
 
   useEffect(() => {
-    fetch('/contents',{
+    fetch('/uploads',{
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ function Posts() {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
-      },
+      }
     })
       .then((response) => response.json())
       .then(() => {
@@ -68,11 +68,11 @@ function Posts() {
   const content = Array.isArray(posts)?posts.map((post, index) => {
     return (
       <div key={index}>
-        <img src={post.thumbnail} alt="" />
+        <img src={post.image_url} alt="" />
         <h1>{post.title}</h1>
         <p>{post.description}</p>
 
-        <video src={post.url} type="video/mp4"> </video>
+     
 
         <button onClick={() => handleDelete(post.id)}>Remove post</button>
         <span>{post.id}</span>
