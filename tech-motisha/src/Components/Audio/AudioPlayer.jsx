@@ -147,8 +147,8 @@ function AudioPlayer({id}) {
   // };
 
   return (
-    <div className="audio-player-container flex flex-col mt-32 items-center text-green-600 text-md font-poppins">
-      <div className='flex justify-between flex-wrap'>
+    <div className="audio-player-container mt-9 items-center text-green-600 text-md font-poppins">
+      <div className='flex flex-row justify-between flex-wrap'>
         {musicList}
       </div>
     </div>

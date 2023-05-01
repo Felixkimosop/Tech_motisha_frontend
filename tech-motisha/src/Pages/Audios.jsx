@@ -37,7 +37,7 @@ const Audios = () => {
             {/* text & image wrapper */}
             <div className={`flex flex-col lg:flex-row lg:${styles.paddingY} justify-center`}>
               {/* text */}
-            <div className={` flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
+            <div className={` flex-1 ${styles.flexStart} flex-col mt-20 xl:px-0 sm:px-16 px-6`}>
               <div className={`lg:pt-0 gap-3 lg:pb-0 lg:w-auto z-10 flex flex-col justify-between w-full`}>
                   <h1 className='lg:flex-1 lg:mr-9 lg:mt-[220px] bg-white-transparent lg:p-4 p-1 font-poppins mt-18 font-semibold ss:text-[72px] text-[32px] text-white ss:leading-[`100px] leading-[75px] lg:tracking-wider'>
                   PODCASTS & <br/>{" "}
