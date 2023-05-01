@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react'
 import StaffBar from './StaffBar'
 import styles from '../commons/style'
 import { AiFillLike, AiOutlineDislike,AiOutlineComment,AiFillFlag} from "react-icons/ai"
+import CommentForm from './CommentForm'
 
 
 function StaffPost() {
   const [data, setData] = useState()
   const token = localStorage.getItem('token')
   const [is_approved, setIsApproved] = useState(false)
+  const [likes, setLikes] = useState([]);
 
   useEffect(() => {
     fetch('/contents', {
@@ -62,17 +64,21 @@ function StaffPost() {
     console.log(`User ${userId} is commenting on content ${contentId}`)
     
   }
+
+  
+
+
   const icons = [
     {
         title: "like",
-        icon: < AiFillLike />
+        icon: < AiFillLike onClick={()=>console.log("hello")} />
     },
     {
         title: "dislike",
         icon: < AiOutlineDislike />
     },   {
         title: "comment",
-        icon: < AiOutlineComment />
+        icon: < AiOutlineComment onClick={()=>{< CommentForm />}}/>
     },
     {
         title: "flag",
@@ -105,14 +111,7 @@ function StaffPost() {
         ) : (
           <button type="button" className='btn p text-orange-700' onClick={() => approvePost(post.id)}>Approve</button>
         )}
-        {/* <div>
-            
-        <button type="button" className='btn p-5'> {} Like</button>
-        </div>
-       
-        <button type="button" className='btn p-5'>Dislike</button>
-        <button type="button" className='btn p-5' onClick={() => handleComment(post.user_id, post.id)}>Comment</button>
-        <button type="button" className='btn p-5'>Flag</button> */}
+        
         {buttons}
         </div>
       </div>

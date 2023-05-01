@@ -3,7 +3,7 @@ import BlogCard from "./BlogCard";
 import styles from "../commons/style";
 import Navbar from "../commons/Navbar";
 
-function Blogpage({ token }) {
+function Blogpage({ token, comment }) {
   const [blogs, setBlogs] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -17,7 +17,7 @@ function Blogpage({ token }) {
   }, []);
 
   const singleBlog = blogs.map((blog, index) => {
-    return <BlogCard key={index} blog={blog} />;
+    return <BlogCard comment={comment} key={index} blog={blog} />;
   });
 
   const filteredCategories = new Set();
@@ -52,7 +52,7 @@ function Blogpage({ token }) {
       </div>
       <div className="blogss">
       {filteredBlogs.map((blog, index) => (
-          <BlogCard key={index} blog={blog} />
+          <BlogCard comment={comment} key={index} blog={blog} />
         ))}
       </div>
     </div>

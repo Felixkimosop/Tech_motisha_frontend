@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import StaffBar from "./StaffBar";
+import { useNavigate } from "react-router-dom";
+
 
 function StaffCategory() {
   const [category, setCategory] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [newCategory, setNewCategory] = useState("");
   const token = localStorage.getItem("jwt");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/categories",{
@@ -29,8 +32,8 @@ function StaffCategory() {
 
   const categories = Array.isArray(category)
   ? category.map((category, index) => (
-      <div key={index} className="border border-gray-300 rounded-lg p-4 mb-4">
-        <h2 className="text-lg font-bold mb-2">{category.name}</h2>
+      <div key={index} onClick={(e)=>{navigate(`/staffcategory/${category.id}`)}}  className="border cursor-pointer border-gray-300 rounded-lg p-4 mb-4">
+        <h2 className="text-lg font-bold mb-2" >{category.name}</h2>
         <p className="text-gray-600">Description: {category.description}</p>
       </div>
     ))

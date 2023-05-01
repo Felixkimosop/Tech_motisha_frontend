@@ -5,9 +5,16 @@ import { faHeart, faComment, faEnvelope } from '@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const BlogCard = ({blog}) => {
+const BlogCard = ({blog, comment}) => {
 
-    const {id,title, description, image_url, upload_url} = blog
+    const {id,title, description, image_url, upload_url, category} = blog
+
+    console.log(comment);
+
+    const commentPerBlog = comment.filter((comment)=>{
+      return comment.content_id === id
+  })
+
 
   return (
     <div className='blogcard'>
@@ -18,9 +25,10 @@ const BlogCard = ({blog}) => {
             <div className="blog-contents">
                 <h4>{title}</h4>
               <p>{description}</p>
+              <p>Category : {category.name}</p>
 
            <Link className="read-more" to={`/blogs/${id}`}>READ MORE</Link>
-           <FontAwesomeIcon icon={faComment} title='Comment' className="text-orange-500" />5
+           <FontAwesomeIcon icon={faComment} title='Comment' className="text-orange-500" />{commentPerBlog.length}
 
            <FontAwesomeIcon icon={faHeart} title='Like' className={`text-red-500 `} />4
 
