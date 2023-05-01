@@ -1,9 +1,49 @@
 .container{
     border: 2px solid black;
     width: 40%;
-    margin: 20px;
+    margin: 10px;
+    border-radius: 3%;
+    height: 55vh;
+}
+
+.image-container{
+    width: 100%;
+    height: 35vh;
 }
 
 .container .image-container img{
-    width: 80%;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3%;
 }
+
+
+.video-content{
+    background-color:white;
+    height: 20vh;
+    width: 100%;
+}
+
+.video-content h2{
+    font-size: 20px;
+    color   : #fa510f;;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.watch{
+    text-decoration: none;
+    border: 1px solid white;
+    background-color: darkblue;
+    font-size: 15px;
+    color: white;
+    text-transform: uppercase;
+      margin: auto;
+    display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+

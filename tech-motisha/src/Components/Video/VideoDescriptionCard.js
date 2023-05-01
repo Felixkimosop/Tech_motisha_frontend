@@ -4,21 +4,15 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Comments from "../commons/Comments";
 
-
-const VideoDescriptionCard = ({ comment, users,setComment}) => {
+const VideoDescriptionCard = ({ comment, users, setComment }) => {
   const [singleVideo, setSingleVideo] = useState({});
-
-  const [liked, setLiked] = useState(false); // added state for "liked" status
+  const [likesCount, setLikesCount] = useState(0);
   const { id } = useParams();
   const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("jwt");
 
-
-
-
-
   useEffect(() => {
-    fetch(`/uploads/${id}`,{
+    fetch(`/uploads/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -27,72 +21,69 @@ const VideoDescriptionCard = ({ comment, users,setComment}) => {
     })
       .then((res) => res.json())
       .then((data) => {
-       
         setSingleVideo(data);
+        setLikesCount(data.likes_count);
+
       });
   }, []);
-  console.log(singleVideo);
 
   const { title, description, image_url, upload_url } = singleVideo;
 
-  function handleComment(e){
+  function handleComment(e) {
     e.preventDefault();
     const newComment = {
-      user_id : userId,
-      content_id : id,
-      body: e.target.body.value
-    }
+      user_id: userId,
+      content_id: id,
+      body: e.target.body.value,
+    };
 
-    //  console.log(newComment);
-    fetch('/comments', {
-      method: 'POST',
+    fetch("/comments", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem("jwt")}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       },
-      body: JSON.stringify(newComment)
+      body: JSON.stringify(newComment),
     })
-      .then(response => response.json())
-      .then(data => {
-        setComment((previousComment)=> [data,...previousComment])
-      })
+      .then((response) => response.json())
+      .then((data) => {
+
+        console.log(userId);
+        setComment((previousComment) => [data, ...previousComment]);
+      });
+    e.target.reset();
   }
-console.log(comment)
-
-
 
   function handleLike() {
-    // Toggle the "liked" state when the like button is clicked
-    setLiked(!liked);
+    const body = {
+      user_id: userId,
+      content_id: id
+    };
 
-    // Send a POST request to the API to create or destroy the "like" association
     fetch(`/api/videos/${id}/likes`, {
-      method: liked ? 'DELETE' : 'POST',
+      method: "POST",
       headers: {
-
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       },
-      body: JSON.stringify({ like: !liked }) // pass an empty object in the request body
+      body: JSON.stringify(body),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         console.log(data);
-      })
+       // setLikesCount(data.likes_count);
+      });
   }
 
 
 
   const filteredComments = comment.filter((comment) => {
-    return comment.content_id === parseInt(id)
+    return comment.content_id === parseInt(id);
   });
 
-
-   // console.log(filteredComments);
-
-
-  const allComments =  filteredComments.map((comm, index)=>{
-      return <Comments users={users} key={index} comment = {comm} />
-    })
+  const allComments = filteredComments.map((comm, index) => {
+    return <Comments users={users} key={index} comment={comm} />;
+  });
 
   return (
     <div className="video-description">
@@ -106,27 +97,22 @@ console.log(comment)
         className="videoplayer"
         poster={image_url}
       ></video>
-
-      <h2>{title}</h2>
-      <p>{description}</p>
-
-      <button onClick={handleLike}>
-        {liked ? 'Unlike' : 'Like'} {/* Toggle the text of the button based on the "liked" state */}
-      </button>
-
+      <div className="likes">
+        <button onClick={handleLike}>
+          Like
+        </button>
+        <p>{likesCount} likes</p>
+      </div>
       <form onSubmit={handleComment}>
-        <label>Add comment</label>
-        <input type='text' name='body' placeholder="comment"/>
-
-        <button type='submit'>comment</button>
+        <input type="text" name="body" placeholder="comment" />
+        <button type="submit">comment</button>
       </form>
-
-<div>
-{allComments}
-</div>
+      <div className="video-comments">{allComments}</div>
     </div>
   );
 };
 
 export default VideoDescriptionCard;
+
+
 

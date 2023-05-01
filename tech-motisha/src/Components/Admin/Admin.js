@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Admin.css";
+import './Admin.css'
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar";
 
@@ -43,7 +43,7 @@ function Admin() {
         "Content-Type": "application/json",
         AUTHORIZATION: `bearer ${token}`
       }
-      
+
     })
     .then(res=>res.json())
     .then(data=>setCategories(data))
@@ -79,7 +79,7 @@ function Admin() {
           </div>
         </div>
         <hr className="mt-14 border-2 border-black"></hr>
-      </div>    
+      </div>
 
       <div style={styles} className="h-screen"></div>
       <Sidebar />
