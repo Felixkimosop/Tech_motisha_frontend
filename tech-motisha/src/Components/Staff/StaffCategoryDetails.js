@@ -1,12 +1,10 @@
 import React,{useEffect,useState} from 'react'
 import { useParams } from "react-router-dom";
 
-
-function SubscriptionDetails() {
+function StaffCategoryDetails() {
     const {id} = useParams()
     const [contents, setContents] = useState()
     const token = localStorage.getItem("jwt");
-
 
     useEffect(()=>{
         fetch(`/categories/${id}`,{
@@ -21,7 +19,6 @@ function SubscriptionDetails() {
 
     },[])
 
-    console.log(contents)
 
     const post = Array.isArray(contents)? contents.map((content,index)=>{
         return(
@@ -34,12 +31,9 @@ function SubscriptionDetails() {
             </div>
         )
     }):null
-
   return (
-    <div>
-        {post}
-    </div>
+    <div>StaffCategoryDetails</div>
   )
 }
 
-export default SubscriptionDetails
+export default StaffCategoryDetails

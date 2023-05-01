@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {NavLink, useNavigate } from "react-router-dom";
 import logo from '../Login/logo.png'
 import Swal from "sweetalert2";
-import '../Login/Login.css'
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -25,14 +24,14 @@ function Login() {
     })
       .then((r) => r.json())
       .then((data) => {
-        console.log(data)
-        if (data.error) {
+        console.log(data.user.isactive)
+        if (data.user.isactive === false || data.error) {
 
-          setError("Wrong names or password");
+          setError("You are not allowed to log in");
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Wrong names or password!",
+            text: "You are not allowed to log in!",
           });
 
         } else {

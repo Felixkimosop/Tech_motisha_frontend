@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import AudioPlayer from "./Components/Audio/AudioPlayer";
 import "./Components/Audio/AudioPlayer.css";
 import { Routes, Route } from "react-router";
-import "./App.css";
 import Login from "./Pages/Login/Login.js";
 import SignUp from "./Pages/SignUp/SignUp.js";
-import ContactMe from "./Pages/ContactMe/ContactMe.jsx";
+import Contactme from "./Pages/ContactMe";
 import User from "./Components/User/User";
 import Staff from "./Components/Staff/Staff";
 import Posts from "./Components/Admin/Posts";
@@ -17,7 +16,6 @@ import Catergory from "./Components/Admin/Catergory";
 import UserPosts from "./Components/User/UserPosts";
 import Subscriptions from "./Components/User/Subscriptions";
 import Home from "./Pages/Home";
-import musicData from "./Components/assets/music";
 import AllVideosCard from "./Components/Video/AllVideosCard";
 import NewVideo from "./Components/Video/NewVideo";
 import VideoDescriptionCard from "./Components/Video/VideoDescriptionCard";
@@ -30,8 +28,14 @@ import StaffBar from "./Components/Staff/StaffBar";
 import styles from "./Components/commons/style";
 import Navbar from "./Components/commons/Navbar";
 import StaffCategory from "./Components/Staff/StaffCategory";
+import StaffCategoryDetails from "./Components/Staff/StaffCategoryDetails";
 import BlogDescription from "./Components/Blogpage/BlogDescription";
+
 import SubscriptionDetails from "./Components/User/SubscriptionDetails";
+
+import Videos from "./Pages/Videos";
+import Audios from "./Pages/Audios";
+
 
 function App() {
   const token = {
@@ -61,19 +65,15 @@ function App() {
 
   return (
     <div className={` w-full overflow-hidden`}>
-      <div className={`${styles.paddingX} ${styles.flexCenter} m-0 bg-bunting`}>
-        <div className={`${styles.boxWidth}`}>
-          <Navbar />
-        </div>
-      </div>
-
       <Routes>
         <Route path="/user" element={<User />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/staff" element={<Staff />} />
-        <Route path="/audios" element={<AudioPlayer song={musicData} />} />
+        <Route path="/audios" element={<Audios/>} />
         <Route path="/bar" element={<StaffBar />} />
         <Route path="/staffcategory" element={<StaffCategory />} />
+        <Route path="/staffcategory/:id" element={<StaffCategoryDetails />} />
+
 
         <Route path="/allusers" element={<ViewUsers />} />
         <Route path="/category" element={<Catergory />} />
@@ -94,7 +94,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/contactme" element={<ContactMe />} />
+        <Route path="/contactme" element={<Contactme />} />
         <Route path="/myposts" element={<UserPosts />} />
         <Route path="/mysubscriptions" element={<Subscriptions />} />
         <Route path="/mysubscriptions/:id" element={<SubscriptionDetails />} />
@@ -108,7 +108,7 @@ function App() {
         <Route
           path="/videos"
           element={
-            <AllVideosCard token={token} comment={comment} user={users} />
+            <Videos/>
           }
         ></Route>
         <Route
