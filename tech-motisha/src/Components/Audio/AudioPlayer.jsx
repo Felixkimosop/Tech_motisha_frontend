@@ -1,7 +1,6 @@
 import React, { useState, useRef,createRef, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComment, faEnvelope, faPlayCircle, faPauseCircle } from '@fortawesome/free-solid-svg-icons';
-import './AudioPlayer.css';
 import AddSongForm from './SongForm';
 import SubscriptionForm from './SubscriptionForm';
 import musicData from '../assets/music';
@@ -135,9 +134,9 @@ function AudioPlayer({id}) {
 
   const musicList = audios.map((song, index) => {
     return (
-      <div className="bg-[#bbc0cc] audio-card rounded-lg overflow-hidden shadow-lg text-white" key={song.id}>
+      <div className="bg-[#bbc0cc] audio-card ml-20 rounded-lg overflow-hidden shadow-lg text-white m-4" key={song.id}>
         <div className='relative flex items-center justify-center'>
-          <img src={song.image_url} alt={song.title} className="w-full h-auto object-cover" />
+          <img src={song.image_url} alt={song.title} className="w-80 h-60 object-cover" />
           <button className="absolute text-3xl play-pause rounded-full filter-orange text-white py-2 px-4 " onClick={() => togglePlayPause(index)}>
               {isPlayingList[index] ? <FontAwesomeIcon icon={faPauseCircle}/> : <FontAwesomeIcon icon={faPlayCircle}/>}
           </button>
@@ -167,7 +166,7 @@ function AudioPlayer({id}) {
   // };
 
   return (
-    <div className="audio-player-container mt-9 items-center text-green-600 text-md font-poppins">
+    <div className="audio-player-container mt-60 items-center text-green-600 text-md font-poppins">
       <div className='flex flex-row justify-between flex-wrap'>
         {musicList}
       </div>
