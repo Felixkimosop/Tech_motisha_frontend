@@ -41,10 +41,12 @@ function Login() {
           localStorage.setItem("id", data.user.id);
           localStorage.setItem("name", data.user.name);
           localStorage.setItem("image", data.user.profile_picture);
+        
+
 
           if (data) {
             navigate("/");
-          
+
           }
           else{
             Swal.fire({

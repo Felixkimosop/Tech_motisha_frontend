@@ -21,26 +21,39 @@ function Category() {
         setCategory(data)});
   }, [token]);
 
-  // {Array.isArray(obj)
-  //   ? obj.map(element => {
-  //       return <h2>{element}</h2>;
-  //     })
-  //   : null}
 
   const categories = Array.isArray(category)
   ? category.map((category, index) => (
-      <div key={index} className="border border-gray-300 rounded-lg p-4 mb-4">
+      <div key={index} onClick={handleClick} style={{cursor:'pointer'}} className="border border-gray-300 rounded-lg p-4 mb-4">
         <h2 className="text-lg font-bold mb-2">{category.name}</h2>
-        <p className="text-gray-600">Description: {category.description}</p>
+
       </div>
     ))
   : null
 
+
+  function handleClick(e){
+    alert(e.target.value)
+  }
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // TODO: Add new category to database
-    setNewCategory("");
-    setShowForm(false);
+    fetch('/categories',{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+      body: JSON.stringify({name:e.target.name.value}),
+    }).then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      setCategory((previousCategories)=> [...previousCategories, data])
+      setShowForm(false);
+    })
+
+
   };
 
   return (
@@ -66,8 +79,6 @@ function Category() {
                   type="text"
                   id="name"
                   name="name"
-                  value={newCategory}
-                  onChange={(e) => setNewCategory(e.target.value)}
                   className="form-control"
                 />
               </div>
@@ -85,3 +96,6 @@ function Category() {
 }
 
 export default Category;
+
+
+

@@ -1,4 +1,4 @@
-import React, { useState, useRef,createRef} from 'react';
+import React, { useState, useRef,createRef, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComment, faEnvelope, faPlayCircle, faPauseCircle } from '@fortawesome/free-solid-svg-icons';
 import AddSongForm from './SongForm';
@@ -9,6 +9,10 @@ import musicData from '../assets/music';
 // Custom hook for managing comments
 function useComments() {
   const [comments, setComments] = useState([]);
+  const [music, setMusic] = useState([]);
+
+
+
 
   const handleCommentSubmit = (newComment) => {
     setComments([...comments, newComment]);
@@ -22,6 +26,7 @@ function SongComments({ id }) {
   const [comments, handleCommentSubmit] = useComments();
   const [showAllComments, setShowAllComments] = useState(false);
   const [showCommentInput, setShowCommentInput] = useState(false); // add state variable for comment input
+
 
   // Only show the first three comments by default
   const displayedComments = showAllComments ? comments : comments.slice(0, 3);
@@ -49,7 +54,7 @@ function SongComments({ id }) {
       )}
   {/* render comment input section conditionally */}
         {showCommentInput && <CommentForm onCommentSubmit={handleCommentSubmit} />}
-        {!showCommentInput && <FontAwesomeIcon icon={faComment} className="icon" onClick={handleEnvelopeClick} />} 
+        {!showCommentInput && <FontAwesomeIcon icon={faComment} className="icon" onClick={handleEnvelopeClick} />}
     </div>
   );
 }
@@ -84,11 +89,26 @@ function CommentForm({ onCommentSubmit }) {
 }
 
 function AudioPlayer({id}) {
-  const audioRef = useRef(musicData.map(() => createRef()));
+
+  const [audios,setAudios] = useState([])
+
+
+  useEffect(()=>{
+      fetch('/audios')
+      .then(res=>res.json())
+      .then(data=>{
+          console.log(data);
+          setAudios(data)
+      })
+  },[])
+
+
+
+  const audioRef = useRef(audios.map(() => createRef()));
   // const [songs, setSongs] = useState(musicData);
   // const [showForm, setShowForm] = useState(false);
-  
-  const [isPlayingList, setIsPlayingList] = useState(musicData.map(() => false));
+
+  const [isPlayingList, setIsPlayingList] = useState(audios.map(() => false));
 
   const togglePlayPause = (index) => {
     const audio = audioRef.current[index].current;
@@ -102,7 +122,7 @@ function AudioPlayer({id}) {
     newList[index] = !isPlaying;
     setIsPlayingList(newList);
   };
-  
+
   // const handleAddSong = (newSong) => {
   //   setSongs([...songs, newSong]);
   //   setShowForm(false);
@@ -112,11 +132,11 @@ function AudioPlayer({id}) {
     alert(`Subscribed with email: ${email}`);
   };
 
-  const musicList = musicData.map((song, index) => {
+  const musicList = audios.map((song, index) => {
     return (
       <div className="bg-[#bbc0cc] audio-card ml-20 rounded-lg overflow-hidden shadow-lg text-white m-4" key={song.id}>
         <div className='relative flex items-center justify-center'>
-          <img src={song.poster} alt={song.title} className="w-80 h-60 object-cover" />
+          <img src={song.image_url} alt={song.title} className="w-80 h-60 object-cover" />
           <button className="absolute text-3xl play-pause rounded-full filter-orange text-white py-2 px-4 " onClick={() => togglePlayPause(index)}>
               {isPlayingList[index] ? <FontAwesomeIcon icon={faPauseCircle}/> : <FontAwesomeIcon icon={faPlayCircle}/>}
           </button>
@@ -125,7 +145,7 @@ function AudioPlayer({id}) {
           <h3 className="font-poppins font-semibold xs:text-[40px] text-[30px] xs:leading-[53px] leading[43px] text-[#031027]">{song.title}</h3>
           <p className="text-primary">{song.artist}</p>
           <audio ref={audioRef.current[index]} className="w-full my-4">
-            <source src={song.source} type={song.type} />
+            <source src={song.upload_url} />
           </audio>
           <div className="audio-controls flex items-center justify-between">
             <div className="audio-icons flex justify-center items-center gap-4">
