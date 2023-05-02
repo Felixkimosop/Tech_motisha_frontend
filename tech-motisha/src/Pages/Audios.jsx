@@ -32,7 +32,8 @@ const Audios = () => {
         </div>
       </div>
         <div className={`bg-bunting-gradient -top-[2px] -left-2 -right-2 absolute -z-[2]`}>
-        
+          <div className={`${styles.paddingX} ${styles.flexStart}`}>
+            <div className={`${styles.boxWidth}`}></div>
         <section className='h-max'>
           <div className='mx-auto h-full relative'>
             {/* text & image wrapper */}
@@ -51,14 +52,14 @@ const Audios = () => {
               </div>
             </div>
             <div className='flex justify-end max-h-96 lg:max-h-max'>
-                <div className='relative flex flex-1 lg:-right-28 mt-10 lg:-mt-20  lg:absolute lg:h-[500px] lg:-z-10'>
+                <div className='relative flex flex-1 top-0 lg:-right-28 mt-10 lg:-mt-20  lg:absolute lg:h-[500px] lg:-z-10'>
                   <img className='lg:-rotate-[25deg] w-[100%] h-[130%] object-contain' src='https://media.istockphoto.com/id/1181428446/photo/warm-temperature-studio-shot-in-dark-studio-with-neon-light-portrait-of-young-girl.jpg?s=612x612&w=0&k=20&c=sX4O0XyUN9lEXGVfnVLiL6RNI2jRj2WfiFAgTuJ4hYM=' alt='Camera'/>
                   {/* <div className='lg:-rotate-[deg] absolute z-[0] lg:top-[523px] lg:-right-[px] w-[80%] h-[80%]  billboard__fadeBottom'/> */}
                   {/* <div className='absolute z-[0] right-20 bottom-20 w-[50%] h-[50%] blue__gradient rounded-full'/> */}
                 </div>
             </div> 
             <div className='relative flex flex-1 mt-72 lg:absolute lg:h-[550px] lg:-z-10'>
-              <img className='w-[100%] h-[130%] object-contain' src={sound_wave} alt="sound wave" />
+              <img className='w-[100%] h-[130%] hidden lg:flex object-contain' src={sound_wave} alt="sound wave" />
             </div>     
           </div>
         </div>
@@ -68,6 +69,8 @@ const Audios = () => {
     </section>
     <AudioPlayer/>
       </div>
+      </div>
+  
     </>
   )
 }
