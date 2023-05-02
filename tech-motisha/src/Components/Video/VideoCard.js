@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const VideoCard = ({video, comments}) => {
 
-  const {id,title,decription,image_url} = video
+  const {id,title,decription,image_url, category} = video
 
     console.log(id);
 
@@ -16,15 +16,13 @@ const VideoCard = ({video, comments}) => {
 
   return (
 
-    <div className='container'>
-        <div className="image-container">
+    <div className='container_video'>
+        <div className="image-container relative flex items-center justify-center">
             <img src={image_url} alt={title}/>
+            <Link className="absolute text-3xl play-pause rounded-full filter-orange text-white py-2 px-4 " to={`/videos/${id}`}><FontAwesomeIcon icon={faPlayCircle}/></Link>
         </div>
             <div className='video-content'>
                 <h2>{title}</h2>
-                <p>{decription}</p>
-              <Link className='watch' to={`/videos/${id}`}>Watch Video</Link>
-
               <FontAwesomeIcon icon={faComment} className="icon filter-orange" />{commentPerVideo.length}
               <FontAwesomeIcon icon={faHeart} className="icon filter-orange" /> 5
             </div>

@@ -17,6 +17,9 @@ const BlogDescription = ({token, comment, users, setComment}) => {
 
 
 
+
+    console.log(userId);
+
     function onDocumentSuccess({ numPages }) {
       setNumPages(numPages);
     }

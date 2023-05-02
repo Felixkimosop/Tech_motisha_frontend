@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Comments from "../commons/Comments";
+import './styles/VideoDescription.css'
 
 const VideoDescriptionCard = ({ comment, users, setComment }) => {
   const [singleVideo, setSingleVideo] = useState({});

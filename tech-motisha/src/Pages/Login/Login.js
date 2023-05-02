@@ -38,10 +38,10 @@ function Login() {
 
           localStorage.setItem("jwt", data.jwt);
           localStorage.setItem("role", data.user.role);
-          localStorage.setItem("id", data.user.id);
+          localStorage.setItem("userId", data.user.id);
           localStorage.setItem("name", data.user.name);
           localStorage.setItem("image", data.user.profile_picture);
-        
+
 
 
           if (data) {
@@ -93,7 +93,7 @@ function Login() {
                               </div> */}
                               <h3 className="text-center font-poppins text-blue-gradient text-5xl font-extrabold t">
                                 Welcome!
-                              </h3>                                
+                              </h3>
                             </div>
                             <div className="mt-6">
                                 <label

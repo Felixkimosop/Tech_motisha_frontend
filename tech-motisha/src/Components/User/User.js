@@ -6,7 +6,6 @@ import "./User.css";
 
 function User() {
   const roles = localStorage.getItem("role");
-
   const id = localStorage.getItem("id");
   const names = localStorage.getItem("name");
   const [content, setContent] = useState();
@@ -47,8 +46,6 @@ function User() {
         setWish(data.wishlists);
       });
   }, [token]);
-  console.log(role);
-
   console.log(names);
 
   console.log(content);
@@ -213,7 +210,14 @@ function User() {
             )}
           </div>
 
-
+          {/* <div className="admin_activity">
+          <h1>Activity</h1>
+          <button onClick={(e)=>navigate("/myposts")} >My posts</button>
+          <br></br>
+          <button onClick={(e)=>navigate("/mysubscriptions")} >My subscriptions</button>
+          <br></br>
+          <button>My WishList</button>
+        </div> */}
         </div>
       </div>
       <UserBar

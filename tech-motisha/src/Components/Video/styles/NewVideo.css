@@ -1,10 +1,10 @@
-/* form label, form input{
+/* .new-post .post-form label, form input{
     display: block;
     margin: 20px;
     height: 20px;
     width: 150px;
-    } */
-/* form{
+    }
+.new-post .post-form{
     margin: auto;
     background-color: lightblue;
     width: 50%;

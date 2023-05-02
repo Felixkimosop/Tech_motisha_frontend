@@ -38,16 +38,16 @@ function Blogpage({ token, comment }) {
 
   return (
     <div className="blog-page">
-      <div className={`${styles.paddingX} ${styles.flexCenter} m-0`}>
+      <div className={`${styles.paddingX} ${styles.flexCenter} m-0 bg-bunting`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar/>
         </div>
       </div>
 
-      <h1 className='flex-1 font-poppins mt-16 font-semibold ss:text-[72px] text-[52px] text-black ss:leading-[100px] leading-[75px]'>Tech School Blog</h1>
-      <div className="mb-4">
+      <h1 className='flex-1 font-poppins mt-16 font-semibold ss:text-[72px] text-[52px] text-blue-gradient ss:leading-[100px] leading-[75px] text-center'>Tech School Blog</h1>
+      <div className="mb-4 text-center">
       {categories.map((category, index)=>{
-        return <button className='p-2 m-3 rounded-md border-2 bg-orange-400' key={index} onClick={() => handleCategoryClick(category)}>{category}</button>
+        return <button className='p-2 m-5 rounded-md border-2 bg-[#fa510f] text-white' key={index} onClick={() => handleCategoryClick(category)}>{category}</button>
       })}
       </div>
       <div className="blogss">

@@ -77,7 +77,7 @@ function App() {
       });
   }, []);
 
-  //console.log(users);
+  console.log(users);
 
   return (
     <div className={` w-full overflow-hidden`}>

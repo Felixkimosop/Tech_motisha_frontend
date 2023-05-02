@@ -1,6 +1,7 @@
 import "./UserPosts.css";
 import React, { useState, useEffect } from "react";
 import UserBar from "./UserBar";
+import { Link } from "react-router-dom";
 
 function UserPosts() {
   const [posts, setPosts] = useState([]);
@@ -30,7 +31,7 @@ function UserPosts() {
 
  const mypost =  Array.isArray(posts) ? (
     posts.map((post, index) => (
-      
+
       <div key={index} style={{marginLeft:"350px"}}>
       {  console.log(post.title)}
         <h2>{post.title}</h2>
@@ -87,9 +88,9 @@ function UserPosts() {
   return (
     <>
     <div>
-      <h2>My Posts</h2>
-      <button onClick={toggleForm}>Add Content</button>
-      {showForm && (
+      <h2 className='text-center'>My Posts</h2>
+      <Link to='/new-video' style={{'margin-left':'50%'}} >New Post</Link>
+      {/* {showForm && (
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Title</label>
           <input
@@ -127,7 +128,7 @@ function UserPosts() {
           ></textarea>
           <button type="submit">Add Post</button>
         </form>
-      )}
+      )} */}
      {mypost}
     </div>
     < UserBar />

@@ -1,6 +1,5 @@
 
 
-<<<<<<< HEAD
 .montserrat-black-white-20px{
   color: var(--white);
   font-family: var(--font-family-montserrat);
@@ -30,10 +29,6 @@
 }
 
 
-.video-comments{
-    overflow: scroll;
-    height: 30vh;
-}
 .likes button{
     color: black;
     border: 2px solid;
@@ -42,5 +37,3 @@
 }
 
 
-=======
->>>>>>> cbf0a9b80a5d42f6f4011ca9a0c45d2fb2486805
