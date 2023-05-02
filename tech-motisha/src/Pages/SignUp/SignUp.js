@@ -62,7 +62,7 @@ function SignUp() {
   return (
     <div  class="bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1521459467264-802e2ef3141f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJhY2tncm91bmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60')]">
         <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
-        
+
                 <div className="relative flex flex-col m-6 space-y-8 bg-black shadow-2xl rounded-2xl md:flex-row md:space-y-0">
                     <div className="w-full  px-6 py-4 mt-6 overflow-hidden  shadow-md sm:max-w-lg sm:rounded-lg bg-[url('https://images.unsplash.com/photo-1679465771243-0793d5231c8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIyMnxDRHd1d1hKQWJFd3x8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60')]">
                         <form onSubmit={handleSubmit}>
@@ -201,12 +201,12 @@ function SignUp() {
                                 alt="img"
                                 className="w-[600px] h-full hidden rounded-r-2xl md:block object-cover"
                             />
-                        
+
                             <div
                                 className="absolute hidden bottom-10 right-6 p-6 bg-white bg-opacity-30 backdrop-blur-sm rounded drop-shadow-lg md:block"
                             >
                                 <span class="text-white text-xl"
-                                >"Welcome to Tech <span className="text-orange font-semibold">Motisha</span> "<br /> Get inspired by 
+                                >"Welcome to Tech <span className="text-orange font-semibold">Motisha</span> "<br /> Get inspired by
                                 leading experts in tech  <br />
                                 </span>
                             </div>
