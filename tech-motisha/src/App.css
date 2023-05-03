@@ -1,2 +1,38 @@
 
 
+.montserrat-black-white-20px{
+  color: var(--white);
+  font-family: var(--font-family-montserrat);
+  font-size: var(--font-size-m);
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+.blogss{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.blog-page{
+    min-height: 100vh;
+}
+
+
+.username{
+    color :#fa510f
+}
+
+.comment{
+    color: white;
+}
+
+
+.likes button{
+    color: black;
+    border: 2px solid;
+    width: 20%;
+    background-color: white;
+}
+

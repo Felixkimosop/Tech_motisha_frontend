@@ -46,7 +46,7 @@ function User() {
         setWish(data.wishlists);
       });
   }, [token]);
-  console.log(role);
+  console.log(names);
 
   console.log(content);
   const counter = Array.isArray(content) ? content.length : null;

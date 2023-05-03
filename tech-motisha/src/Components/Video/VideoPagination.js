@@ -8,9 +8,9 @@ const VideoPagination = ({totalVideos ,currentPage,setCurrentPage, videosPerPage
     }
 
   return (
-    <div>
+    <div className="mb-4 text-center">
         {pages.map((page,index)=>{
-            return <button onClick={()=>setCurrentPage(page)} className={currentPage===page? 'active':''} key={index}>{page}</button>
+            return <button onClick={()=>setCurrentPage(page)} className='p-2 m-5 rounded-md border-2 bg-[#fa510f] text-white' key={index}>{page}</button>
         })}
     </div>
   )

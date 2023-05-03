@@ -1,6 +1,6 @@
 .blog-description{
     min-height: 100vh;
-   
+
 }
 
 .blog-desc{
@@ -9,4 +9,53 @@
     float:right;
     margin-right: 5%;
     min-height: 30vh;
+    color: white;
+    text-align: center;
+    margin: 10px;
 }
+
+.blog-desc h2{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.blog-desc p{
+    color: #fa510f;
+}
+
+.blog-document{
+
+    width :50%;
+
+}
+
+
+
+.testtt > div:nth-child(1) > div:nth-child(2) {
+
+    display: none;
+     }
+
+
+     .blog-form{
+
+        width: 40%;
+   float:right;
+   margin-top : -600px;
+   color: white;
+
+     }
+
+     .blog-form input{
+        color: black;
+     }
+
+
+     .blog-comments{
+        height: 40vh;
+        overflow: scroll;
+        text-align: inherit;
+
+     }
+
+

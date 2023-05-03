@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 function SubscriptionForm({ onSubscribe }) {
   const [subscribed, setSubscribed] = useState(false);
   const [email, setEmail] = useState('');

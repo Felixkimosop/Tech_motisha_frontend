@@ -2,8 +2,12 @@
     margin-left: 50%;
     text-decoration: underline;
     font-size: 30px solid black;
+
 }
 .all-videos .display-videos{
     display: flex;
     justify-content: center;
+
 }
+
+

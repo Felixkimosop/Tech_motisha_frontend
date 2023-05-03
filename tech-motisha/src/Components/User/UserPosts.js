@@ -1,6 +1,7 @@
 import "./UserPosts.css";
 import React, { useState, useEffect } from "react";
 import UserBar from "./UserBar";
+import { Link } from "react-router-dom";
 
 function UserPosts() {
   const [posts, setPosts] = useState([]);
@@ -30,7 +31,7 @@ function UserPosts() {
 
  const mypost =  Array.isArray(posts) ? (
     posts.map((post, index) => (
-      
+
       <div key={index} style={{marginLeft:"350px"}}>
       {  console.log(post.title)}
         <h2>{post.title}</h2>
@@ -38,7 +39,7 @@ function UserPosts() {
         <img src={post.thumbnail} alt="" />
 
         <video src={post.url} controls></video>
-        <p>{post.description}</p>
+
         <p>
           <span>Created on</span> {post.created_at}
         </p>
@@ -87,49 +88,13 @@ function UserPosts() {
   return (
     <>
     <div>
-      <h2>My Posts</h2>
-      <button onClick={toggleForm}>Add Content</button>
-      {showForm && (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <label htmlFor="content-type">Content Type</label>
-          <input
-            type="text"
-            id="content-type"
-            value={kind}
-            onChange={(e) => setKind(e.target.value)}
-          />
-          <label htmlFor="thumbnail">Thumbnail URL</label>
-          <input
-            type="text"
-            id="thumbnail"
-            value={thumbnail}
-            onChange={(e) => setThumbnail(e.target.value)}
-          />
-          <label htmlFor="url">URL</label>
-          <input
-            type="text"
-            id="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-          />
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
-          <button type="submit">Add Post</button>
-        </form>
-      )}
+
+      <Link  className='bg-bunting text-white p-3 mb-3' to='/new-video' style={{'margin-left':'50%'}} >New Post</Link>
+
+     </div>
+     <div className="flex flex-col justify-between">
      {mypost}
-    </div>
+     </div>
     < UserBar />
     </>
   );

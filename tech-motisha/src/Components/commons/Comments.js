@@ -8,16 +8,12 @@ const Comments = ({comment,users}) => {
   return user.id === user_id
  })
 
-   console.log(singleUser);
-
-
-
-
+  //console.log(singleUser);
 
   return (
-    <div>
-      <p>@:  {singleUser?.name}</p>
-      <br></br>
+    <div style={{'color':'#000'}}>
+      <p style={{'color':'#fa510f'}}>@:  {singleUser?.name}</p>
+
       <p>{body}</p>
 
     </div>

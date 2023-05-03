@@ -4,16 +4,16 @@ import { NavLink, useNavigate } from "react-router-dom";
 import close from '../assets/211651_close_round_icon.svg';
 import menu from '../assets/7124209_menu_icon.svg';
 import styles from './style';
-
 const Navbar = () => {
   const name = localStorage.getItem("name");
   const navigate = useNavigate();
   const role = localStorage.getItem("role");
 
-
+  
   const logout = () =>{
     localStorage.clear();
     navigate("/login")}
+
 
 
   function toNavigate(e){
@@ -25,10 +25,8 @@ const Navbar = () => {
       navigate("/staff")
     }
   }
-
     const [active, setActive] = useState("Home");
     const [toggle, setToggle] = useState(false);
-
     const links =[
         {name: "Home", link:"/"},
         {name: "About", link:"/about"},
@@ -36,23 +34,17 @@ const Navbar = () => {
         {name: "Videos", link:"/videos"},
         {name: "Audios", link:"/audios"}
       ]
-
-
       console.log(name);
       console.log(role);
-      
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      
       {/* DESKTOP NAVBAR */}
       <div className='flex'>
         <img src={logo} alt="Tech Motisha Logo" className="w-[54px] h-[54px]" />
-        <h1 className='font-bold text-center text-orange-600 text-xl'>                 
+        <h1 className='font-bold text-center text-orange-600 text-xl'>
           Tech <span className={`block text-orange-600 text-xl`}>Motisha</span>
         </h1>
-
       </div>
-
       <div className="sm:flex hidden justify-end items-center flex-1">
         <ul className="list-none sm:flex hidden justify-end items-center flex-1">
           {links.map((nav, index) => (
@@ -67,6 +59,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+        {name? (<>  <button  type="button" onClick={toNavigate} className='font-poppins mr-5 self-center font-normal cursor-pointer text-[16px] text-white ml-3'>Welcome {name}</button></>) : (<> </>) }
         {name? (<>
              <button  type="button" className='py-2 px-4 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none ${styles}'>
              <NavLink  to='/login'onClick ={logout} className="font-poppins self-centre font-normal cursor-pointer text-[16px]" aria-expanded="false">
@@ -81,12 +74,9 @@ const Navbar = () => {
                Register
              </NavLink >
            </button></>) }
-           {name? (<>  <button  type="button" onClick={toNavigate} className='font-poppins self-center font-normal cursor-pointer text-[16px] text-white ml-3'>Welcome {name}</button></>) : (<> </>) }
-     
-           {/* {name? (<>  <button  type="button" onClick={toNavigate} className='text-alto text-3xl'>Welcome {name}</button></>) : (<> </>) } */}
 
+           {/* {name? (<>  <button  type="button" onClick={toNavigate} className='text-alto text-3xl'>Welcome {name}</button></>) : (<> </>) } */}
     </div>
-      
       {/* MOBILE NAVBAR - on small devices it's hidden*/}
       <div className="sm:hidden flex flex-1 justify-end items-center">
         {/* hamburger */}
@@ -96,7 +86,6 @@ const Navbar = () => {
           className="w-[28px] h-[28px] object-contain"
         onClick={() => setToggle((prev) => !prev)}
         />
-
         <div
           className={`${
             !toggle ? "flex" : "hidden"
@@ -120,5 +109,4 @@ const Navbar = () => {
     </nav>
   )
 }
-
 export default Navbar
