@@ -8,9 +8,14 @@ const Navbar = () => {
   const name = localStorage.getItem("name");
   const navigate = useNavigate();
   const role = localStorage.getItem("role");
+
+  
   const logout = () =>{
     localStorage.clear();
     navigate("/login")}
+
+
+
   function toNavigate(e){
     if (role === "admin") {
       navigate("/admin");

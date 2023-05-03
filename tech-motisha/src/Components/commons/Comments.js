@@ -12,8 +12,8 @@ const Comments = ({comment,users}) => {
 
   return (
     <div style={{'color':'#000'}}>
-      <p>@:  {singleUser?.name}</p>
-      <br></br>
+      <p style={{'color':'#fa510f'}}>@:  {singleUser?.name}</p>
+
       <p>{body}</p>
 
     </div>

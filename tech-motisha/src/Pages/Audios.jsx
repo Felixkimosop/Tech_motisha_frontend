@@ -32,7 +32,7 @@ const Audios = () => {
         </div>
       </div>
         <div className={`bg-bunting-gradient -top-[2px] -left-2 -right-2 absolute -z-[2]`}>
-          <div className={`${styles.paddingX} ${styles.flexStart}`}>
+          <div className={`${styles.paddingX}`}>
             <div className={`${styles.boxWidth}`}></div>
         <section className='h-max'>
           <div className='mx-auto h-full relative'>
@@ -57,10 +57,10 @@ const Audios = () => {
                   {/* <div className='lg:-rotate-[deg] absolute z-[0] lg:top-[523px] lg:-right-[px] w-[80%] h-[80%]  billboard__fadeBottom'/> */}
                   {/* <div className='absolute z-[0] right-20 bottom-20 w-[50%] h-[50%] blue__gradient rounded-full'/> */}
                 </div>
-            </div> 
+            </div>
             <div className='relative flex flex-1 mt-72 lg:absolute lg:h-[550px] lg:-z-10'>
               <img className='w-[100%] h-[130%] hidden lg:flex object-contain' src={sound_wave} alt="sound wave" />
-            </div>     
+            </div>
           </div>
         </div>
         {/* <div className=' absolute z-[-1] lg:top-[470px] lg:-left-[0px] w-[50%] h-[80%]  billboard__fadeBottom'/>
@@ -70,7 +70,7 @@ const Audios = () => {
     <AudioPlayer/>
       </div>
       </div>
-  
+
     </>
   )
 }

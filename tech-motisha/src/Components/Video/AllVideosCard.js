@@ -10,7 +10,7 @@ const AllVideosCard = ({comments}) => {
 const [videos, setVideos] = useState([])
 const [search, setSearch] = useState('')
 const [currentPage, setCurrentPage] = useState(1)
-const videosPerPage = 3
+const videosPerPage = 6
 const token = localStorage.getItem("jwt");
 
 
@@ -67,7 +67,7 @@ const firstVideoIndex = lastVideoIndex - videosPerPage
                         type="text" placeholder="Search by Title" />
                     </div>
 
-                 <div className='display-videos'>{allVideos}</div>
+                 <div className='flex flex-row flex-wrap justify-around'>{allVideos}</div>
 
               <VideoPagination totalVideos = {videos.length} currentPage={currentPage} setCurrentPage={setCurrentPage} videosPerPage={videosPerPage}/>
     </div>

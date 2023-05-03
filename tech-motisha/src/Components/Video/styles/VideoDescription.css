@@ -3,3 +3,16 @@
     overflow: scroll;
     height: 30vh;
 }
+
+
+
+.hard-code{
+
+    height : 100vh;
+    overflow: scroll;
+
+}
+
+.videoplayer{
+    width: 1000px;
+}

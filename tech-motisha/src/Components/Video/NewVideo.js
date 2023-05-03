@@ -68,46 +68,57 @@ const test =  category.map((cat, index)=>{
   }
 
   return (
-    <div>
+    <div  class="bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1621091211034-53136cc1eb32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGJhY2tncm91bmQlMjBpbWFnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60')]">
+        <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0">
+                <div className="relative flex flex-col m-6 space-y-8  bg-white-transparent shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+                    <div className="w-full  bg-white-transparent  px-14 py-4 mt-6 overflow-hidden  shadow-md sm:max-w-lg sm:rounded-lg">
+                        <form onSubmit={(e) => handleSubmit(e)}>
+                        <h1  className='mt-6 text-center text-4xl font-extrabold text-gradient uppercase'>New Post</h1>
+                        <div className="mb-10">
+                          <label className="block text-lg font-bold text-white undefined">Title:</label>
+                          <input type="text" name="title" placeholder="enter title" />
+                          </div>
 
-      <form onSubmit={(e) => handleSubmit(e)}>
-      <h1 className='text-white m-5 text-center uppercase'>New Post</h1>
-        <label>Title:</label>
-        <input type="text" name="title" placeholder="enter title" />
+                          <input type="number" name="user_id" value ={userId} hidden/>
+                          <div className="mb-10">
+                          <label className="block text-lg font-bold text-white undefined">Category: </label>
+                             <select name='category_id'>
+                                {test}
+                             </select>
+                             </div>
+
+                             <div className="mb-10">
+                          <label className="block text-lg font-bold text-white undefined">Description:</label>
+                          <textarea type="text" name="description" placeholder="enter description" />
+                          </div>
+
+                          <div className="mb-10">
+                          <label className="block text-lg font-bold text-white undefined">KInd:</label>
+                          <select name="kind" onChange={(e) => handleKindChange(e)}>
+                              <option value="">select type</option>
+                              <option value="video">Video</option>
+                              <option value="audio">Audio</option>
+                              <option value="article/blog">Blog</option>
+
+                          </select>
+
+                          </div>
 
 
-        <input type="number" name="user_id" value ={userId} hidden/>
+                          <div className="mb-10">
+                          <label className="block text-lg font-bold text-white undefined">Image:</label>
+                          <input type="file" name="image" accept="image/*" />
+                            </div>
 
-        <label>Category:
-       <select name='category_id'>
-        {test}
-       </select>
-       </label>
-
-        <label>Description:</label>
-        <textarea type="text" name="description" placeholder="enter description" />
-
-
-
-        <label>KInd:</label>
-        <select name="kind" onChange={(e) => handleKindChange(e)}>
-          <option value="">select type</option>
-          <option value="video">Video</option>
-          <option value="audio">Audio</option>
-          <option value="article/blog">Blog</option>
-
-        </select>
-
-
-
-        <label>Image:</label>
-        <input type="file" name="image" accept="image/*" />
-
-        <label>Upload:</label>
-        <input type="file" name="upload" accept={allowedFileTypes} />
-
-        <button type="submit">Upload</button>
-      </form>
+                            <div className="mb-10">
+                          <label className="block text-lg font-bold text-white undefined">Upload:</label>
+                          <input type="file" name="upload" accept={allowedFileTypes} />
+                            </div>
+                          <button type="submit">Upload</button>
+                    </form>
+        </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -134,7 +134,7 @@ function AudioPlayer({id}) {
 
   const musicList = audios.map((song, index) => {
     return (
-      <div className="bg-[#bbc0cc] audio-card ml-20 rounded-lg overflow-hidden shadow-lg text-white m-4" key={song.id}>
+      <div className="bg-[#bbc0cc] audio-card rounded-lg overflow-hidden shadow-lg text-white m-4" key={song.id}>
         <div className='relative flex items-center justify-center'>
           <img src={song.image_url} alt={song.title} className="w-80 h-60 object-cover" />
           <button className="absolute text-3xl play-pause rounded-full filter-orange text-white py-2 px-4 " onClick={() => togglePlayPause(index)}>

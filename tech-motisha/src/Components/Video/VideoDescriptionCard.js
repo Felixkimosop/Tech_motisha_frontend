@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Comments from "../commons/Comments";
 import './styles/VideoDescription.css'
+import VideoCard from "./VideoCard";
+
 
 const VideoDescriptionCard = ({ comment, users, setComment }) => {
   const [singleVideo, setSingleVideo] = useState({});
@@ -11,6 +13,7 @@ const VideoDescriptionCard = ({ comment, users, setComment }) => {
   const { id } = useParams();
   const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("jwt");
+  const [allVideos,setALlVideos] = useState([])
 
   useEffect(() => {
     fetch(`/uploads/${id}`, {
@@ -27,6 +30,24 @@ const VideoDescriptionCard = ({ comment, users, setComment }) => {
 
       });
   }, []);
+
+  useEffect(() => {
+    fetch(`/videos`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setALlVideos(data);
+
+
+      });
+  }, []);
+
+
 
   const { title, description, image_url, upload_url } = singleVideo;
 
@@ -86,30 +107,46 @@ const VideoDescriptionCard = ({ comment, users, setComment }) => {
     return <Comments users={users} key={index} comment={comm} />;
   });
 
+
+
+  const allVideosDisplayed = allVideos.map((video,index)=>{
+    return <VideoCard comments={comment} key={index} video={video}/>
+})
+
+
   return (
-    <div className="video-description">
-      <button className="btn btn-link">
-        <Link to={"/videos"}>Back</Link>
-      </button>
-      <video
-        src={upload_url}
-        type="video/mp4"
-        controls
-        className="videoplayer"
-        poster={image_url}
-      ></video>
-      <div className="likes">
-        <button onClick={handleLike}>
-          Like
+
+    <div className="flex flex-row">
+
+      <div className="video-description">
+        <button className="btn btn-link">
+          <Link className='bg-bunting text-white p-10 mb-10' to={"/videos"}>Back</Link>
         </button>
-        <p>{likesCount} likes</p>
+          <video
+          src={upload_url}
+          type="video/mp4"
+          controls
+          className="videoplayer"
+          poster={image_url}
+        ></video>
+        <div className="likes">
+          <button onClick={handleLike}>
+            Like
+          </button>
+          <p>{likesCount} likes</p>
+        </div>
+        <form onSubmit={handleComment}>
+          <input type="text" name="body" placeholder="comment" />
+          <button type="submit">comment</button>
+        </form>
+        <div className="video-comments">{allComments}</div>
       </div>
-      <form onSubmit={handleComment}>
-        <input type="text" name="body" placeholder="comment" />
-        <button type="submit">comment</button>
-      </form>
-      <div className="video-comments">{allComments}</div>
+      <div className="hard-code">
+      {allVideosDisplayed}
+        </div>
     </div>
+
+
   );
 };
 
